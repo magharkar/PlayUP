@@ -49,7 +49,7 @@ deploy:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=<play-up> --api-key=$HEROKU_API_KEY
+  - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
   only:
   - main
   tags: 
@@ -62,7 +62,7 @@ deploy:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=<play-up> --api-key=$HEROKU_API_KEY
+  - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
   only:
   - dev
   tags: 
