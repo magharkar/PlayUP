@@ -31,7 +31,6 @@ build-job:       # This job runs in the build stage, which runs first.
     - mvn -f $(pwd)/playup/pom.xml clean compile
   tags: 
     - dalfcs_docker_kvm
-    - dalfcs_docker_autoscale
 
 
 # For merge requests do not `deploy` but only run `verify`.
@@ -42,7 +41,6 @@ unit-test-job: # This job runs in the test stage.
     - mvn -f $(pwd)/playup/pom.xml verify
   tags: 
     - dalfcs_docker_kvm
-    - dalfcs_docker_autoscale
     
 deploy:
   stage: deploy
@@ -56,7 +54,6 @@ deploy:
   - main
   tags: 
     - dalfcs_docker_kvm
-    - dalfcs_docker_autoscale
   
 deploy:
   stage: deploy
@@ -70,6 +67,5 @@ deploy:
   - dev
   tags: 
     - dalfcs_docker_kvm
-    - dalfcs_docker_autoscale
   
 
