@@ -42,7 +42,32 @@ unit-test-job: # This job runs in the test stage.
   tags: 
     - dalfcs_docker_kvm
     
-
-
+deploy:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - cd playup
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - main
+  tags: 
+    - dalfcs_docker_kvm
+  
+deploy:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - cd playup
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - dev
+  tags: 
+    - dalfcs_docker_kvm
   
 
