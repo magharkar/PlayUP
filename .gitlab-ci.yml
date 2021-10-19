@@ -54,7 +54,7 @@ deploy:
     - main
   tags: 
     - dalfcs_docker_kvm
-	
+  
 deploy:
   stage: deploy
   image: ruby:latest
@@ -64,9 +64,8 @@ deploy:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
   only:
-  - dev
+    - dev
   tags: 
     - dalfcs_docker_kvm
-  
   
 
