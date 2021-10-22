@@ -12,12 +12,6 @@ import com.playup.playup.controller.PlayupDBConnection;
 class PlayupApplicationTests {
 	
 	@Test
-	public void controllerTest() {
-		PlayupController testController = new PlayupController();
-		assertTrue(testController.BaseCode().equals("Hello World"));
-	}
-	
-	@Test
 	public void PlayupDBConnectionTest() {
 		PlayupDBConnection connectTest = new PlayupDBConnection();
 		String actualOutput = connectTest.dbConnect();
