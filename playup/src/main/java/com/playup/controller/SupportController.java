@@ -16,7 +16,7 @@ public class SupportController {
 
     @GetMapping("/Support")
     public String SupportMethod() {
-        emailService.sendEmail("shivdesai612@gmail.com","This is testing mail","Testing Subject");
+//       emailService.sendEmail("shivdesai612@gmail.com","This is testing mail","Testing Subject");
         return "support";
     }
 

@@ -1,6 +1,7 @@
 package com.playup.dao;
 
 
+import com.playup.controller.PlayupDBConnection;
 import com.playup.model.SupportModel;
 
 public class SupportDao implements ISupportDao{
@@ -9,7 +10,7 @@ public class SupportDao implements ISupportDao{
     @Override
     public boolean checkWhetherTicketNumberExists(int ticketNumber) {
 
-        return false;
+        return true;
     }
 
     @Override
