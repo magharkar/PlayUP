@@ -1,4 +1,4 @@
-package com.playup.playup.controller;
+package com.playup.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ public class PlayupDBConnection {
         String connectionUrl = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT";
         List<String> names = new ArrayList<String>();
         try (Connection connect = DriverManager.getConnection(
-                connectionUrl, "CSCI5308_1_DEVINT_USER", "piWai3foh6iechee");
+                    connectionUrl, "CSCI5308_1_DEVINT_USER", "piWai3foh6iechee");
             PreparedStatement ps = connect.prepareStatement(sqlSelectAllUsers);
             ResultSet rs = ps.executeQuery()) {
         	while (rs.next()) {

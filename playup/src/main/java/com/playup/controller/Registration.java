@@ -1,4 +1,4 @@
-package com.playup.playup.controller;
+package com.playup.controller;
 
 public class Registration {
     private String userName;

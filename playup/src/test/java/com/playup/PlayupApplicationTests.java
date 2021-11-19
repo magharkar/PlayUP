@@ -1,4 +1,4 @@
-package com.playup.playup;
+package com.playup;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.playup.playup.controller.PlayupDBConnection;
+import com.playup.controller.PlayupDBConnection;
 
 @SpringBootTest
 class PlayupApplicationTests {
