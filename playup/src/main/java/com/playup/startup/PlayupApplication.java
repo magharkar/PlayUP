@@ -1,4 +1,4 @@
-package com.playup.playup;
+package com.playup.startup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
