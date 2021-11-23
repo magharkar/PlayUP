@@ -25,6 +25,14 @@ public class SupportModel {
         this.description = description;
     }
 
+    public SupportModel(int ticketNumber,String name, String email, String venue, String description) {
+        this.ticketNumber = ticketNumber;
+        this.name = name;
+        this.email = email;
+        this.venue = venue;
+        this.description = description;
+    }
+
     public void setTicketNumber(int ticketNumber) {
         this.ticketNumber = ticketNumber;
     }

@@ -2,11 +2,12 @@ package com.playup.dao;
 
 import com.playup.model.SupportModel;
 
+import java.sql.SQLException;
+
 public interface ISupportDao {
 
-    public boolean checkWhetherTicketNumberExists(int ticketNumber);
+    public boolean checkWhetherTicketNumberExists(int ticketNumber) throws SQLException;
 
-    public boolean generateSupportRequest(SupportModel supportModel);
+    public boolean generateSupportRequest(SupportModel supportModel) throws SQLException;
 
-    public void sendConfirmation();
 }
