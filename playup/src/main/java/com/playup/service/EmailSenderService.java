@@ -19,6 +19,7 @@ public class EmailSenderService implements IEmailSender {
         message.setFrom(ApplicationConstants.adminMailId);
         message.setTo(toEmail);
         message.setText(body);
+        
         message.setSubject(subject);
         mailSender.send(message);
         System.out.println("Email send");
