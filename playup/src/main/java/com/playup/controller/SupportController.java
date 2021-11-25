@@ -34,6 +34,7 @@ public class SupportController {
 
     @RequestMapping(value = "/Support/SupportRequest", method = RequestMethod.POST)
     public String getSearchResults(@RequestBody Map<String, String> supportData){
+        System.out.println("This is the method");
         SupportModel supportModel = new SupportModel(supportService.generateTicketNumber(),supportData.get("name"),supportData.get("email"),supportData.get("venue"),supportData.get("description"));
         boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
         if (isRequestGenerated) {
