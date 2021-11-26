@@ -1,3 +1,5 @@
+// @author Vibhor Bhatnagar
+
 package com.playup.dao;
 
 public class Venue {
@@ -18,7 +20,7 @@ public class Venue {
 	
 	
 	public Venue(String venueID, String venueName, String venueCity, String availableSlots, String totalSlots,
-			String fromTime, String toTime, String cotactInfo, String lattitude, String longitude, String slotPrice,
+			String fromTime, String toTime, String contactInfo, String lattitude, String longitude, String slotPrice,
 			String averageRating, String categoryID) {
 		super();
 		this.venueID = venueID;
@@ -28,7 +30,7 @@ public class Venue {
 		this.totalSlots = totalSlots;
 		this.fromTime = fromTime;
 		this.toTime = toTime;
-		this.cotactInfo = cotactInfo;
+		this.cotactInfo = contactInfo;
 		this.lattitude = lattitude;
 		this.longitude = longitude;
 		this.slotPrice = slotPrice;
@@ -78,10 +80,10 @@ public class Venue {
 	public void setToTime(String toTime) {
 		this.toTime = toTime;
 	}
-	public String getCotactInfo() {
+	public String getContactInfo() {
 		return cotactInfo;
 	}
-	public void setCotactInfo(String cotactInfo) {
+	public void setContactInfo(String cotactInfo) {
 		this.cotactInfo = cotactInfo;
 	}
 	public String getLattitude() {
@@ -113,6 +115,6 @@ public class Venue {
 	}
 	public void setCategoryID(String categoryID) {
 		this.categoryID = categoryID;
-	}
-
+	}	
+	
 }

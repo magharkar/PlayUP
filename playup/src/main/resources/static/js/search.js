@@ -1,8 +1,9 @@
 function postData() {
+	document.getElementById("searchResults").innerHTML = "<tr><th>Venue ID</th><th>Venue Name</th><th>Venue City</th><th>Available Slots</th><th>Total Slots</th><th>From Time</th><th>To Time</th><th>Contact Info</th><th>Lattitude</th><th>Longitude</th><th>Slot Price</th><th>Average Rating</th><th>Category ID</th><th></th></tr>";
 	var searchKey = document.getElementById("searchKey").value;
 	var windowLocation = window.location.href;
 	var request = $.ajax({
-		url:  windowLocation + "/getSearchResults",
+		url: windowLocation + "/getSearchResults",
 		type: "POST",
 		contentType: 'application/json; charset=utf-8',
 		data: searchKey,
@@ -24,7 +25,7 @@ function postData() {
 				var cell12 = row.insertCell(11);
 				var cell13 = row.insertCell(12);
 				var cell14 = row.insertCell(13);
-				
+
 				cell1.innerHTML = result[i].venueID;
 				cell2.innerHTML = result[i].venueName;
 				cell3.innerHTML = result[i].venueCity;
@@ -39,7 +40,7 @@ function postData() {
 				cell12.innerHTML = result[i].averageRating;
 				cell13.innerHTML = result[i].categoryID;
 				cell14.innerHTML = "<input type='button' id='book' name='book' onClick= '' value='book' />";
-				
+
 			}
 		}
 	});

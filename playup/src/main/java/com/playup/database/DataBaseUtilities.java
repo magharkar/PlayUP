@@ -1,18 +1,30 @@
+// @author Vibhor Bhatnagar
+//DBUtils can be used by anyone to add methods according to the feature to execute queries in the database
+
 package com.playup.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.playup.dao.Venue;
 
-// @author Vibhor Bhatnagar
-//DBUtils can be used by anyone to add methods according to the feature to execute queries in the database
+public class DataBaseUtilities {
+	
+	private static DataBaseUtilities instance = null;
+	
+	private DataBaseUtilities() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static DataBaseUtilities getInstance() {
+		if(instance == null) {
+			instance = new DataBaseUtilities();
+		}
+		return instance;
+	}
 
-public class DBUtils {
-
-	public static List<Venue> getVenuesFromDB() throws SQLException {
+	public List<Venue> getVenuesFromDB() throws SQLException {
 		List<Venue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues;");
 		while (resultSet != null && resultSet.next()) {

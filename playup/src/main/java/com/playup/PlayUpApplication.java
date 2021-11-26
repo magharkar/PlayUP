@@ -1,13 +1,13 @@
-package com.playup.startup;
+package com.playup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlayupApplication {
+public class PlayUpApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlayupApplication.class, args);
+		SpringApplication.run(PlayUpApplication.class, args);
 	}
 
 }
