@@ -6,6 +6,5 @@ import java.sql.SQLException;
 
 public interface ISupport {
 
-    int generateTicketNumber() throws SQLException;
     boolean generateSupportRequest(SupportModel supportModel) throws SQLException;
 }

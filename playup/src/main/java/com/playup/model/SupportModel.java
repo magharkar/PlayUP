@@ -1,5 +1,11 @@
 package com.playup.model;
 
+import com.playup.constants.ApplicationConstants;
+import com.playup.service.TicketGeneratorService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Map;
+
 public class SupportModel {
 
     private int ticketNumber;
@@ -31,6 +37,14 @@ public class SupportModel {
         this.email = email;
         this.venue = venue;
         this.description = description;
+    }
+
+    public SupportModel( Map<String, String> supportData) {
+        this.name = supportData.get("name");
+        this.email = supportData.get("email");
+        this.venue = supportData.get("venue");
+        this.description = supportData.get("description");
+        this.ticketNumber = TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber,ApplicationConstants.maximumSupportTicketNumber);
     }
 
     public void setTicketNumber(int ticketNumber) {
