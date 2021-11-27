@@ -8,6 +8,7 @@ public class PlayUpApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PlayUpApplication.class, args);
+
 	}
 
 }
