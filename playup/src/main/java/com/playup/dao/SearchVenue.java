@@ -16,7 +16,7 @@ public class SearchVenue extends SearchFactoryDAO{
 	public ArrayList<Object> search(String searchKey) {
 		try {
 			List<Venue> venuesList = DataBaseUtilities.getInstance().getVenuesFromDB();
-			ArrayList<Object> searchResults = new ArrayList<>();
+			ArrayList<Object> searchResults = new ArrayList<Object>();
 			searchResults.addAll(filterBySearchKey(venuesList, searchKey));
 			return searchResults;
 		} catch (SQLException e) {
