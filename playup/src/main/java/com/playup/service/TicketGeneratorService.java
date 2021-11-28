@@ -1,10 +1,9 @@
+/**
+ * @author Shiv Gaurang Desai
+ */
 package com.playup.service;
 
-import com.playup.constants.ApplicationConstants;
 import com.playup.dao.SupportDao;
-import com.playup.database.DataBaseUtilities;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -36,6 +35,4 @@ public class TicketGeneratorService implements ITicketGenerator  {
         }
         return ticketNumber;
     }
-
-
 }

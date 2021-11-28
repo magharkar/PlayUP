@@ -45,6 +45,7 @@ function postData() {
 		}
 	});
 
+
 	request.fail(function(jqXHR, textStatus) {
 		confirm("Request failed: " + textStatus);
 	});

@@ -1,7 +1,9 @@
+/**
+ * @author Shiv Gaurang Desai
+ */
 package com.playup.dao;
 
 import com.playup.model.SupportModel;
-
 import java.sql.SQLException;
 
 public interface ISupportDao {

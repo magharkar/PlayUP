@@ -1,9 +1,10 @@
+/**
+ * @author Shiv Gaurang Desai
+ */
 package com.playup.model;
 
 import com.playup.constants.ApplicationConstants;
 import com.playup.service.TicketGeneratorService;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Map;
 
 public class SupportModel {

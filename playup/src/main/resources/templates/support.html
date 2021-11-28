@@ -11,6 +11,7 @@
         var venueText = document.getElementById("venue").value;
         var subjectText = document.getElementById("description").value;
         var windowLocation = window.location.href;
+        console.log(windowLocation);
         const obj = {name: nameText, email: emailText, venue: venueText, description: subjectText};
         const supportJSON = JSON.stringify(obj);
         var request = $.ajax({
@@ -18,7 +19,9 @@
             type: "POST",
             contentType: 'application/json; charset=utf-8',
             data: supportJSON,
+
         });
+
 
         request.fail(function(jqXHR, textStatus) {
             confirm("Request failed: " + textStatus);
@@ -26,7 +29,7 @@
 
     }
 
-</script>-->
+</script>
 <body>
 
 <div class="row">
@@ -62,7 +65,7 @@
     </div>
     <div class="row">
         <input type="submit" value="Submit" onClick="postData()"/>
-        </div>
+    </div>
     </form>
 </div>
 

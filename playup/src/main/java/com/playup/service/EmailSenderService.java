@@ -1,3 +1,6 @@
+/**
+ * @author Shiv Gaurang Desai
+ */
 package com.playup.service;
 
 import com.playup.constants.ApplicationConstants;
@@ -11,7 +14,6 @@ public class EmailSenderService implements IEmailSender {
 
     @Autowired
     private JavaMailSender mailSender;
-
 
     @Override
     public void sendEmail(String  toEmail, String body, String subject){
