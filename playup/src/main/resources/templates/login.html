@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+.navbar {
+    color: #FFF0F5;
+    background-color: #483D8B;
+}
+h2 {
+    margin-top: 8px;
+    text-align: center;
+}
+body {
+    background-color: #F5FFFA;
+}
+.container-class {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+}
+</style>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
+            <div>PlayUP</div>
+        </div>
+    </div>
+</nav>
+
+<h2>Log In</h2>
+<div class="container-class">
+    <form th:action="@{/login}" th:object="${user}" method="post">
+        <div class="form-row">
+            <div class="col">
+                <p>Email-Id</p>
+            </div>
+            <div class="col">
+                <input id="Email-Id" type="text" th:field="*{email}" required/>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <p>Password</p>
+            </div>
+            <div class="col">
+                <input id="password" type="password" th:field="*{password}" required/>
+            </div>
+        </div>
+
+        <p style="margin-top: 16px"><input type="submit" value="Login" /></p>
+
+    </form>
+
+    <p></p>
+    <a th:href="@{/forgot-password}">Forgot Password?</a><br /> <a
+        th:href="@{/registration}">Don't have an account? Register
+    here!</a>
+
+    <div th:if="${success}">
+        <h2 th:text="${success}"></h2>
+    </div>
+    <div th:if="${failure}">
+        <h2 th:text="${failure}"></h2>
+    </div>
+</div>
+
+
+</body>
+</html>
