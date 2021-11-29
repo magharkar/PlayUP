@@ -7,4 +7,5 @@ public class ApplicationConstants {
     public final static String supportSubject = "Re: Received Complaint #";
     public final static int  minimumSupportTicketNumber = 1000;
     public final static int maximumSupportTicketNumber = 10000;
+    public final static String cipherSecretKey = "Shiv's Cipher";
 }
