@@ -24,6 +24,11 @@ public class OneTimePasswordService implements IOneTimePasswordService {
     private EmailSenderService emailService;
 
     @Override
+    public String createOtp() {
+        return null;
+    }
+
+    @Override
     public String sendOTP(String email) throws SQLException {
         OneTimePassword oneTimePassword = new OneTimePassword();
 
@@ -42,10 +47,10 @@ public class OneTimePasswordService implements IOneTimePasswordService {
         String otpBody = "Your 6-digit OTP for Email Verification is - \n" + otpValue + "\n" +
                 "It is valid for 15 minutes.";
 
-        emailService.sendEmail(email, otpBody, otpSubject);
+//        emailService.sendEmail(email, otpBody, otpSubject);
         oneTimePasswordDao.setOneTimePassword(oneTimePassword);
 
-        return "success";
+        return otpValue;
     }
 
     @Override
