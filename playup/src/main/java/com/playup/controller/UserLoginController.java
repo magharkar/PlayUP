@@ -1,5 +1,6 @@
 package com.playup.controller;
 
+import com.playup.model.SupportModel;
 import com.playup.model.User;
 import com.playup.model.UserFactory;
 import com.playup.model.UserObjectFactory;
@@ -34,9 +35,12 @@ public class UserLoginController {
         System.out.println(user.getPassword());
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            model.addAttribute("success", "Login successful");
+            model.addAttribute(user);
+//            model.addAttribute("success", "Login successful");
+            model.addAttribute("support",new SupportModel());
             return "support";
         } else {
+            model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");
             return "login";
         }
