@@ -1,18 +1,18 @@
 package com.playup.dao;
 
-public class UserProfileDaoFactory extends UserProfileDaoAbstractFactory {
+public class UserProfileFactoryDao extends UserProfileAbstractFactoryDao {
 
-    private static UserProfileDaoFactory instance = null;
+    private static UserProfileFactoryDao instance = null;
     private IOneTimePasswordDao oneTimePasswordDao;
     private IUserDao userDao;
 
-    private UserProfileDaoFactory () {
+    private UserProfileFactoryDao() {
 
     }
 
-    public static UserProfileDaoFactory instance() {
+    public static UserProfileFactoryDao instance() {
         if (null == instance) {
-            instance = new UserProfileDaoFactory();
+            instance = new UserProfileFactoryDao();
         }
         return instance;
     }
