@@ -8,18 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mockStatic;
 
 import com.playup.constants.ApplicationConstants;
-import com.playup.dao.SearchVenue;
-import com.playup.dao.Venue;
-import com.playup.database.DataBaseUtilities;
-import com.playup.model.SupportModel;
 import com.playup.service.TicketGeneratorService;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TicketGeneratorTest {
 

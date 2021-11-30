@@ -4,6 +4,7 @@ package com.playup.controller;
 
 import java.util.ArrayList;
 
+import com.playup.dao.ISearchVenue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.playup.dao.SearchVenue;
 
 @RestController
 public class SearchController {
@@ -26,7 +25,7 @@ public class SearchController {
     
     @RequestMapping(value = "/search/getSearchResults", method = RequestMethod.POST)
     public @ResponseBody ArrayList<Object> getSearchResults(@RequestBody String searchKey){
-		return new SearchVenue().search(searchKey);
+		return new ISearchVenue().search(searchKey);
     }
 
 }
