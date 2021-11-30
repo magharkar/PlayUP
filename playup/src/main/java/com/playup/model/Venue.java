@@ -1,6 +1,6 @@
 // @author Vibhor Bhatnagar
 
-package com.playup.dao;
+package com.playup.model;
 
 public class Venue {
 	String venueID;

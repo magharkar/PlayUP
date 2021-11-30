@@ -2,11 +2,10 @@ package com.playup.service;
 
 import com.playup.dao.IOneTimePasswordDao;
 import com.playup.dao.IUserDao;
-import com.playup.dao.UserProfileDaoFactory;
+import com.playup.dao.UserProfileFactoryDao;
 import com.playup.model.IUser;
 import com.playup.model.OneTimePassword;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -28,8 +27,8 @@ public class OneTimePasswordService implements IOneTimePasswordService {
     public String sendOTP(String email) throws SQLException {
         OneTimePassword oneTimePassword = new OneTimePassword();
 
-        //userDao = UserProfileDaoFactory.instance().userDao();
-        oneTimePasswordDao = UserProfileDaoFactory.instance().oneTimePasswordDao();
+        //userDao = UserProfileFactoryDao.instance().userDao();
+        oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
 
         Random randomOTPNumber = new Random();
         int otp = randomOTPNumber.nextInt(999999);
@@ -51,8 +50,8 @@ public class OneTimePasswordService implements IOneTimePasswordService {
 
     @Override
     public String verifyOTPForPasswordReset(String email, String oneTimePassword, String password) throws SQLException, ParseException {
-        userDao = UserProfileDaoFactory.instance().userDao();
-        oneTimePasswordDao = UserProfileDaoFactory.instance().oneTimePasswordDao();
+        userDao = UserProfileFactoryDao.instance().userDao();
+        oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
         ArrayList<OneTimePassword> otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
         OneTimePassword latestOtp = otpList.get(0);
         Date latestStamp = latestOtp.getOneTimePasswordDate();
@@ -81,7 +80,7 @@ public class OneTimePasswordService implements IOneTimePasswordService {
 
     @Override
     public String verifyOTP(String email, String oneTimePassword) throws SQLException, ParseException {
-        oneTimePasswordDao = UserProfileDaoFactory.instance().oneTimePasswordDao();
+        oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
         ArrayList<OneTimePassword> otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
         OneTimePassword latestOtp = otpList.get(0);
         Date latestStamp = latestOtp.getOneTimePasswordDate();

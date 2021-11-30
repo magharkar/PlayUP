@@ -1,19 +1,17 @@
 package com.playup.service;
 
 import com.playup.dao.IUserDao;
-import com.playup.dao.UserProfileDaoFactory;
+import com.playup.dao.UserProfileFactoryDao;
 import com.playup.model.IUser;
 import com.playup.model.User;
 import org.springframework.ui.Model;
 
-import javax.sound.midi.Soundbank;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class UserLoginService implements IUserLoginService{
     @Override
     public boolean verifyUser(User user, Model model) throws SQLException {
-        IUserDao userDao = UserProfileDaoFactory.instance().userDao();
+        IUserDao userDao = UserProfileFactoryDao.instance().userDao();
         IUser existingUser = userDao.getUserByUserEmail(user.getEmail());
         System.out.println("USER");
         System.out.println(existingUser.getUserName());
