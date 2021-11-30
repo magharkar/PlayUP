@@ -9,8 +9,9 @@ import java.util.HashSet;
 import java.util.List;
 
 import com.playup.database.DataBaseUtilities;
+import com.playup.model.Venue;
 
-public class SearchVenue extends SearchFactoryDAO{
+public class ISearchVenue extends ISearchFactoryDao {
 
 	@Override
 	public ArrayList<Object> search(String searchKey) {

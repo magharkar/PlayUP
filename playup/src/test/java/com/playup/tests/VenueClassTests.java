@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.playup.dao.Venue;
+import com.playup.model.Venue;
 
 class VenueClassTests {
 	
 	//Not Null test case
 	@Test
 	void venueClassNotNullTest( ) throws ClassNotFoundException {
-		Class<?> classFinder = Class.forName("com.playup.dao.Venue", false, getClass().getClassLoader());
+		Class<?> classFinder = Class.forName("com.playup.model.Venue", false, getClass().getClassLoader());
 		assertNotNull(classFinder);
 	}
 	//To test the getters & constructor in the Venue class

@@ -9,22 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PlayupController {
+
+
     @GetMapping("/")
     public String BaseCode(){
         return ("index");
     }
-
-    @GetMapping("/registration")
-    public String registrationForm(Model model) {
-        model.addAttribute("registration", new Registration());
-        return "registration";
-    }
-
-    @PostMapping("/registration")
-    public String registrationSubmit(@ModelAttribute Registration registration, Model model) {
-        model.addAttribute("registration", registration);
-        System.out.println(registration);
-        return "registration";
-    }
-
 }

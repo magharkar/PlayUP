@@ -8,19 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.playup.dao.ISearchVenue;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import com.playup.dao.SearchVenue;
-import com.playup.dao.Venue;
+import com.playup.model.Venue;
 import com.playup.database.DataBaseUtilities;
 
 class SearchVenueTests {
 
-	// Check if SearchVenue class is not an empty class
+	// Check if ISearchVenue class is not an empty class
 	@Test
 	void searchVenueClassTests() throws ClassNotFoundException {
-		Class<?> classFinder = Class.forName("com.playup.dao.SearchVenue", false, getClass().getClassLoader());
+		Class<?> classFinder = Class.forName("com.playup.dao.ISearchVenue", false, getClass().getClassLoader());
 		assertNotNull(classFinder);
 	}
 
@@ -28,7 +28,7 @@ class SearchVenueTests {
 	@Test
 	void searchTests() throws SQLException {
 		ArrayList<Object> expectedOutput = new ArrayList<Object>();
-		SearchVenue sv = new SearchVenue();
+		ISearchVenue sv = new ISearchVenue();
 		List<Venue> venueList = new ArrayList<Venue>();
 		Venue venue1 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "902-494-3372",
 				"44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
@@ -50,6 +50,6 @@ class SearchVenueTests {
 
 	}
 	
-	//filterBySearchKey is a private method of SearchVenue class and has been tested along with the above test case.
+	//filterBySearchKey is a private method of ISearchVenue class and has been tested along with the above test case.
 
 }

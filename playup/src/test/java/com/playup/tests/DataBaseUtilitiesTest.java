@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import com.playup.dao.Venue;
+import com.playup.model.Venue;
 import com.playup.database.DataBaseUtilities;
 import com.playup.database.PlayupDBConnection;
 
