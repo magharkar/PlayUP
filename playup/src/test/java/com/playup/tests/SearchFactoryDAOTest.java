@@ -11,5 +11,4 @@ class SearchFactoryDAOTest {
 	    Class<?> classExists = Class.forName("com.playup.dao.SearchFactoryDAO", false, getClass().getClassLoader());
 	    assertNotNull(classExists);
 	}
-
 }

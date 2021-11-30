@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+.navbar {
+    color: #FFF0F5;
+    background-color: #483D8B;
+}
+h2 {
+    margin-top: 8px;
+}
+body {
+    background-color: #F5FFFA;
+}
+.password-restriction {
+    margin: 16px;
+}
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/getOtp.js}"></script>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+<!--            <a class="navbar-brand" href="#">PlayUP</a>-->
+            <div>PlayUP</div>
+        </div>
+    </div>
+</nav>
+<div style="display: flex; flex-direction: column; align-items: center">
+    <h2>Registration</h2>
+    <div style="margin-top: 16px">
+        <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+            <div class="form-row">
+                <div class="col">
+                    <p>Username</p>
+                </div>
+                <div class="col">
+                    <input id="username" type="text" th:field="*{userName}" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <p>Email Id</p>
+                </div>
+                <div class="col">
+                    <input id="emailId" type="text" th:field="*{email}" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <p>City</p>
+                </div>
+                <div class="col">
+                    <input id="city" type="text" th:field="*{city}" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <p>Contact Number</p>
+                </div>
+                <div class="col">
+                    <input id="contactNo" type="text" th:field="*{contactNumber}" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <p>Password*</p>
+                </div>
+                <div class="col">
+                    <input id="password" type="password" th:field="*{password}" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <p>Re-enter Password</p>
+                </div>
+                <div class="col">
+                    <input id="reenter-password" type="password" th:field="*{confirmPassword}" />
+                </div>
+            </div>
+            <p style="margin-top: 16px"><input type="submit" value="Get OTP" onclick="getOtp()" /></p>
+        </form>
+    </div>
+
+    <div th:if="${error}">
+        <h2 th:text="${error}"></h2>
+    </div>
+    <div class="password-restriction">* Password should be atleast 8 characters long, with 1 capital letter and 1  of the special characters - (@#$%^&*)</div>
+</div>
+
+</body>
+</html>

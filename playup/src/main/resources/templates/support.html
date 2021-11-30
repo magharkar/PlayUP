@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    function postData() {
+        var nameText = document.getElementById("name").value;
+        var emailText = document.getElementById("email").value;
+        var venueText = document.getElementById("venue").value;
+        var subjectText = document.getElementById("description").value;
+        var windowLocation = window.location.href;
+        console.log(windowLocation);
+        const obj = {name: nameText, email: emailText, venue: venueText, description: subjectText};
+        const supportJSON = JSON.stringify(obj);
+        var request = $.ajax({
+            url:  windowLocation + "/SupportRequest",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: supportJSON,
+
+        });
+
+
+        request.fail(function(jqXHR, textStatus) {
+            confirm("Request failed: " + textStatus);
+        });
+
+    }
+
+</script>
+<body>
+
+<form th:action="@{/support}" th:object="${support}"  method="post">
+
+<div class="row">
+    <div class="col-25">
+        <label for="name">First Name</label>
+    </div>
+    <div class="col-75">
+        <input type="text" id="name" th:field="*{name}" placeholder="Full Name" required/>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            <label for="email">Email Address</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="email" th:field="*{email}" placeholder="Email Address">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            <label for="Venue">Venue Name</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="venue" th:field="*{venue}" placeholder="Venue Name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            <label for="description">description</label>
+        </div>
+        <div class="col-75">
+            <textarea id="description" th:field="*{description}" placeholder="description" style="height:200px"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" value="Submit"/>
+    </div>
+</div>
+</form>
+
+</body>
+</html>
