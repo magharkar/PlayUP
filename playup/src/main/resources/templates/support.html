@@ -32,19 +32,21 @@
 </script>
 <body>
 
+<form th:action="@{/support}" th:object="${support}"  method="post">
+
 <div class="row">
     <div class="col-25">
         <label for="name">First Name</label>
     </div>
     <div class="col-75">
-        <input type="text" id="name" name="name" placeholder="Full Name">
+        <input type="text" id="name" th:field="*{name}" placeholder="Full Name" required/>
     </div>
     <div class="row">
         <div class="col-25">
             <label for="email">Email Address</label>
         </div>
         <div class="col-75">
-            <input type="text" id="email" name="email" placeholder="Email Address">
+            <input type="text" id="email" th:field="*{email}" placeholder="Email Address">
         </div>
     </div>
     <div class="row">
@@ -52,7 +54,7 @@
             <label for="Venue">Venue Name</label>
         </div>
         <div class="col-75">
-            <input type="text" id="venue" name="venue" placeholder="Venue Name">
+            <input type="text" id="venue" th:field="*{venue}" placeholder="Venue Name">
         </div>
     </div>
     <div class="row">
@@ -60,15 +62,14 @@
             <label for="description">description</label>
         </div>
         <div class="col-75">
-            <textarea id="description" name="description" placeholder="description" style="height:200px"></textarea>
+            <textarea id="description" th:field="*{description}" placeholder="description" style="height:200px"></textarea>
         </div>
     </div>
     <div class="row">
-        <input type="submit" value="Submit" onClick="postData()"/>
+        <input type="submit" value="Submit"/>
     </div>
-    </form>
 </div>
-
+</form>
 
 </body>
 </html>
