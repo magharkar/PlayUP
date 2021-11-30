@@ -41,9 +41,14 @@ public class SupportController {
                 emailService.sendEmail(supportModel.getEmail(), ApplicationConstants.supportEmailBody, ApplicationConstants.supportSubject + supportModel.getTicketNumber());
                 return "support_confirmation";
             }
-            return "support_confirmation";
         }
-
-        return "support_confirmation";
+        else {
+            model.addAttribute("support",supportModel);
+            model.addAttribute("error","Email Id is not proper");
+            return "support";
+        }
+        model.addAttribute("support",supportModel);
+        model.addAttribute("error","Some Error Occured. Please try again later");
+        return "support";
     }
 }
