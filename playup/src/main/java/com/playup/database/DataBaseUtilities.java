@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.playup.dao.Venue;
+import com.playup.model.Venue;
 
 public class DataBaseUtilities {
 	

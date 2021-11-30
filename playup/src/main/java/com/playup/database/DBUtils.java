@@ -1,6 +1,6 @@
 package com.playup.database;
 
-//import com.playup.dao.Venue;
+//import com.playup.model.Venue;
 
 public class DBUtils {
 
