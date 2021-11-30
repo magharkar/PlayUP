@@ -51,21 +51,6 @@ public class OneTimePasswordDao implements IOneTimePasswordDao {
             oneTimePassword.setOneTimePasswordDate(date);
             oneTimePasswordArrayList.add(oneTimePassword);
         }
-
-
-//        System.out.println("RESULT");
-//        ResultSetMetaData rsmd = resultSet.getMetaData();
-//        int size =0;
-//        while (resultSet.next()) {
-//            for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-//                size ++;
-//                if (i > 1) System.out.print(",  ");
-//                String columnValue = resultSet.getString(i);
-//                System.out.print(columnValue + " " + rsmd.getColumnName(i));
-//            }
-//            System.out.println("");
-//        }
-//        System.out.println(size);
         return oneTimePasswordArrayList;
     }
 }

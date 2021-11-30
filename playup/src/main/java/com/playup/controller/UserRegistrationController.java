@@ -4,10 +4,8 @@ import com.playup.model.OneTimePassword;
 import com.playup.model.User;
 import com.playup.model.UserFactory;
 import com.playup.model.UserObjectFactory;
-import com.playup.service.IOneTimePasswordService;
-import com.playup.service.IUserRegistrationService;
-import com.playup.service.PasswordValidationService;
-import com.playup.service.UserProfileServiceFactory;
+import com.playup.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +19,9 @@ public class UserRegistrationController {
 
     IUserRegistrationService userRegistrationService;
     IOneTimePasswordService oneTimePasswordService;
+
+    @Autowired
+    private EmailSenderService emailService;
 
     public UserRegistrationController() {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();
@@ -48,8 +49,8 @@ public class UserRegistrationController {
             return "registration";
 
         } else {
-
-        }
+            emailService.sendEmail("mugdha.agharkar@gmail.com", "sdasad", "test");
+                }
         boolean isRegisteredUser = userRegistrationService.isUserAlreadyRegistered(user);
         if (!isRegisteredUser) {
             model.addAttribute("success", "Send OTP");
