@@ -1,6 +1,3 @@
-// @author Vibhor Bhatnagar
-//DBUtils can be used by anyone to add methods according to the feature to execute queries in the database
-
 package com.playup.database;
 
 import java.sql.ResultSet;
@@ -9,11 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import com.playup.model.Venue;
 
+/**
+ * DBUtils can be used by anyone to add methods according to the feature to execute queries in the database
+ * @author Vibhor Bhatnagar
+ * @author Rajath Bharadwaj
+ */
+
 public class DataBaseUtilities {
 	
 	private static DataBaseUtilities instance = null;
 	
-	private DataBaseUtilities() {
+	public DataBaseUtilities() {
 
 	}
 	
