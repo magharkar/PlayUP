@@ -41,11 +41,9 @@ unit-test-job: # This job runs in the test stage.
     - mvn -f $(pwd)/playup/pom.xml verify
   tags: 
     - dalfcs_docker_kvm
-  artifacts:    
-    when: always    
-    reports:      
-      junit:        
-        - target/surefire-reports/TEST-*.xml
+  artifacts:
+    paths:
+      - target/*.jar
 
 
     
