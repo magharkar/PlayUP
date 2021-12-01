@@ -38,7 +38,7 @@ build-job:       # This job runs in the build stage, which runs first.
 unit-test-job: # This job runs in the test stage.
   stage: test
   script:
-    - mvn -f $(pwd)/playup/pom.xml clean install
+    - mvn -f $(pwd)/playup/pom.xml clean verify
   tags: 
     - dalfcs_docker_kvm
     
