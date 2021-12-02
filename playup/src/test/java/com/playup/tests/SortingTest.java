@@ -5,19 +5,13 @@ import com.playup.model.Venue;
 import com.playup.service.ISorting;
 import com.playup.service.Sorting;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 /**
  * Unit test for Sorting class.
