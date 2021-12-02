@@ -1,6 +1,6 @@
 package com.playup.tests;
 
-import com.playup.dao.SupportDao;
+import com.playup.dao.support.SupportDao;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class SupportDaoTest {
 
     @Test
     public void supportDAOTestClass() throws ClassNotFoundException {
-        Class<?> classExists = Class.forName("com.playup.dao.SupportDao", false, getClass().getClassLoader());
+        Class<?> classExists = Class.forName("com.playup.dao.support.SupportDao", false, getClass().getClassLoader());
         assertNotNull(classExists);
     }
 

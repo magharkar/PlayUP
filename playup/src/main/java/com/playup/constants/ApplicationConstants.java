@@ -1,3 +1,6 @@
+/**
+ * @author Shiv Gaurang Desai
+ */
 package com.playup.constants;
 
 public class ApplicationConstants {
@@ -8,4 +11,8 @@ public class ApplicationConstants {
     public final static int  minimumSupportTicketNumber = 1000;
     public final static int maximumSupportTicketNumber = 10000;
     public final static String cipherSecretKey = "Shiv's Cipher";
+    public final static String checkSupportTicketNumberQuery = "select * from Support where ticketNumber = %s;";
+    public final static String insetSupportRequestQuery = "INSERT INTO Support (ticketNumber, name, email, venue, description) VALUES (%s, '%s', '%s', '%s', '%s');";
+    public final static String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+
 }

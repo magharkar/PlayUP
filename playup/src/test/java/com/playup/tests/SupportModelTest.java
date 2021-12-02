@@ -3,7 +3,7 @@
  */
 package com.playup.tests;
 
-import com.playup.model.SupportModel;
+import com.playup.model.support.SupportModel;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -13,7 +13,7 @@ public class SupportModelTest {
     //Testing Not Null case for Support Model
     @Test
     void supportModelClassNotNullTest( ) throws ClassNotFoundException {
-        Class<?> classFinder = Class.forName("com.playup.model.SupportModel", false, getClass().getClassLoader());
+        Class<?> classFinder = Class.forName("com.playup.model.support.SupportModel", false, getClass().getClassLoader());
         assertNotNull(classFinder);
     }
 

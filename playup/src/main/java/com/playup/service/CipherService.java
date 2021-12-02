@@ -13,11 +13,10 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class CipherService implements ICipher {
 
-
     @Override
     public String encrypt(String messageToEncrypt) {
-        try
-        {
+
+        try {
             String cipherSecretKey = ApplicationConstants.cipherSecretKey;
             byte[]  key = cipherSecretKey.getBytes("UTF-8");
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
@@ -28,17 +27,17 @@ public class CipherService implements ICipher {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             return Base64.getEncoder().encodeToString(cipher.doFinal(messageToEncrypt.getBytes("UTF-8")));
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println(e);
         }
         return null;
+
     }
 
     @Override
     public String decrypt(String messageToDecrypt) {
-        try
-        {
+
+        try {
             String cipherSecretKey = ApplicationConstants.cipherSecretKey;
             byte[] key = cipherSecretKey.getBytes("UTF-8");
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
@@ -49,10 +48,11 @@ public class CipherService implements ICipher {
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             return new String(cipher.doFinal(Base64.getDecoder().decode(messageToDecrypt)));
         }
-        catch (Exception e)
-        {
-            System.out.println("e");
+        catch (Exception e) {
+            System.out.println(e);
         }
         return null;
+
     }
+
 }

@@ -23,7 +23,6 @@ public class EmailSenderService implements IEmailSender {
         message.setText(body);
         message.setSubject(subject);
         mailSender.send(message);
-        System.out.println("Email send");
     }
 
 }

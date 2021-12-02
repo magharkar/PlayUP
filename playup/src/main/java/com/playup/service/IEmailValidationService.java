@@ -1,7 +1,10 @@
+/**
+ * @author Shiv Gaurang Desai
+ */
 package com.playup.service;
 
 public interface IEmailValidationService {
 
-    public boolean isEmailValid(String email);
+    boolean isEmailValid(String email);
 
 }

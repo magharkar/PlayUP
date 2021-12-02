@@ -1,28 +1,29 @@
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.controller;
+package com.playup.controller.support;
 
 import com.playup.constants.ApplicationConstants;
-import com.playup.model.SupportModel;
-import com.playup.service.EmailSenderService;
-import com.playup.service.EmailValidationService;
-import com.playup.service.SupportService;
-import com.playup.service.TicketGeneratorService;
+import com.playup.model.support.SupportModel;
+import com.playup.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
 @Controller
 public class SupportController {
 
+    @Autowired
+    private ISupport supportService;
 
     @Autowired
-    private SupportService supportService;
+    private IEmailSender emailService;
 
     @Autowired
-    private EmailSenderService emailService;
+    private  IEmailValidationService emailValid;
 
     @GetMapping("/support")
     public String SupportMethod(Model model) {
@@ -31,9 +32,8 @@ public class SupportController {
     }
 
     @PostMapping("/support")
-    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model) {
+    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model) throws SQLException {
 
-        EmailValidationService emailValid = new EmailValidationService();
         if (emailValid.isEmailValid(supportModel.getEmail())) {
             supportModel.setTicketNumber(TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber, ApplicationConstants.maximumSupportTicketNumber));
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
@@ -51,4 +51,5 @@ public class SupportController {
         model.addAttribute("error","Some Error Occured. Please try again later");
         return "support";
     }
+
 }
