@@ -3,16 +3,13 @@
  */
 package com.playup.service;
 
-import com.playup.dao.SupportDao;
+import com.playup.dao.support.SupportDao;
 import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
 
 @Service
 public class TicketGeneratorService implements ITicketGenerator  {
-
     private static TicketGeneratorService instance;
-
     public static TicketGeneratorService getInstance() {
         if(instance == null) {
             instance = new TicketGeneratorService();
@@ -31,7 +28,6 @@ public class TicketGeneratorService implements ITicketGenerator  {
             }
         }catch(SQLException s) {
             System.out.println(s);
-            return -1;
         }
         return ticketNumber;
     }

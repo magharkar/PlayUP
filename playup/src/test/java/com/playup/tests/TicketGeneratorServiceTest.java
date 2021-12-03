@@ -1,17 +1,14 @@
 /**
  * @author Shiv Gaurang Desai
  */
-
 package com.playup.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mockStatic;
-
 import com.playup.constants.ApplicationConstants;
 import com.playup.service.TicketGeneratorService;
 import org.junit.jupiter.api.Test;
 
-public class TicketGeneratorTest {
+public class TicketGeneratorServiceTest {
 
     //Not Null test case
     @Test
@@ -24,15 +21,15 @@ public class TicketGeneratorTest {
     @Test
     void ticketNumberValidTest() {
         TicketGeneratorService ticketGeneratorService = new TicketGeneratorService();
-        int number = ticketGeneratorService.generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber,ApplicationConstants.maximumSupportTicketNumber);
-            assertTrue(number>=1000&&number<=10000);
+        int number = ticketGeneratorService.generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER,ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER);
+        assertTrue(number>=1000&&number<=10000);
     }
 
     //Testing for invalid Ticket Number
     @Test
     void ticketNumberNotValidTest() {
         TicketGeneratorService ticketGeneratorService = new TicketGeneratorService();
-        int number = ticketGeneratorService.generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber,ApplicationConstants.maximumSupportTicketNumber);
+        int number = ticketGeneratorService.generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER,ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER);
         assertFalse(number<1000||number>10000);
     }
 }

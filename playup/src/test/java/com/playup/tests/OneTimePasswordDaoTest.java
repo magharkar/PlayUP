@@ -46,6 +46,8 @@ public class OneTimePasswordDaoTest {
 
         list.add(otp);
 
+
+
         when(oneTimePasswordDaoMockObject.getOneTimePasswordByEmail("test@gmail.com")).thenReturn(list);
         assertEquals(oneTimePasswordDaoMockObject.getOneTimePasswordByEmail("test@gmail.com"), list, "No data present in database");
         verify(oneTimePasswordDaoMockObject).getOneTimePasswordByEmail("test@gmail.com");

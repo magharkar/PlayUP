@@ -1,6 +1,6 @@
 package com.playup.controller;
 
-import com.playup.model.SupportModel;
+import com.playup.model.support.SupportModel;
 import com.playup.model.User;
 import com.playup.model.UserFactory;
 import com.playup.model.UserObjectFactory;

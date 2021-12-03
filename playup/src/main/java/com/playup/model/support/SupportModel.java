@@ -1,36 +1,19 @@
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.model;
+package com.playup.model.support;
 
 import com.playup.constants.ApplicationConstants;
 import com.playup.service.TicketGeneratorService;
 import java.util.Map;
 
 public class SupportModel {
-
     private int ticketNumber;
     private String name;
     private String email;
     private String venue;
     private String description;
     private String support;
-
-    public String getSupport() {
-        return support;
-    }
-
-    public void setSupport(String support) {
-        this.support = support;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public SupportModel(){}
 
@@ -54,7 +37,23 @@ public class SupportModel {
         this.email = supportData.get("email");
         this.venue = supportData.get("venue");
         this.description = supportData.get("description");
-        this.ticketNumber = TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber,ApplicationConstants.maximumSupportTicketNumber);
+        this.ticketNumber = TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER,ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER);
+    }
+
+    public String getSupport() {
+        return support;
+    }
+
+    public void setSupport(String support) {
+        this.support = support;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setTicketNumber(int ticketNumber) {
