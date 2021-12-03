@@ -1,8 +1,4 @@
-package com.playup.model;
-
-import com.playup.model.IUser;
-import com.playup.model.User;
-import com.playup.model.UserAbstractFactory;
+package com.playup.model.user;
 
 public class UserObjectFactory extends UserAbstractFactory {
     @Override

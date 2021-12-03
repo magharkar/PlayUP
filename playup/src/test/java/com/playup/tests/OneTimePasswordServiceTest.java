@@ -1,7 +1,7 @@
 package com.playup.tests;
 
-import com.playup.service.IOneTimePasswordService;
-import com.playup.service.OneTimePasswordService;
+import com.playup.service.user.IOneTimePasswordService;
+import com.playup.service.user.OneTimePasswordService;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;

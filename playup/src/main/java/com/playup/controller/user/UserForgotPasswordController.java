@@ -1,7 +1,5 @@
-package com.playup.controller;
+package com.playup.controller.user;
 
-import com.playup.model.UserFactory;
-import com.playup.model.UserObjectFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

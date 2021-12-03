@@ -1,7 +1,6 @@
-package com.playup.dao;
+package com.playup.dao.user;
 
-import com.playup.model.IUser;
-import com.playup.model.User;
+import com.playup.model.user.IUser;
 
 import java.sql.SQLException;
 

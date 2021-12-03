@@ -1,10 +1,11 @@
-package com.playup.service;
+package com.playup.service.user;
 
-import com.playup.dao.IOneTimePasswordDao;
-import com.playup.dao.IUserDao;
-import com.playup.dao.UserProfileFactoryDao;
-import com.playup.model.IUser;
-import com.playup.model.OneTimePassword;
+import com.playup.dao.user.IOneTimePasswordDao;
+import com.playup.dao.user.IUserDao;
+import com.playup.dao.user.UserProfileFactoryDao;
+import com.playup.model.user.IUser;
+import com.playup.model.user.OneTimePassword;
+import com.playup.service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package com.playup.service;
+package com.playup.service.user;
 
-import com.playup.dao.IUserDao;
-import com.playup.dao.UserProfileFactoryDao;
-import com.playup.model.IUser;
-import com.playup.model.User;
+import com.playup.dao.user.IUserDao;
+import com.playup.dao.user.UserProfileFactoryDao;
+import com.playup.model.user.IUser;
+import com.playup.model.user.User;
 import org.springframework.ui.Model;
 
 import java.sql.SQLException;

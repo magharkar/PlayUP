@@ -1,7 +1,14 @@
-package com.playup.controller;
+package com.playup.controller.user;
 
-import com.playup.model.*;
+import com.playup.model.user.IUser;
+import com.playup.model.user.User;
+import com.playup.model.user.UserFactory;
+import com.playup.model.user.UserObjectFactory;
 import com.playup.service.*;
+import com.playup.service.user.IOneTimePasswordService;
+import com.playup.service.user.IUserRegistrationService;
+import com.playup.service.user.PasswordValidationService;
+import com.playup.service.user.UserProfileServiceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +48,7 @@ public class UserRegistrationController {
 
     @PostMapping("otp")
     public String verifyOtp(@RequestParam String email, @RequestParam String otp, @RequestParam
-                            IUser user, Model model) throws SQLException, ParseException {
+            IUser user, Model model) throws SQLException, ParseException {
 
         String response = oneTimePasswordService.verifyOTP(email, otp);
         model.addAttribute("response", response);

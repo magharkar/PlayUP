@@ -1,4 +1,4 @@
-package com.playup.service;
+package com.playup.service.user;
 
 import java.sql.SQLException;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package com.playup.dao;
+package com.playup.dao.user;
 
 public abstract class UserProfileAbstractFactoryDao {
     public abstract IOneTimePasswordDao oneTimePasswordDao();

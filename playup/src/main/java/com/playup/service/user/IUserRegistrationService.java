@@ -1,6 +1,6 @@
-package com.playup.service;
+package com.playup.service.user;
 
-import com.playup.model.IUser;
+import com.playup.model.user.IUser;
 
 import java.sql.SQLException;
 

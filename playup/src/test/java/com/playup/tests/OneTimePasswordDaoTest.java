@@ -1,8 +1,8 @@
 package com.playup.tests;
 
-import com.playup.dao.IOneTimePasswordDao;
-import com.playup.dao.OneTimePasswordDao;
-import com.playup.model.OneTimePassword;
+import com.playup.dao.user.IOneTimePasswordDao;
+import com.playup.dao.user.OneTimePasswordDao;
+import com.playup.model.user.OneTimePassword;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

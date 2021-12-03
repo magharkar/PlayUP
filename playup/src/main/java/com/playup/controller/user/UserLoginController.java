@@ -1,10 +1,10 @@
-package com.playup.controller;
+package com.playup.controller.user;
 
-import com.playup.model.User;
-import com.playup.model.UserFactory;
-import com.playup.model.UserObjectFactory;
-import com.playup.service.IUserLoginService;
-import com.playup.service.UserProfileServiceFactory;
+import com.playup.model.user.User;
+import com.playup.model.user.UserFactory;
+import com.playup.model.user.UserObjectFactory;
+import com.playup.service.user.IUserLoginService;
+import com.playup.service.user.UserProfileServiceFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

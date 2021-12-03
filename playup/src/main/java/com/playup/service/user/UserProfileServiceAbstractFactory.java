@@ -1,4 +1,6 @@
-package com.playup.service;
+package com.playup.service.user;
+
+import com.playup.service.IEmailSender;
 
 public abstract class UserProfileServiceAbstractFactory {
     public abstract IUserLoginService userLoginService();
