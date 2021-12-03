@@ -3,10 +3,8 @@
  */
 package com.playup.dao;
 
-
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.SupportModel;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

@@ -5,6 +5,7 @@ import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
 import com.playup.service.user.IUserLoginService;
 import com.playup.service.user.UserProfileServiceFactory;
+import com.playup.model.SupportModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,12 @@ public class UserLoginController {
         System.out.println(user.getPassword());
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            model.addAttribute("success", "Login successful");
+            model.addAttribute(user);
+//            model.addAttribute("success", "Login successful");
+            model.addAttribute("support",new SupportModel());
             return "support";
         } else {
+            model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");
             return "login";
         }

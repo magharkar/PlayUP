@@ -14,6 +14,15 @@ public class SupportModel {
     private String email;
     private String venue;
     private String description;
+    private String support;
+
+    public String getSupport() {
+        return support;
+    }
+
+    public void setSupport(String support) {
+        this.support = support;
+    }
 
     public String getEmail() {
         return email;
