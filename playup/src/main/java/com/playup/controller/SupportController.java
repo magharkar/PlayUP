@@ -6,6 +6,7 @@ package com.playup.controller;
 import com.playup.constants.ApplicationConstants;
 import com.playup.model.SupportModel;
 import com.playup.service.EmailSenderService;
+import com.playup.service.EmailValidationService;
 import com.playup.service.SupportService;
 import com.playup.service.TicketGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,6 @@ public class SupportController {
     private SupportService supportService;
 
     @Autowired
-    private TicketGeneratorService ticketGeneratorService;
-
-    @Autowired
     private EmailSenderService emailService;
 
     @GetMapping("/support")
@@ -33,16 +31,24 @@ public class SupportController {
     }
 
     @PostMapping("/support")
-    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model){
-       supportModel.setTicketNumber(TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber,ApplicationConstants.maximumSupportTicketNumber));
-        boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
-        if (isRequestGenerated) {
-            emailService.sendEmail(supportModel.getEmail(), ApplicationConstants.supportEmailBody, ApplicationConstants.supportSubject+supportModel.getTicketNumber());
-            return "support_confirmation";
-        } else {
+    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model) {
 
+        EmailValidationService emailValid = new EmailValidationService();
+        if (emailValid.isEmailValid(supportModel.getEmail())) {
+            supportModel.setTicketNumber(TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.minimumSupportTicketNumber, ApplicationConstants.maximumSupportTicketNumber));
+            boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
+            if (isRequestGenerated) {
+                emailService.sendEmail(supportModel.getEmail(), ApplicationConstants.supportEmailBody, ApplicationConstants.supportSubject + supportModel.getTicketNumber());
+                return "support_confirmation";
+            }
         }
-        return "support_confirmation";
+        else {
+            model.addAttribute("support",supportModel);
+            model.addAttribute("error","Email Id is not proper");
+            return "support";
+        }
+        model.addAttribute("support",supportModel);
+        model.addAttribute("error","Some Error Occured. Please try again later");
+        return "support";
     }
-
 }
