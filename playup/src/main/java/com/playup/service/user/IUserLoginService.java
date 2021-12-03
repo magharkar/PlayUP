@@ -1,6 +1,6 @@
-package com.playup.service;
+package com.playup.service.user;
 
-import com.playup.model.User;
+import com.playup.model.user.User;
 import org.springframework.ui.Model;
 
 import java.sql.SQLException;

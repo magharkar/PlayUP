@@ -1,4 +1,4 @@
-package com.playup.service;
+package com.playup.service.user;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

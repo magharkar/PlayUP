@@ -1,4 +1,4 @@
-package com.playup.model;
+package com.playup.model.user;
 
 public interface IUser {
 

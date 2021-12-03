@@ -1,9 +1,8 @@
 package com.playup.tests;
 
-import com.playup.model.IUser;
-import com.playup.model.User;
-import com.playup.service.IUserLoginService;
-import com.playup.service.UserLoginService;
+import com.playup.model.user.User;
+import com.playup.service.user.IUserLoginService;
+import com.playup.service.user.UserLoginService;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;

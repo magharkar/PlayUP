@@ -1,4 +1,4 @@
-package com.playup.dao;
+package com.playup.dao.user;
 
 public class UserProfileFactoryDao extends UserProfileAbstractFactoryDao {
 

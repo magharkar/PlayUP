@@ -1,12 +1,7 @@
-package com.playup.dao;
+package com.playup.dao.user;
 
 import com.playup.database.PlayupDBConnection;
-import com.playup.model.IUser;
-import com.playup.model.OneTimePassword;
-import com.playup.model.UserFactory;
-import com.playup.model.UserObjectFactory;
-import com.playup.service.IEmailSender;
-import com.playup.service.UserProfileServiceFactory;
+import com.playup.model.user.OneTimePassword;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,10 +1,11 @@
-package com.playup.service;
+package com.playup.service.user;
 
-import com.playup.dao.IOneTimePasswordDao;
-import com.playup.dao.IUserDao;
-import com.playup.dao.UserProfileFactoryDao;
-import com.playup.model.IUser;
-import com.playup.model.OneTimePassword;
+import com.playup.dao.user.IOneTimePasswordDao;
+import com.playup.dao.user.IUserDao;
+import com.playup.dao.user.UserProfileFactoryDao;
+import com.playup.model.user.IUser;
+import com.playup.model.user.OneTimePassword;
+import com.playup.service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,11 @@ public class OneTimePasswordService implements IOneTimePasswordService {
     IOneTimePasswordDao oneTimePasswordDao;
     @Autowired
     private EmailSenderService emailService;
+
+    @Override
+    public String createOtp() {
+        return null;
+    }
 
     @Override
     public String sendOTP(String email) throws SQLException {
@@ -42,10 +48,10 @@ public class OneTimePasswordService implements IOneTimePasswordService {
         String otpBody = "Your 6-digit OTP for Email Verification is - \n" + otpValue + "\n" +
                 "It is valid for 15 minutes.";
 
-        emailService.sendEmail(email, otpBody, otpSubject);
+//        emailService.sendEmail(email, otpBody, otpSubject);
         oneTimePasswordDao.setOneTimePassword(oneTimePassword);
 
-        return "success";
+        return otpValue;
     }
 
     @Override

@@ -1,8 +1,7 @@
-package com.playup.dao;
+package com.playup.dao.user;
 
-import com.playup.model.OneTimePassword;
+import com.playup.model.user.OneTimePassword;
 
-import java.sql.Array;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;

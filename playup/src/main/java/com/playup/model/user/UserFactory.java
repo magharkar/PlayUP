@@ -1,7 +1,4 @@
-package com.playup.model;
-
-import com.playup.model.IUser;
-import com.playup.model.UserAbstractFactory;
+package com.playup.model.user;
 
 public class UserFactory {
     public static IUser userObject(UserAbstractFactory userAbstractFactory) {

@@ -1,12 +1,11 @@
-package com.playup.dao;
+package com.playup.dao.user;
 
 import com.playup.database.PlayupDBConnection;
-import com.playup.model.IUser;
-import com.playup.model.UserFactory;
-import com.playup.model.UserObjectFactory;
+import com.playup.model.user.IUser;
+import com.playup.model.user.UserFactory;
+import com.playup.model.user.UserObjectFactory;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class UserDao implements IUserDao {
