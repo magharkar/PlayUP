@@ -10,16 +10,12 @@ import java.util.regex.Pattern;
 
 @Service
 public class EmailValidationService implements IEmailValidationService {
-
     @Override
     public boolean isEmailValid(String email) {
-
         boolean isSpecialCharacterPresent = false;
-        Pattern p = Pattern.compile(ApplicationConstants.emailRegex, Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile(ApplicationConstants.EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(email);
         isSpecialCharacterPresent = m.find();
         return isSpecialCharacterPresent;
-
     }
-
 }

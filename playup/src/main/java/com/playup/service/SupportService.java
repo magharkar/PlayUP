@@ -11,12 +11,9 @@ import java.lang.*;
 
 @Service
 public class SupportService implements  ISupport{
-
     private SupportDao supportDao;
-
     @Override
     public boolean generateSupportRequest(SupportModel supportModel)  {
-
         boolean isSupportRequestCreated = false;
         try{
             isSupportRequestCreated = supportDao.getInstance().generateSupportRequest(supportModel);
@@ -24,7 +21,5 @@ public class SupportService implements  ISupport{
             System.out.println(e);
         }
         return isSupportRequestCreated;
-
     }
-
 }

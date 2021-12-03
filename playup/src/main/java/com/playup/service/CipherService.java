@@ -17,7 +17,7 @@ public class CipherService implements ICipher {
     public String encrypt(String messageToEncrypt) {
 
         try {
-            String cipherSecretKey = ApplicationConstants.cipherSecretKey;
+            String cipherSecretKey = ApplicationConstants.CIPHER_SECRET_KEY;
             byte[]  key = cipherSecretKey.getBytes("UTF-8");
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
             key = messageDigest.digest(key);
@@ -38,7 +38,7 @@ public class CipherService implements ICipher {
     public String decrypt(String messageToDecrypt) {
 
         try {
-            String cipherSecretKey = ApplicationConstants.cipherSecretKey;
+            String cipherSecretKey = ApplicationConstants.CIPHER_SECRET_KEY;
             byte[] key = cipherSecretKey.getBytes("UTF-8");
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
             key = messageDigest.digest(key);

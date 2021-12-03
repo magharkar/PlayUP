@@ -9,21 +9,16 @@ import java.sql.SQLException;
 
 @Service
 public class TicketGeneratorService implements ITicketGenerator  {
-
     private static TicketGeneratorService instance;
-
     public static TicketGeneratorService getInstance() {
-
         if(instance == null) {
             instance = new TicketGeneratorService();
         }
         return instance;
-
     }
 
     @Override
     public int generateTicketNumber(int minimumTicketNumber, int maximumTicketNumber) {
-
         int ticketNumber = (int)(Math.random()*(maximumTicketNumber-minimumTicketNumber+1)+minimumTicketNumber);
         try {
             boolean isNumberExits = SupportDao.getInstance().checkWhetherTicketNumberExists(ticketNumber);
@@ -35,7 +30,5 @@ public class TicketGeneratorService implements ITicketGenerator  {
             System.out.println(s);
         }
         return ticketNumber;
-
     }
-
 }
