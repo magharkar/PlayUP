@@ -1,3 +1,5 @@
+//@Author Mugdha Agharkar
+
 package com.playup.service.user;
 
 import com.playup.model.user.User;
@@ -7,5 +9,5 @@ import java.sql.SQLException;
 
 public interface IUserLoginService {
 
-    public boolean verifyUser(User user, Model model) throws SQLException;
+    boolean verifyUser(User user, Model model) throws SQLException;
 }
