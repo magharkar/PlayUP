@@ -1,33 +1,35 @@
+//@Author Mugdha Agharkar
+
 package com.playup.model.user;
 
 public interface IUser {
 
-    public int getUserId();
+    int getUserId();
 
-    public void setUserId(int userId);
+    void setUserId(int userId);
 
-    public String getUserName();
+    String getUserName();
 
-    public void setUserName(String userName);
+    void setUserName(String userName);
 
-    public String getEmail();
+    String getEmail();
 
-    public void setEmail(String email);
+    void setEmail(String email);
 
-    public String getContactNumber();
+    String getContactNumber();
 
-    public void setContactNumber(String contactNumber);
+    void setContactNumber(String contactNumber);
 
-    public String getPassword();
+    String getPassword();
 
-    public void setPassword(String password);
+    void setPassword(String password);
 
-    public String getConfirmPassword();
+    String getConfirmPassword();
 
-    public void setConfirmPassword(String confirmPassword);
+    void setConfirmPassword(String confirmPassword);
 
-    public String getCity();
+    String getCity();
 
-    public void setCity(String city);
+    void setCity(String city);
 
 }

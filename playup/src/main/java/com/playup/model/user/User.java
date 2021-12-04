@@ -1,3 +1,5 @@
+//@Author Mugdha Agharkar
+
 package com.playup.model.user;
 
 public class User implements IUser {

@@ -1,3 +1,5 @@
+//@Author Mugdha Agharkar
+
 package com.playup.model.user;
 
 import java.util.Date;
