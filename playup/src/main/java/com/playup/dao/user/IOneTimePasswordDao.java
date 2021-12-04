@@ -1,3 +1,5 @@
+//@Author Mugdha Agharkar
+
 package com.playup.dao.user;
 
 import com.playup.model.user.OneTimePassword;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 
 public interface IOneTimePasswordDao {
 
-    public void setOneTimePassword(OneTimePassword oneTimePassword) throws SQLException;
+    void setOneTimePassword(OneTimePassword oneTimePassword) throws SQLException;
 
-    public ArrayList<OneTimePassword> getOneTimePasswordByEmail(String email) throws SQLException, ParseException;
+    ArrayList<OneTimePassword> getOneTimePasswordByEmail(String email) throws SQLException, ParseException;
 }
