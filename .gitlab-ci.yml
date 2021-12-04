@@ -39,6 +39,12 @@ unit-test-job: # This job runs in the test stage.
   stage: test
   script:
     - mvn -f $(pwd)/playup/pom.xml clean verify
+  artifacts: 
+    when: always      
+    reports:        
+        junit:          
+            - $CI_PROJECT_DIR/target/surefire-reports/TEST-*.xml
+            - $CI_PROJECT_DIR/target/failsafe-reports/TEST-*.xml
   tags: 
     - dalfcs_docker_kvm
     
