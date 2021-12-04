@@ -1,9 +1,10 @@
-package com.playup.service;
+package com.playup.service.sorting;
 
 import com.playup.model.Venue;
 
 import java.util.ArrayList;
 
-public interface ISorting {
-    public ArrayList<Venue> fetchVenues(String sortParam);
+public interface ISorting
+{
+    ArrayList<Venue> fetchVenues(String sortParam);
 }

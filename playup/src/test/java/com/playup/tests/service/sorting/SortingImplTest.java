@@ -1,13 +1,11 @@
-package com.playup.tests;
+package com.playup.tests.service.sorting;
 
-import com.playup.database.DataBaseUtilities;
 import com.playup.model.Venue;
-import com.playup.service.ISorting;
-import com.playup.service.Sorting;
+import com.playup.service.sorting.ISorting;
+import com.playup.service.sorting.SortingImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -18,9 +16,10 @@ import static org.junit.Assert.assertNotNull;
  * @author Rajath Bharadwaj
  */
 
-public class SortingTest {
+public class SortingImplTest
+{
     @Mock
-    ISorting sorting = new Sorting();
+    ISorting sorting = new SortingImpl();
 
     /**
      * Not Null test to check Calculator class exists.
@@ -28,19 +27,19 @@ public class SortingTest {
     @Test
     public void NotNullTest() throws ClassNotFoundException
     {
-        Class<?> classFinder = Class.forName("com.playup.service.Sorting", false, getClass().getClassLoader());
-        assertNotNull(classFinder);
 
+        Class<?> classFinder = Class.forName("com.playup.service.sorting.SortingImpl", false, getClass().getClassLoader());
+        assertNotNull(classFinder);
     }
 
     /**
      * Test to verify default list of venues.
      */
     @Test
-    public void fetchVenuesTestDefault() throws SQLException {
+    public void fetchVenuesTestDefault()
+    {
 
         ArrayList<Venue> venueList = new ArrayList<>();
-        DataBaseUtilities dataBaseUtilities = new DataBaseUtilities();
         Venue venue1 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
         Venue venue2 = new Venue("2000002", "Huskies Stadium", "Halifax", "12", "15", "6:00:00", "21:00:00", "",
@@ -55,17 +54,16 @@ public class SortingTest {
         venueList.add(venue4);
         ArrayList<Venue> expectedList = sorting.fetchVenues("default");
         assertEquals(venueList.size(), expectedList.size());
-
     }
 
     /**
      * Test to verify alphabetical list of venues.
      */
     @Test
-    public void fetchVenuesTestAlphabetical() throws SQLException {
+    public void fetchVenuesTestAlphabetical()
+    {
 
         ArrayList<Venue> venueList = new ArrayList<>();
-        DataBaseUtilities dataBaseUtilities = new DataBaseUtilities();
         Venue venue2 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
         Venue venue3 = new Venue("2000002", "Huskies Stadium", "Halifax", "12", "15", "6:00:00", "21:00:00", "",
@@ -87,10 +85,10 @@ public class SortingTest {
      * Test to verify low to high rating list of venues.
      */
     @Test
-    public void fetchVenuesTestLowToHigh() throws SQLException {
+    public void fetchVenuesTestLowToHigh()
+    {
 
         ArrayList<Venue> venueList = new ArrayList<>();
-        DataBaseUtilities dataBaseUtilities = new DataBaseUtilities();
         Venue venue2 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
         Venue venue1 = new Venue("2000002", "Huskies Stadium", "Halifax", "12", "15", "6:00:00", "21:00:00", "",
@@ -103,7 +101,7 @@ public class SortingTest {
         venueList.add(venue2);
         venueList.add(venue3);
         venueList.add(venue4);
-        ArrayList<Venue> expectedList = sorting.fetchVenues("alphabetical");
+        ArrayList<Venue> expectedList = sorting.fetchVenues("lowtohigh");
         assertEquals(venueList.size(), expectedList.size());
 
     }
@@ -112,10 +110,10 @@ public class SortingTest {
      * Test to verify high to low rating list of venues.
      */
     @Test
-    public void fetchVenuesTestHighToLow() throws SQLException {
+    public void fetchVenuesTestHighToLow()
+    {
 
         ArrayList<Venue> venueList = new ArrayList<>();
-        DataBaseUtilities dataBaseUtilities = new DataBaseUtilities();
         Venue venue2 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
         Venue venue4 = new Venue("2000002", "Huskies Stadium", "Halifax", "12", "15", "6:00:00", "21:00:00", "",
@@ -128,7 +126,7 @@ public class SortingTest {
         venueList.add(venue2);
         venueList.add(venue3);
         venueList.add(venue4);
-        ArrayList<Venue> expectedList = sorting.fetchVenues("alphabetical");
+        ArrayList<Venue> expectedList = sorting.fetchVenues("hightolow");
         assertEquals(venueList.size(), expectedList.size());
 
     }
