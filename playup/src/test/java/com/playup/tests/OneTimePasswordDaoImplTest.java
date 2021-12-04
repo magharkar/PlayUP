@@ -1,7 +1,7 @@
 package com.playup.tests;
 
 import com.playup.dao.user.IOneTimePasswordDao;
-import com.playup.dao.user.OneTimePasswordDao;
+import com.playup.dao.user.OneTimePasswordDaoImpl;
 import com.playup.model.user.OneTimePassword;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +16,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class OneTimePasswordDaoTest {
+public class OneTimePasswordDaoImplTest {
 
-    IOneTimePasswordDao oneTimePasswordDaoMockObject = mock(OneTimePasswordDao.class);
+    IOneTimePasswordDao oneTimePasswordDaoMockObject = mock(OneTimePasswordDaoImpl.class);
     @Test
     void setOneTimePasswordTest() throws SQLException {
         OneTimePassword oneTimePassword = new OneTimePassword();

@@ -10,11 +10,16 @@ import org.springframework.ui.Model;
 
 import java.sql.SQLException;
 
-public class UserLoginService implements IUserLoginService{
+public class UserLoginServiceImpl implements IUserLoginService{
     @Override
-    public boolean verifyUser(User user, Model model) throws SQLException {
+    public boolean verifyUser(User user, Model model){
         IUserDao userDao = UserProfileFactoryDao.instance().userDao();
-        IUser existingUser = userDao.getUserByUserEmail(user.getEmail());
+        IUser existingUser = null;
+        try {
+            existingUser = userDao.getUserByUserEmail(user.getEmail());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         System.out.println(existingUser);
         if(existingUser.getEmail() == null) {
             return false;

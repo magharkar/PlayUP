@@ -26,7 +26,7 @@ public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory
     @Override
     public IUserLoginService userLoginService() {
         if(userLoginService == null) {
-            userLoginService = new UserLoginService();
+            userLoginService = new UserLoginServiceImpl();
         }
         return userLoginService;
     }
@@ -42,7 +42,7 @@ public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory
     @Override
     public IOneTimePasswordService oneTimePasswordService() {
         if(oneTimePasswordService == null) {
-            oneTimePasswordService = new OneTimePasswordService();
+            oneTimePasswordService = new OneTimePasswordServiceImpl();
         }
         return oneTimePasswordService;
     }
@@ -50,7 +50,7 @@ public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory
     @Override
     public IUserRegistrationService userRegistrationService() {
         if(userRegistrationService == null) {
-            userRegistrationService = new UserRegistrationService();
+            userRegistrationService = new UserRegistrationServiceImpl();
         }
         return userRegistrationService;
     }

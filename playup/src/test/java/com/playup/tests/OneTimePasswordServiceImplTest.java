@@ -1,7 +1,7 @@
 package com.playup.tests;
 
 import com.playup.service.user.IOneTimePasswordService;
-import com.playup.service.user.OneTimePasswordService;
+import com.playup.service.user.OneTimePasswordServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -10,9 +10,9 @@ import java.text.ParseException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class OneTimePasswordServiceTest {
+public class OneTimePasswordServiceImplTest {
 
-    IOneTimePasswordService oneTimePasswordServiceMock = mock(OneTimePasswordService.class);
+    IOneTimePasswordService oneTimePasswordServiceMock = mock(OneTimePasswordServiceImpl.class);
 
     @Test
     void testSendOtp() throws SQLException {

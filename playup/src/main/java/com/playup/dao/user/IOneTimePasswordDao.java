@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public interface IOneTimePasswordDao {
 
-    void setOneTimePassword(OneTimePassword oneTimePassword) throws SQLException;
+    boolean setOneTimePassword(OneTimePassword oneTimePassword) throws SQLException;
 
     ArrayList<OneTimePassword> getOneTimePasswordByEmail(String email) throws SQLException, ParseException;
 }

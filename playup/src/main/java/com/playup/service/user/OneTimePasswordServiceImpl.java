@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.Random;
 
 @Service
-public class OneTimePasswordService implements IOneTimePasswordService {
+public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
 
     IUserDao userDao;
     IOneTimePasswordDao oneTimePasswordDao;
@@ -32,7 +32,7 @@ public class OneTimePasswordService implements IOneTimePasswordService {
     }
 
     @Override
-    public String sendOTP(String email) throws SQLException {
+    public String sendOTP(String email) {
         OneTimePassword oneTimePassword = new OneTimePassword();
 
         //userDao = UserProfileFactoryDao.instance().userDao();
@@ -51,45 +51,63 @@ public class OneTimePasswordService implements IOneTimePasswordService {
                 "It is valid for 15 minutes.";
 
 //        emailService.sendEmail(email, otpBody, otpSubject);
-        oneTimePasswordDao.setOneTimePassword(oneTimePassword);
+        try {
+            oneTimePasswordDao.setOneTimePassword(oneTimePassword);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return otpValue;
     }
 
     @Override
-    public String verifyOTPForPasswordReset(String email, String oneTimePassword, String password) throws SQLException, ParseException {
-        userDao = UserProfileFactoryDao.instance().userDao();
-        oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
-        ArrayList<OneTimePassword> otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
-        OneTimePassword latestOtp = otpList.get(0);
-        Date latestStamp = latestOtp.getOneTimePasswordDate();
-
-        Calendar current = Calendar.getInstance();
-        current.setTime(latestStamp);
-        current.add(Calendar.MINUTE, 15);
-        latestStamp = current.getTime();
-
-        if (latestStamp.compareTo(new Date()) < 0) {
-            return "otp_expired";
-        } else {
-            if (oneTimePassword.equals(latestOtp.getOneTimePassword().toString())) {
-                IUser user = userDao.getUserByUserEmail(email);
-                user.setPassword(password);
-                userDao.updatePasswordAfterReset(user);
-                return "password_update_successful";
-            } else {
-                return "otp_invalid";
+    public String verifyOTPForPasswordReset(String email, String oneTimePassword, String password) {
+        try {
+            userDao = UserProfileFactoryDao.instance().userDao();
+            oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
+            ArrayList<OneTimePassword> otpList = null;
+            try {
+                otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+            OneTimePassword latestOtp = otpList.get(0);
+            Date latestStamp = latestOtp.getOneTimePasswordDate();
+
+            Calendar current = Calendar.getInstance();
+            current.setTime(latestStamp);
+            current.add(Calendar.MINUTE, 15);
+            latestStamp = current.getTime();
+
+            if (latestStamp.compareTo(new Date()) < 0) {
+                return "otp_expired";
+            } else {
+                if (oneTimePassword.equals(latestOtp.getOneTimePassword().toString())) {
+                    IUser user = userDao.getUserByUserEmail(email);
+                    user.setPassword(password);
+                    userDao.updatePasswordAfterReset(user);
+                    return "password_update_successful";
+                } else {
+                    return "otp_invalid";
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-
-
+        return null;
     }
 
     @Override
-    public String verifyOTP(String email, String oneTimePassword) throws SQLException, ParseException {
+    public String verifyOTP(String email, String oneTimePassword) {
         oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
-        ArrayList<OneTimePassword> otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
+        ArrayList<OneTimePassword> otpList = null;
+        try {
+            otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         OneTimePassword latestOtp = otpList.get(0);
         Date latestStamp = latestOtp.getOneTimePasswordDate();
 
