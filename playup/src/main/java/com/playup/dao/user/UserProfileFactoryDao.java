@@ -22,7 +22,7 @@ public class UserProfileFactoryDao extends UserProfileAbstractFactoryDao {
     @Override
     public IOneTimePasswordDao oneTimePasswordDao() {
         if(oneTimePasswordDao == null) {
-            oneTimePasswordDao = new OneTimePasswordDao();
+            oneTimePasswordDao = new OneTimePasswordDaoImpl();
         }
         return oneTimePasswordDao;
     }
@@ -30,7 +30,7 @@ public class UserProfileFactoryDao extends UserProfileAbstractFactoryDao {
     @Override
     public IUserDao userDao() {
         if (userDao == null) {
-            userDao = new UserDao();
+            userDao = new UserDaoImpl();
         }
         return userDao;
     }
