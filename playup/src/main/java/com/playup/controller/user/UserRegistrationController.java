@@ -4,7 +4,7 @@ import com.playup.model.user.IUser;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
-import com.playup.service.*;
+import com.playup.service.email.IEmailSender;
 import com.playup.service.user.IOneTimePasswordService;
 import com.playup.service.user.IUserRegistrationService;
 import com.playup.service.user.PasswordValidationService;
@@ -27,7 +27,7 @@ public class UserRegistrationController {
     IOneTimePasswordService oneTimePasswordService;
 
     @Autowired
-    private EmailSenderService emailService;
+    private IEmailSender emailService;
 
     public UserRegistrationController() {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();

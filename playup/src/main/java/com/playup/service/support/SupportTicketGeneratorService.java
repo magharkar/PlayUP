@@ -1,25 +1,14 @@
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.service;
+package com.playup.service.support;
 
-import com.playup.dao.SupportDao;
+import com.playup.dao.support.SupportDao;
 import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
 
 @Service
-public class TicketGeneratorService implements ITicketGenerator  {
-
-    private static TicketGeneratorService instance;
-
-    public static TicketGeneratorService getInstance() {
-        if(instance == null) {
-            instance = new TicketGeneratorService();
-        }
-        return instance;
-    }
-
+public class SupportTicketGeneratorService implements ISupportTicketGeneratorService {
     @Override
     public int generateTicketNumber(int minimumTicketNumber, int maximumTicketNumber) {
         int ticketNumber = (int)(Math.random()*(maximumTicketNumber-minimumTicketNumber+1)+minimumTicketNumber);
@@ -31,7 +20,6 @@ public class TicketGeneratorService implements ITicketGenerator  {
             }
         }catch(SQLException s) {
             System.out.println(s);
-            return -1;
         }
         return ticketNumber;
     }

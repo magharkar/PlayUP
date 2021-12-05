@@ -5,12 +5,12 @@ import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
 import com.playup.service.user.IUserLoginService;
 import com.playup.service.user.UserProfileServiceFactory;
-import com.playup.model.SupportModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import com.playup.model.support.SupportModel;
 
 import java.sql.SQLException;
 

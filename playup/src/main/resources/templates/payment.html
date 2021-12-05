@@ -38,60 +38,62 @@
 
 <div class="container-class">
 
-<form th:action="@{/support}" th:object="${support}"  method="post">
+    <form th:action="@{/payment}" th:object="${creditCard}"  method="post">
 
-    <div class="form-row">
+        <div class="form-row">
 
-        <h1 style="margin-top: 16px; margin-bottom: 16px">Support</h1>
+            <h1 style="margin-top: 16px; margin-bottom: 16px">Credit Card</h1>
 
-    </div>
+        </div>
 
 
-    <div class="form-row">
+        <div class="form-row">
             <div class="col">
-                <p>First Name</p>
+                <p>Full Name</p>
             </div>
             <div class="col">
-                <input type="text" id="name" th:field="*{name}" placeholder="Full Name" required/>
+                <input type="text" id="name" th:field="*{name}" placeholder="Full Name" />
             </div>
         </div>
 
         <div class="form-row">
             <div class="col">
-                <p>Email Id</p>
+                <p>Card Number</p>
             </div>
             <div class="col">
-                <input id="Email-Id" type="text" th:field="*{email}" placeholder="Email Id" required/>
+                <input id="card" type="number" th:field="*{cardNumber}" placeholder="Card Number" />
             </div>
         </div>
 
         <div class="form-row">
             <div class="col">
-                <p>Venue</p>
+                <p>CVV</p>
             </div>
             <div class="col">
-                <input type="text" id="venue" th:field="*{venue}" placeholder="Venue Name">
+                <input type="number" id="cvv" th:field="*{cvv}" placeholder="cvv">
             </div>
         </div>
 
         <div class="form-row">
             <div class="col">
-                <p>Description</p>
+                <p>Expiry Date</p>
             </div>
-        <div class="col">
-            <textarea id="description" th:field="*{description}" placeholder="description" style="height:200px"></textarea>
+            <div class="col">
+                <input type="text" id="expiry" th:field="*{expiryDate}" placeholder="Expiry Date">
+            </div>
         </div>
-    </div>
 
-    <div class="form-row">
-    <input  style="margin-top: 16px" type="submit" value="Submit"/>
-    </div>
+        <div class="form-row">
+            <input  style="margin-top: 16px" type="submit" value="Submit"/>
+        </div>
 
-</form>
+    </form>
 
 </div>
 
 <div th:if="${error}"><h2 th:text="${error}"></h2>
+<div th:if="${success}"><h2 th:text="${success}"></h2>
+
 
 </div>
 </body>

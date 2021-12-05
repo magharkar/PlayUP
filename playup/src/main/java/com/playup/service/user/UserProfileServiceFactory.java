@@ -2,8 +2,8 @@
 
 package com.playup.service.user;
 
-import com.playup.service.EmailSenderService;
-import com.playup.service.IEmailSender;
+import com.playup.service.email.EmailSenderService;
+import com.playup.service.email.IEmailSender;
 
 public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory {
     private static UserProfileServiceFactory instance = null;
