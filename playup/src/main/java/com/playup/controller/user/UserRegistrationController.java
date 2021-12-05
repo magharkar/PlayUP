@@ -1,3 +1,5 @@
+// Author: Mugdha Anil Agharkar
+
 package com.playup.controller.user;
 
 import com.playup.model.user.IUser;
@@ -6,9 +8,7 @@ import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
 import com.playup.service.email.IEmailSender;
 import com.playup.dao.user.IOneTimePasswordDao;
-import com.playup.dao.user.UserProfileFactoryDao;
 import com.playup.model.user.*;
-import com.playup.service.*;
 import com.playup.service.user.IOneTimePasswordService;
 import com.playup.service.user.IUserRegistrationService;
 import com.playup.service.user.PasswordValidationService;
@@ -67,7 +67,7 @@ public class UserRegistrationController {
         System.out.println(success);
         model.addAttribute("response", response);
         if(response.equals("email_verified")) {
-            return "venueSorting";
+            return "venues";
         }
 
         return "otp";

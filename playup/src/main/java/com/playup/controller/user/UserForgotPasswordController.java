@@ -1,3 +1,5 @@
+// Author: Mugdha Anil Agharkar
+
 package com.playup.controller.user;
 
 import com.playup.model.user.OneTimePassword;
@@ -26,8 +28,6 @@ public class UserForgotPasswordController {
 
     @GetMapping("/forgot_password")
     public String getLogin(Model model) {
-        System.out.println("Reaching here");
-       // model.addAttribute("user", SupportFactory.userObject(new SupportObjectFactory()));
         return "forgot_password";
     }
 
@@ -67,8 +67,8 @@ public class UserForgotPasswordController {
         System.out.println(response);
         model.addAttribute("response", response);
         if(response.equals("password_update_successful")) {
-            return "venueSorting";
+            return "venues";
         }
-        return "support";
+        return "forgot_password_otp";
     }
 }
