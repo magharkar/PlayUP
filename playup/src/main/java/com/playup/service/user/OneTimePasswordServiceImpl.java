@@ -71,7 +71,8 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            OneTimePassword latestOtp = otpList.get(0);
+            System.out.println(otpList.size());
+            OneTimePassword latestOtp = otpList.get(otpList.size() - 1);
             Date latestStamp = latestOtp.getOneTimePasswordDate();
 
             Calendar current = Calendar.getInstance();
@@ -103,18 +104,21 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
         ArrayList<OneTimePassword> otpList = null;
         try {
             otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
         }
-        OneTimePassword latestOtp = otpList.get(0);
+        System.out.println(otpList);
+        OneTimePassword latestOtp = otpList.get(otpList.size() - 1);
         Date latestStamp = latestOtp.getOneTimePasswordDate();
 
         Calendar current = Calendar.getInstance();
         current.setTime(latestStamp);
         current.add(Calendar.MINUTE, 15);
         latestStamp = current.getTime();
+        System.out.println("Latest Otp");
+        System.out.println(latestOtp);
+        System.out.println("Latest Stamp");
+        System.out.println(latestStamp);
 
         if (latestStamp.compareTo(new Date()) < 0) {
             return "otp_expired";
