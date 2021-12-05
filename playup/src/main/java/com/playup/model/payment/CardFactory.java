@@ -1,5 +1,5 @@
 /**
- * @Author Shiv Gaurang Desai
+ * @author Shiv Gaurang Desai
  */
 package com.playup.model.payment;
 

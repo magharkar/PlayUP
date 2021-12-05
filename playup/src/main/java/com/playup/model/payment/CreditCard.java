@@ -1,10 +1,9 @@
 /**
- * @Author Shiv Gaurang Desai
+ * @author Shiv Gaurang Desai
  */
 package com.playup.model.payment;
 
 public class CreditCard {
-
     private String name;
     private String cardNumber;
     private int cvv;

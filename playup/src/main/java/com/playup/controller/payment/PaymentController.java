@@ -9,7 +9,7 @@ import com.playup.service.payment.ICardFactoryService;
 import com.playup.service.payment.ICreditCardValidationService;
 import com.playup.service.payment.IPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,17 +28,22 @@ public class PaymentController {
 
     @GetMapping("/payment")
     public String SupportMethod(Model model) {
-        model.addAttribute("creditCard",cardFactoryService.getCreditCard());
-        return "payment";
+        model.addAttribute(ApplicationConstants.CREDIT_CARD_TEXT,cardFactoryService.getCreditCard());
+        return ApplicationConstants.PAYMENT_TEXT;
     }
 
     @PostMapping("/payment")
     public String generateSupportRequest(@ModelAttribute CreditCard creditCard, Model model) {
         if(creditCardValidationService.isCardDetailsValid(creditCard)) {
-            paymentService.completeTransaction(creditCard);
+            boolean isSuccess = paymentService.completeTransaction(creditCard);
+            if(isSuccess) {
+                return ApplicationConstants.PAYMENT_CONFIRMATION_TEXT;
+            }else {
+                model.addAttribute(ApplicationConstants.SUPPORT_ERROR,ApplicationConstants.CARD_VALIDATION_ERROR);
+            }
         } else {
             model.addAttribute(ApplicationConstants.SUPPORT_ERROR,ApplicationConstants.CARD_VALIDATION_ERROR);
         }
-        return "payment";
+        return ApplicationConstants.PAYMENT_TEXT;
     }
 }

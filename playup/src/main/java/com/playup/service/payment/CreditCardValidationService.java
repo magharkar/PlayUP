@@ -3,6 +3,7 @@
  */
 package com.playup.service.payment;
 
+import com.playup.constants.ApplicationConstants;
 import com.playup.model.payment.CreditCard;
 import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
@@ -14,21 +15,20 @@ import java.util.regex.Pattern;
 class CreditCardValidationService implements ICreditCardValidationService {
     @Override
     public boolean isCardDetailsValid(CreditCard creditCard) {
-
         if(!validateName(creditCard.getName())) {
-            System.out.println("Name");
+            System.out.println(creditCard.getName());
             return false;
         }
         if(!validateCardNumber(creditCard.getCardNumber())) {
-            System.out.println("Card Number");
+            System.out.println(creditCard.getCardNumber());
             return false;
         }
         if(!validateDate(creditCard.getExpiryDate())) {
-            System.out.println("Expiry Date");
+            System.out.println(creditCard.getExpiryDate());
             return false;
         }
         if(!validateCVV(creditCard.getCvv())) {
-            System.out.println("cvv"+creditCard.getCvv());
+            System.out.println(creditCard.getCvv());
             return false;
         }
         return true;
@@ -36,14 +36,14 @@ class CreditCardValidationService implements ICreditCardValidationService {
 
     @Override
     public boolean validateName(String name) {
-        Pattern p = Pattern.compile("^[A-Za-z\\s]+$", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile(ApplicationConstants.NAME_REGEX, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(name);
         return m.find();
     }
 
     @Override
     public boolean validateCardNumber(String number) {
-        Pattern p = Pattern.compile("^[0-9]{16}+$");
+        Pattern p = Pattern.compile(ApplicationConstants.CARD_NUMBER_REGEX);
         Matcher m = p.matcher(number);
         if(!m.find()) {
             return false;
@@ -76,16 +76,16 @@ class CreditCardValidationService implements ICreditCardValidationService {
 
     @Override
     public boolean validateCVV(int number) {
-        Pattern p = Pattern.compile("^[0-9]{3}+$", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile(ApplicationConstants.CVV_REGEX, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(Integer.toString(number));
         return m.find();
     }
 
     @Override
     public boolean validateDate(String expiryDate) {
-        String timeStamp = new SimpleDateFormat("MM/YY").format(new Date());
+        String timeStamp = new SimpleDateFormat(ApplicationConstants.DATE_FORMAT).format(new Date());
         try {
-            SimpleDateFormat DateFormat = new SimpleDateFormat("MM/YY");
+            SimpleDateFormat DateFormat = new SimpleDateFormat(ApplicationConstants.DATE_FORMAT);
             Date d1 = DateFormat.parse(expiryDate);
             Date d2 = DateFormat.parse(timeStamp);
             if(d1.compareTo(d2)>0) {

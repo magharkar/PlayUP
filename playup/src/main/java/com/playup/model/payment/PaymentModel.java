@@ -4,13 +4,11 @@
 package com.playup.model.payment;
 
 public class PaymentModel {
-
     private int transactionId;
     private String name;
     private String cardNumber;
     private int amount;
     private String timeStamp;
-
 
     public String getTimeStamp() {
         return timeStamp;
