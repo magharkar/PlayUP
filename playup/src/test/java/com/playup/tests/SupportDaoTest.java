@@ -8,7 +8,6 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
 import java.sql.SQLException;
 
 public class SupportDaoTest {

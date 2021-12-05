@@ -3,7 +3,7 @@
  */
 package com.playup.dao.support;
 
-import com.playup.constants.ApplicationConstants;
+import com.playup.constants.QueryConstants;
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.support.SupportModel;
 import java.sql.ResultSet;
@@ -22,7 +22,7 @@ public class SupportDao implements ISupportDao{
 
     @Override
     public boolean checkWhetherTicketNumberExists(int ticketNumber) throws SQLException {
-        String sqlQuery = String.format(ApplicationConstants.CHECK_SUPPORT_TICKET_NUMBER_QUERY,ticketNumber);
+        String sqlQuery = String.format(QueryConstants.CHECK_SUPPORT_TICKET_NUMBER_QUERY,ticketNumber);
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
 		if (resultSet.next()) {
             return true;
@@ -32,7 +32,7 @@ public class SupportDao implements ISupportDao{
 
     @Override
     public boolean generateSupportRequest(SupportModel supportModel) throws SQLException {
-        String sqlQuery = String.format(ApplicationConstants.INSERT_SUPPORT_REQUEST_QUERY,supportModel.getTicketNumber(),supportModel.getName(),supportModel.getEmail(),supportModel.getVenue(),supportModel.getDescription());
+        String sqlQuery = String.format(QueryConstants.INSERT_SUPPORT_REQUEST_QUERY,supportModel.getTicketNumber(),supportModel.getName(),supportModel.getEmail(),supportModel.getVenue(),supportModel.getDescription());
         return  PlayupDBConnection.getInstance().updateData(sqlQuery);
     }
 }

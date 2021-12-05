@@ -1,47 +1,44 @@
-package com.playup.service;
+/**
+ * @author Shiv Gaurang Desai
+ */
+package com.playup.service.payment;
 
-import com.playup.model.PaymentModel;
-
+import com.playup.model.payment.CreditCard;
+import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CardValidationService implements  ICardValidationService,IvalidateCVV,IValidateCardNumber,IValidateName,IValidateExpiry{
+@Service
+class CreditCardValidationService implements ICreditCardValidationService {
+    @Override
+    public boolean isCardDetailsValid(CreditCard creditCard) {
 
-    private static TicketGeneratorService instance;
-
-    public static TicketGeneratorService getInstance() {
-        if(instance == null) {
-            instance = new TicketGeneratorService();
-        }
-        return instance;
-    }
-
-    public boolean isCardDetailsValid(PaymentModel paymentModel) {
-
-        if(!validateName(paymentModel.getName())) {
+        if(!validateName(creditCard.getName())) {
+            System.out.println("Name");
             return false;
         }
-        if(!validateCardNumber(paymentModel.getCardNumber())) {
+        if(!validateCardNumber(creditCard.getCardNumber())) {
+            System.out.println("Card Number");
             return false;
         }
-        if(!validateDate(paymentModel.getCardExpiryDate())) {
+        if(!validateDate(creditCard.getExpiryDate())) {
+            System.out.println("Expiry Date");
             return false;
         }
-        if(!validateCVV(paymentModel.getCvv())) {
+        if(!validateCVV(creditCard.getCvv())) {
+            System.out.println("cvv"+creditCard.getCvv());
             return false;
         }
-
         return true;
     }
 
-
     @Override
     public boolean validateName(String name) {
-            Pattern p = Pattern.compile("^[A-Za-z\\s]+$", Pattern.CASE_INSENSITIVE);
-            Matcher m = p.matcher(name);
-            return m.find();
+        Pattern p = Pattern.compile("^[A-Za-z\\s]+$", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(name);
+        return m.find();
     }
 
     @Override
@@ -79,7 +76,7 @@ public class CardValidationService implements  ICardValidationService,IvalidateC
 
     @Override
     public boolean validateCVV(int number) {
-        Pattern p = Pattern.compile("^[A-Za-z\\s]+$", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile("^[0-9]{3}+$", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(Integer.toString(number));
         return m.find();
     }
@@ -100,6 +97,4 @@ public class CardValidationService implements  ICardValidationService,IvalidateC
         }
         return false;
     }
-
 }
-

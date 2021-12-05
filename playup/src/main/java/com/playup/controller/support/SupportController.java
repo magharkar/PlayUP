@@ -4,9 +4,10 @@
 package com.playup.controller.support;
 
 import com.playup.constants.ApplicationConstants;
-import com.playup.model.support.SupportFactory;
 import com.playup.model.support.SupportModel;
-import com.playup.service.*;
+import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailValidationService;
+import com.playup.service.support.ISupportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +18,13 @@ import java.sql.SQLException;
 @Controller
 public class SupportController {
     @Autowired
-    private ISupport supportService;
+    private ISupportService supportService;
 
     @Autowired
     private IEmailSender emailService;
 
     @Autowired
-    private  IEmailValidationService emailValidationService;
+    private IEmailValidationService emailValidationService;
 
     @GetMapping("/support")
     public String SupportMethod(Model model) {
@@ -34,7 +35,6 @@ public class SupportController {
     @PostMapping("/support")
     public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model) throws SQLException {
         if (emailValidationService.isEmailValid(supportModel.getEmail())) {
-            supportModel.setTicketNumber(TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER, ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER));
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
             if (isRequestGenerated) {
                 emailService.sendEmail(supportModel.getEmail(), ApplicationConstants.SUPPORT_EMAIL_BODY, ApplicationConstants.SUPPORT_SUBJECT + supportModel.getTicketNumber());

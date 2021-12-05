@@ -5,6 +5,7 @@ import com.playup.dao.IUserDao;
 import com.playup.dao.UserProfileFactoryDao;
 import com.playup.model.IUser;
 import com.playup.model.OneTimePassword;
+import com.playup.service.email.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

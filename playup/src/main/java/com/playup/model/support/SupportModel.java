@@ -3,10 +3,6 @@
  */
 package com.playup.model.support;
 
-import com.playup.constants.ApplicationConstants;
-import com.playup.service.TicketGeneratorService;
-import java.util.Map;
-
 public class SupportModel {
     private int ticketNumber;
     private String name;
@@ -30,14 +26,6 @@ public class SupportModel {
         this.email = email;
         this.venue = venue;
         this.description = description;
-    }
-
-    public SupportModel( Map<String, String> supportData) {
-        this.name = supportData.get("name");
-        this.email = supportData.get("email");
-        this.venue = supportData.get("venue");
-        this.description = supportData.get("description");
-        this.ticketNumber = TicketGeneratorService.getInstance().generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER,ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER);
     }
 
     public String getSupport() {

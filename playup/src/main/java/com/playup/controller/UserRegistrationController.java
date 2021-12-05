@@ -1,10 +1,10 @@
 package com.playup.controller;
 
-import com.playup.model.OneTimePassword;
 import com.playup.model.User;
 import com.playup.model.UserFactory;
 import com.playup.model.UserObjectFactory;
 import com.playup.service.*;
+import com.playup.service.email.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

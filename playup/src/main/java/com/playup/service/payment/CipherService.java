@@ -2,8 +2,9 @@
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.service;
+package com.playup.service.payment;
 import com.playup.constants.ApplicationConstants;
+import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -11,8 +12,8 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-public class CipherService implements ICipher {
-
+@Service
+public class CipherService implements ICipherService {
     @Override
     public String encrypt(String messageToEncrypt) {
 
@@ -36,7 +37,6 @@ public class CipherService implements ICipher {
 
     @Override
     public String decrypt(String messageToDecrypt) {
-
         try {
             String cipherSecretKey = ApplicationConstants.CIPHER_SECRET_KEY;
             byte[] key = cipherSecretKey.getBytes("UTF-8");
@@ -52,7 +52,5 @@ public class CipherService implements ICipher {
             System.out.println(e);
         }
         return null;
-
     }
-
 }
