@@ -35,10 +35,10 @@ public class UserLoginController {
         System.out.println(user.getPassword());
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            model.addAttribute(user);
+            //model.addAttribute(user);
 //            model.addAttribute("success", "Login successful");
-            model.addAttribute("support",new SupportModel());
-            return "support";
+           // model.addAttribute("support",new SupportModel());
+            return "venues";
         } else {
             model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");
