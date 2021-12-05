@@ -9,17 +9,17 @@ import com.playup.model.support.SupportModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SupportDao implements ISupportDao{
-    private static SupportDao supportDaoInstance;
+public class SupportDaoImpl implements ISupportDao{
+    private static SupportDaoImpl supportDaoImplInstance;
 
-    private SupportDao(){}
+    private SupportDaoImpl(){}
 
-    public static SupportDao getInstance () {
-        if(supportDaoInstance==null) {
-            supportDaoInstance = new SupportDao();
-            return supportDaoInstance;
+    public static SupportDaoImpl getInstance () {
+        if(supportDaoImplInstance ==null) {
+            supportDaoImplInstance = new SupportDaoImpl();
+            return supportDaoImplInstance;
         }
-        return supportDaoInstance;
+        return supportDaoImplInstance;
     }
 
     @Override

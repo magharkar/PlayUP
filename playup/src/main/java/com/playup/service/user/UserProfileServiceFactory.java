@@ -2,7 +2,7 @@
 
 package com.playup.service.user;
 
-import com.playup.service.email.EmailSenderService;
+import com.playup.service.email.EmailSenderServiceImpl;
 import com.playup.service.email.IEmailSender;
 
 public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory {
@@ -34,7 +34,7 @@ public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory
     @Override
     public IEmailSender emailSenderService() {
         if(emailSenderService == null) {
-            emailSenderService = new EmailSenderService();
+            emailSenderService = new EmailSenderServiceImpl();
         }
         return emailSenderService;
     }

@@ -1,7 +1,7 @@
 package com.playup.tests;
 
 import com.playup.dao.support.ISupportDao;
-import com.playup.dao.support.SupportDao;
+import com.playup.dao.support.SupportDaoImpl;
 import com.playup.model.support.SupportModel;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,12 +12,12 @@ import java.sql.SQLException;
 
 public class SupportDaoTest {
 
-    ISupportDao supportDao = Mockito.mock(SupportDao.class);
+    ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
 
     @Test
     public void supportDAOTestClass() throws ClassNotFoundException {
 
-        Class<?> classExists = Class.forName("com.playup.dao.support.SupportDao", false, getClass().getClassLoader());
+        Class<?> classExists = Class.forName("com.playup.dao.support.SupportDaoImpl", false, getClass().getClassLoader());
         assertNotNull(classExists);
 
     }
@@ -25,7 +25,7 @@ public class SupportDaoTest {
     @Test
     public void checkWhetherTicketNumberExistsTest() throws SQLException {
         when(supportDao.checkWhetherTicketNumberExists(1001)).thenReturn(true);
-        boolean output = SupportDao.getInstance().checkWhetherTicketNumberExists(1001);
+        boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(1001);
         assertEquals(supportDao.checkWhetherTicketNumberExists(1001),output);
     }
 
@@ -33,7 +33,7 @@ public class SupportDaoTest {
     public void checkWhetherTicketNumberNotExistsTest() throws SQLException {
 
         when(supportDao.checkWhetherTicketNumberExists(100)).thenReturn(false);
-        boolean output = SupportDao.getInstance().checkWhetherTicketNumberExists(100);
+        boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(100);
         assertEquals(supportDao.checkWhetherTicketNumberExists(100),output);
 
     }
@@ -42,7 +42,7 @@ public class SupportDaoTest {
     public void checkWhetherSupportRequestIsCreated() throws SQLException {
 
           when(supportDao.generateSupportRequest(new SupportModel())).thenReturn(false);
-        boolean output = SupportDao.getInstance().checkWhetherTicketNumberExists(100);
+        boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(100);
         assertEquals(supportDao.checkWhetherTicketNumberExists(100),output);
 
     }

@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-class CreditCardValidationService implements ICreditCardValidationService {
+class CreditCardValidationServiceImpl implements ICreditCardValidationService {
     @Override
     public boolean isCardDetailsValid(CreditCard creditCard) {
         if(!validateName(creditCard.getName())) {
