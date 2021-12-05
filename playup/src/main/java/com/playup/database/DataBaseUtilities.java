@@ -1,6 +1,3 @@
-// @author Vibhor Bhatnagar
-//DBUtils can be used by anyone to add methods according to the feature to execute queries in the database
-
 package com.playup.database;
 
 import java.sql.ResultSet;
@@ -9,12 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import com.playup.model.Venue;
 
+/**
+ * DBUtils can be used by anyone to add methods according to the feature to execute queries in the database
+ * @author Vibhor Bhatnagar
+ */
+
 public class DataBaseUtilities {
 	
 	private static DataBaseUtilities instance = null;
 	
-	private DataBaseUtilities() {
-		// TODO Auto-generated constructor stub
+	public DataBaseUtilities() {
+
 	}
 	
 	public static DataBaseUtilities getInstance() {
@@ -24,7 +26,7 @@ public class DataBaseUtilities {
 		return instance;
 	}
 
-	public List<Venue> getVenuesFromDB() throws SQLException {
+	public static List<Venue> getVenuesFromDB() throws SQLException {
 		List<Venue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues;");
 		while (resultSet != null && resultSet.next()) {
@@ -36,5 +38,4 @@ public class DataBaseUtilities {
 		}
 		return venueList;
 	}
-
 }

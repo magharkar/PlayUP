@@ -38,7 +38,13 @@ build-job:       # This job runs in the build stage, which runs first.
 unit-test-job: # This job runs in the test stage.
   stage: test
   script:
-    - mvn -f $(pwd)/playup/pom.xml verify
+    - mvn -f $(pwd)/playup/pom.xml clean verify
+  artifacts: 
+    when: always      
+    reports:        
+        junit:          
+            - ./playup/target/surefire-reports/TEST-*.xml
+            - ./playup/target/failsafe-reports/TEST-*.xml
   tags: 
     - dalfcs_docker_kvm
   artifacts:

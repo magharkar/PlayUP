@@ -12,6 +12,8 @@ import java.sql.SQLException;
 public class SupportDao implements ISupportDao{
     private static SupportDao supportDaoInstance;
 
+    private SupportDao(){}
+
     public static SupportDao getInstance () {
         if(supportDaoInstance==null) {
             supportDaoInstance = new SupportDao();

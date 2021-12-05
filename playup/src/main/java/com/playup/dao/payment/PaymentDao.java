@@ -12,6 +12,8 @@ import java.sql.SQLException;
 public class PaymentDao implements IPaymentDao{
     private static PaymentDao paymentDaoInstance;
 
+    private PaymentDao(){}
+
     public static PaymentDao getInstance () {
         if(paymentDaoInstance==null) {
             paymentDaoInstance = new PaymentDao();

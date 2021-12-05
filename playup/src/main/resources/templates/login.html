@@ -1,3 +1,5 @@
+<!--@Author Mugdha Agharkar-->
+
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
@@ -61,12 +63,10 @@ body {
     </form>
 
     <p></p>
-    <a th:href="@{/forgot-password}">Forgot Password?</a><br /> <a
-        th:href="@{/registration}">Don't have an account? Register here!</a>
 
-    <div th:if="${success}">
-        <h2 th:text="${success}"></h2>
-    </div>
+    <a th:href="@{/forgot_password}">Forgot Password?</a><br /> <a
+        th:href="@{/registration}">Don't have an account? Register
+    here!</a>
 
     <div th:if="${failure}">
         <h2 th:text="${failure}"></h2>
