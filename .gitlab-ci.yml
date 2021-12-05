@@ -47,11 +47,6 @@ unit-test-job: # This job runs in the test stage.
             - ./playup/target/failsafe-reports/TEST-*.xml
   tags: 
     - dalfcs_docker_kvm
-  artifacts:
-    paths:
-      - target/*.jar
-
-
     
 deploy:
   stage: deploy
@@ -80,5 +75,3 @@ deploy:
     - dev
   tags: 
     - dalfcs_docker_kvm
-  
-
