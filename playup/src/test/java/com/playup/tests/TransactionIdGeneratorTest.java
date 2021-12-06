@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TransactionIdGeneratorTest {
-
     //Not Null test case
     @Test
     void TransactionIdGeneratorServiceNotNullTest() throws ClassNotFoundException {

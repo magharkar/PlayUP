@@ -11,10 +11,7 @@ import com.playup.model.payment.PaymentModel;
 import com.playup.service.email.IEmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.FileOutputStream;
 import java.time.LocalDateTime;
-import java.util.Properties;
 
 @Service
 public class PaymentServiceImpl implements IPaymentService {
@@ -47,7 +44,6 @@ public class PaymentServiceImpl implements IPaymentService {
         }
         return false;
     }
-
 }
 
 

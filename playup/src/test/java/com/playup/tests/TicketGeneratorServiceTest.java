@@ -9,7 +9,6 @@ import com.playup.service.support.SupportTicketGeneratorServiceImpl;
 import org.junit.jupiter.api.Test;
 
 public class TicketGeneratorServiceTest {
-
     //Not Null test case
     @Test
     void ticketGeneratorServiceNotNullTest() throws ClassNotFoundException {

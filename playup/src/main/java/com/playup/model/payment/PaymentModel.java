@@ -10,13 +10,7 @@ public class PaymentModel {
     private int amount;
     private String timeStamp;
 
-    public String getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
+    public PaymentModel(){}
 
     public PaymentModel(int transactionId, String name, String cardNumber, int amount, String timeStamp) {
         this.transactionId = transactionId;
@@ -33,7 +27,15 @@ public class PaymentModel {
         this.timeStamp = timeStamp;
     }
 
-    public PaymentModel(){}
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
 
     public int getTransactionId() {
         return transactionId;

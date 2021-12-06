@@ -11,7 +11,6 @@ import static org.mockito.Mockito.*;
 import java.sql.SQLException;
 
 public class SupportDaoTest {
-
     ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
 
     @Test
@@ -40,7 +39,4 @@ public class SupportDaoTest {
         boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(100);
         assertEquals(supportDao.checkWhetherTicketNumberExists(100),output);
     }
-
-
-
 }
