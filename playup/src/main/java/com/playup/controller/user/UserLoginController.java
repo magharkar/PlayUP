@@ -32,8 +32,6 @@ public class UserLoginController {
 
     @PostMapping("/login")
     public String logUser(@ModelAttribute User user, Model model) throws SQLException {
-        System.out.println(user.getUserName());
-        System.out.println(user.getPassword());
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
             return "venues";

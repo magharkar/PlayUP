@@ -24,12 +24,8 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public IUser getUserByUserEmail(String email) {
-      //  userName = "shiv";
-        boolean isUserFound = false;
-       //String query = "select * from User where city='Halifax'";
         String query = "Select * from User where email=" + "'" + email + "'";
         String sqlQuery = String.format(query);
-        //String sqlQuery = String.format("select * from CSCI5308_1_DEVINT.User where city = %s;",userName);
         ResultSet resultSet = null;
         try {
             resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
@@ -64,7 +60,6 @@ public class UserDaoImpl implements IUserDao {
            String query = "Insert into User (email, phone, password, city, username) values " +
                    "('" + email + "'," + "'" + phone + "'," + "'" + password + "'," + "'" + city + "','" + username + "' )";
            String sqlQuery = String.format(query);
-           System.out.println(sqlQuery);
            boolean resultSet = false;
            try {
                resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
