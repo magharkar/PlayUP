@@ -16,9 +16,10 @@ public class ApplicationConstants {
     public final static String SUPPORT_TEXT = "support";
     public final static String PAYMENT_TEXT = "payment";
     public final static String CREDIT_CARD_TEXT = "creditCard";
-    public final static String PAYMENT_CONFIRMATION_TEXT = "creditCard";
+    public final static String PAYMENT_CONFIRMATION_TEXT = "payment_confirmation";
     public final static String SUPPORT_CONFIRMATION_TEXT = "support_confirmation";
     public final static String SUPPORT_ERROR = "error";
+    public final static String SUCCESS_ERROR = "success";
     public final static int MINIMUM_TRANSACTION_NUMBER = 1000;
     public final static int MAXIMUM_TRANSACTION_NUMBER = 10000;
     public final static String CARD_VALIDATION_ERROR = "Card details are not valid";
@@ -31,4 +32,11 @@ public class ApplicationConstants {
     public final static String CVV_REGEX = "^[0-9]{3}+$";
     public final static String DATE_FORMAT = "MM/YY";
     public final static int ENCRYPTION_MESSAGE_LENGTH = 16;
+    public final static String BOOKING_CONFIRMATION_MAIL_SUBJECT = "Booking confirmed with Transaction Id #";
+    public final static String BOOKING_CONFIRMATION_MAIL_BODY = "Thank you for payment. Your booking in confirmed.";
+    public final static String NAME_ERROR_MESSAGE = "Name is Not Valid";
+    public final static String CARD_ERROR_MESSAGE = "Card number is not valid";
+    public final static String CVV_ERROR_MESSAGE = "CVV is not valid";
+    public final static String EXPIRY_DATE_ERROR_MESSAGE = "Expiry date is not valid";
+
 }

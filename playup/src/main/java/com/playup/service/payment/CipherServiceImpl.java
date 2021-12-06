@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Base64;
 
 @Service
-public class CipherService implements ICipherService {
+public class CipherServiceImpl implements ICipherService {
     @Override
     public String encrypt(String messageToEncrypt) {
         try {

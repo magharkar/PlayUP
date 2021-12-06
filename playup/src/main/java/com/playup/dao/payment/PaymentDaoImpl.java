@@ -9,14 +9,14 @@ import com.playup.model.payment.PaymentModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PaymentDao implements IPaymentDao{
-    private static PaymentDao paymentDaoInstance;
+public class PaymentDaoImpl implements IPaymentDao{
+    private static PaymentDaoImpl paymentDaoInstance;
 
-    private PaymentDao(){}
+    private PaymentDaoImpl(){}
 
-    public static PaymentDao getInstance () {
+    public static PaymentDaoImpl getInstance () {
         if(paymentDaoInstance==null) {
-            paymentDaoInstance = new PaymentDao();
+            paymentDaoInstance = new PaymentDaoImpl();
             return paymentDaoInstance;
         }
         return paymentDaoInstance;

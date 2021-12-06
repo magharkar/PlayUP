@@ -8,30 +8,33 @@ import com.playup.model.payment.CreditCard;
 import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-class CreditCardValidationService implements ICreditCardValidationService {
+public class CreditCardValidationServiceImpl implements ICreditCardValidationService {
     @Override
-    public boolean isCardDetailsValid(CreditCard creditCard) {
+    public HashMap<Boolean,String> isCardDetailsValid(CreditCard creditCard) {
+        HashMap<Boolean,String> response = new HashMap<>();
         if(!validateName(creditCard.getName())) {
-            System.out.println(creditCard.getName());
-            return false;
+            response.put(false,ApplicationConstants.NAME_ERROR_MESSAGE);
+            return response;
         }
         if(!validateCardNumber(creditCard.getCardNumber())) {
-            System.out.println(creditCard.getCardNumber());
-            return false;
-        }
-        if(!validateDate(creditCard.getExpiryDate())) {
-            System.out.println(creditCard.getExpiryDate());
-            return false;
+            response.put(false,ApplicationConstants.CARD_ERROR_MESSAGE);
+            return response;
         }
         if(!validateCVV(creditCard.getCvv())) {
-            System.out.println(creditCard.getCvv());
-            return false;
+            response.put(false,ApplicationConstants.CVV_ERROR_MESSAGE);
+            return response;
         }
-        return true;
+        if(!validateDate(creditCard.getExpiryDate())) {
+            response.put(false,ApplicationConstants.EXPIRY_DATE_ERROR_MESSAGE);
+            return response;
+        }
+        response.put(true,ApplicationConstants.SUCCESS_ERROR);
+        return response;
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class EmailValidationService implements IEmailValidationService {
+public class EmailValidationServiceImpl implements IEmailValidationService {
     @Override
     public boolean isEmailValid(String email) {
         boolean isSpecialCharacterPresent = false;
