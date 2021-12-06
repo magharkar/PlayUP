@@ -1,6 +1,7 @@
 function postVenueData() {
 	document.getElementById("searchResults").innerHTML = "<tr><th>Venue ID</th><th>Venue Name</th><th>Venue City</th><th>Available Slots</th><th>Total Slots</th><th>From Time</th><th>To Time</th><th>Contact Info</th><th>Latitude</th><th>Longitude</th><th>Slot Price</th><th>Average Rating</th><th>Category ID</th><th></th></tr>";
     var sortParam = document.getElementById("sort").value;
+
 	var windowLocation = window.location.href;
 	var request = $.ajax({
 		url:  windowLocation + "/getVenueResults",
@@ -39,7 +40,20 @@ function postVenueData() {
 				cell11.innerHTML = result[i].slotPrice;
 				cell12.innerHTML = result[i].averageRating;
 				cell13.innerHTML = result[i].categoryID;
-				cell14.innerHTML = "<input type='button' id='book' name='book' onClick= '' value='book' />";
+				console.log("i" + i);
+				 let btn = document.createElement("button");
+				    var venueid = result[i].venueID;
+                    btn.innerHTML = "Book";
+                    (function(index){
+                        btn.addEventListener("click", function() {
+                          window.location.href = "venue/"+index;
+                        })
+                      })(venueid)
+//                    btn.onclick = function() {
+//                    redirect(venueid);
+//                    }
+                    cell14.append(btn);
+//				cell14.innerHTML = "<input type='button' id='book' name='book' onClick="redirect(\''+i+'\')" value='book' />";
 
 			}
 		}
@@ -48,4 +62,8 @@ function postVenueData() {
 	request.fail(function(jqXHR, textStatus) {
 		confirm("Request failed: " + textStatus);
 	});
+}
+
+function redirect(i) {
+      window.location.href = "venue.htm?data="+i
 }
