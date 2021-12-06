@@ -1,3 +1,5 @@
+// Author: Mugdha Anil Agharkar
+
 package com.playup.controller.user;
 
 import com.playup.model.user.User;
@@ -10,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.playup.model.support.SupportModel;
 
 import java.sql.SQLException;
 
@@ -31,14 +32,9 @@ public class UserLoginController {
 
     @PostMapping("/login")
     public String logUser(@ModelAttribute User user, Model model) throws SQLException {
-        System.out.println(user.getUserName());
-        System.out.println(user.getPassword());
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            model.addAttribute(user);
-//            model.addAttribute("success", "Login successful");
-            model.addAttribute("support",new SupportModel());
-            return "support";
+            return "venues";
         } else {
             model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");
