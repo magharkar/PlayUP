@@ -44,7 +44,6 @@ public class UserRegistrationController {
 
     @GetMapping("/otp")
     public String getOtp(Model model) {
-       // model.addAttribute("otp",otp);
         model.addAttribute("oneTimePassword", new OneTimePassword());
         return "otp";
     }
@@ -53,20 +52,27 @@ public class UserRegistrationController {
     public String verifyOtp(@ModelAttribute OneTimePassword oneTimePassword, @RequestParam String emailId,
                             @RequestParam String password, @RequestParam String userName,
                             @RequestParam String contactNumber, @RequestParam String city,
-                            Model model) throws SQLException, ParseException {
+                            Model model) {
         IUser user = UserFactory.userObject(new UserObjectFactory());
         user.setUserName(userName);
         user.setPassword(password);
         user.setContactNumber(contactNumber);
         user.setCity(city);
         user.setEmail(emailId);
-        String response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
-        System.out.println(response);
-        System.out.println(user);
-        boolean success = userRegistrationService.registerNewUser(user);
-        System.out.println(success);
+        String response = null;
+        try {
+            response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        boolean success = false;
+        try {
+            success = userRegistrationService.registerNewUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         model.addAttribute("response", response);
-        if(response.equals("email_verified")) {
+        if(response.equals("email_verified") && success) {
             return "venues";
         }
 
