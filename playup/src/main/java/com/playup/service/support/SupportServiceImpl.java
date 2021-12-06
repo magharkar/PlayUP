@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.lang.*;
 
 @Service
-public class SupportService implements ISupportService {
+public class SupportServiceImpl implements ISupportService {
     @Autowired
     private ISupportTicketGeneratorService supportTicketGeneratorService;
 

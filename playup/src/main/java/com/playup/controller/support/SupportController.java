@@ -7,6 +7,7 @@ import com.playup.constants.ApplicationConstants;
 import com.playup.model.support.SupportModel;
 import com.playup.service.email.IEmailSender;
 import com.playup.service.email.IEmailValidationService;
+import com.playup.service.support.ISupportFactoryService;
 import com.playup.service.support.ISupportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,14 +27,17 @@ public class SupportController {
     @Autowired
     private IEmailValidationService emailValidationService;
 
+    @Autowired
+    private ISupportFactoryService supportFactoryService;
+
     @GetMapping("/support")
     public String SupportMethod(Model model) {
-    model.addAttribute("support",new SupportModel());
+    model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
     return ApplicationConstants.SUPPORT_TEXT;
     }
 
     @PostMapping("/support")
-    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model) throws SQLException {
+    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model){
         if (emailValidationService.isEmailValid(supportModel.getEmail())) {
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
             if (isRequestGenerated) {

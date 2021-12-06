@@ -16,10 +16,8 @@ public class SupportDaoTest {
 
     @Test
     public void supportDAOTestClass() throws ClassNotFoundException {
-
         Class<?> classExists = Class.forName("com.playup.dao.support.SupportDaoImpl", false, getClass().getClassLoader());
         assertNotNull(classExists);
-
     }
 
     @Test
@@ -31,20 +29,16 @@ public class SupportDaoTest {
 
     @Test
     public void checkWhetherTicketNumberNotExistsTest() throws SQLException {
-
         when(supportDao.checkWhetherTicketNumberExists(100)).thenReturn(false);
         boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(100);
         assertEquals(supportDao.checkWhetherTicketNumberExists(100),output);
-
     }
 
     @Test
     public void checkWhetherSupportRequestIsCreated() throws SQLException {
-
-          when(supportDao.generateSupportRequest(new SupportModel())).thenReturn(false);
+        when(supportDao.generateSupportRequest(new SupportModel())).thenReturn(false);
         boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(100);
         assertEquals(supportDao.checkWhetherTicketNumberExists(100),output);
-
     }
 
 

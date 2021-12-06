@@ -4,11 +4,12 @@
 package com.playup.service.payment;
 
 import com.playup.model.payment.CreditCard;
+import java.util.HashMap;
 
 public interface ICreditCardValidationService {
-    boolean validateCVV(int  cvv);
+    boolean validateCVV(int cvv);
     boolean validateDate(String expiryDate);
     boolean validateName(String Name);
     boolean validateCardNumber(String name);
-    boolean isCardDetailsValid(CreditCard creditCard);
+    HashMap<Boolean,String> isCardDetailsValid(CreditCard creditCard);
 }

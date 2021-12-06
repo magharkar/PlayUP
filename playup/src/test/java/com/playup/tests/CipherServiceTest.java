@@ -3,16 +3,13 @@ package com.playup.tests;
 import com.playup.service.payment.CipherServiceImpl;
 import com.playup.service.payment.ICipherService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 
 public class CipherServiceTest {
-
-    ICipherService supportDao = Mockito.mock(CipherServiceImpl.class);
-
 
     @Test
     public void cipherServiceTestClass() throws ClassNotFoundException {
@@ -22,7 +19,16 @@ public class CipherServiceTest {
 
     @Test
     public void cipherServiceTestForEncryption() {
+        ICipherService cipherService = new CipherServiceImpl();
+        String encryptedString  = cipherService.encrypt("4505530142792496");
+        assertEquals("ASYBoq/ZKnnXS4B80/EI9j0eDftup3Kj9iGqwlvvwvc=",encryptedString);
+    }
 
+    @Test
+    public void cipherServiceTestForDecryption() {
+        ICipherService cipherService = new CipherServiceImpl();
+        String encryptedString  = cipherService.decrypt("ASYBoq/ZKnnXS4B80/EI9j0eDftup3Kj9iGqwlvvwvc=");
+        assertEquals("4505530142792496",encryptedString);
     }
 
 }

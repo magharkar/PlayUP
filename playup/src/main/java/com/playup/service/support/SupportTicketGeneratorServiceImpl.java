@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 
 @Service
-public class SupportTicketGeneratorService implements ISupportTicketGeneratorService {
+public class SupportTicketGeneratorServiceImpl implements ISupportTicketGeneratorService {
     @Override
     public int generateTicketNumber(int minimumTicketNumber, int maximumTicketNumber) {
         int ticketNumber = (int)(Math.random()*(maximumTicketNumber-minimumTicketNumber+1)+minimumTicketNumber);
