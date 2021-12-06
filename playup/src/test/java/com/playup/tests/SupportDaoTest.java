@@ -3,12 +3,16 @@ package com.playup.tests;
 import com.playup.dao.support.ISupportDao;
 import com.playup.dao.support.SupportDaoImpl;
 import com.playup.model.support.SupportModel;
+import com.playup.model.user.OneTimePassword;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class SupportDaoTest {
     ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
@@ -39,4 +43,25 @@ public class SupportDaoTest {
         boolean output = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(100);
         assertEquals(supportDao.checkWhetherTicketNumberExists(100),output);
     }
+
+    /**
+     * This method is in progress
+     * @throws SQLException
+     * @throws ParseException
+     */
+    @Test
+    void testGetOtpByEmail() throws SQLException, ParseException {
+        ArrayList<SupportModel> list = new ArrayList<>();
+        SupportModel supportModel = new SupportModel();
+        supportModel.setTicketNumber(1922);
+        supportModel.setEmail("test@gmail.com");
+        supportModel.setName("demo");
+        supportModel.setVenue("dalplex");
+        supportModel.setDescription("Booking is not possible");
+        list.add(supportModel);
+        when(supportDao.generateSupportRequest(supportModel)).thenReturn(true);
+        assertEquals(supportDao.generateSupportRequest(supportModel), true);
+        System.out.print(verify(supportDao).generateSupportRequest(supportModel));
+    }
+
 }
