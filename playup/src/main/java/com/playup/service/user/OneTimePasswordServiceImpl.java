@@ -7,7 +7,7 @@ import com.playup.dao.user.IUserDao;
 import com.playup.dao.user.UserProfileFactoryDao;
 import com.playup.model.user.IUser;
 import com.playup.model.user.OneTimePassword;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
     IUserDao userDao;
     IOneTimePasswordDao oneTimePasswordDao;
     @Autowired
-    private IEmailSender emailService;
+    private IEmailSenderService emailService;
 
     @Override
     public String createOtp() {

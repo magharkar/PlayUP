@@ -3,7 +3,7 @@
 package com.playup.controller.user;
 
 import com.playup.model.user.OneTimePassword;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 import com.playup.service.user.IOneTimePasswordService;
 import com.playup.service.user.UserProfileServiceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.text.ParseException;
 public class UserForgotPasswordController {
 
     @Autowired
-    private IEmailSender emailService;
+    private IEmailSenderService emailService;
 
     IOneTimePasswordService oneTimePasswordService;
 

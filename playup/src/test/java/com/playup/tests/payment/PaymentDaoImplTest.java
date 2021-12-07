@@ -1,8 +1,10 @@
-package com.playup.tests;
+/**
+ * @author Shiv Gaurang Desai
+ */
+package com.playup.tests.payment;
 
 import com.playup.dao.payment.IPaymentDao;
 import com.playup.dao.payment.PaymentDaoImpl;
-import com.playup.dao.support.SupportDaoImpl;
 import com.playup.model.payment.PaymentModel;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 public class PaymentDaoImplTest {
-    IPaymentDao paymentDao = Mockito.mock(PaymentDaoImpl.class);
+    private IPaymentDao paymentDao = Mockito.mock(PaymentDaoImpl.class);
 
     @Test
     public void paymentDAOTestClass() throws ClassNotFoundException {

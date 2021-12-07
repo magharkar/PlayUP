@@ -1,4 +1,7 @@
-package com.playup.tests;
+/**
+ * @author Shiv Gaurang Desai
+ */
+package com.playup.tests.payment;
 
 import com.playup.service.payment.CipherServiceImpl;
 import com.playup.service.payment.ICipherService;

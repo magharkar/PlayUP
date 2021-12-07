@@ -2,12 +2,12 @@
 
 package com.playup.service.user;
 
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 
 public abstract class UserProfileServiceAbstractFactory {
     public abstract IUserLoginService userLoginService();
 
-    public abstract IEmailSender emailSenderService();
+    public abstract IEmailSenderService emailSenderService();
 
     public abstract IOneTimePasswordService oneTimePasswordService();
 

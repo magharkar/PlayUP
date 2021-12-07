@@ -34,7 +34,7 @@ public class PaymentDaoImpl implements IPaymentDao{
 
     @Override
     public boolean completePayment(PaymentModel paymentModel) throws SQLException {
-        String sqlQuery = String.format(QueryConstants.INSERT_TRANSACTION_QUERY,paymentModel.getTransactionId(),paymentModel.getName(),paymentModel.getAmount(),paymentModel.getTimeStamp(),paymentModel.getCardNumber());
+        String sqlQuery = String.format(QueryConstants.INSERT_TRANSACTION_QUERY,paymentModel.getTransactionId(),paymentModel.getName(),paymentModel.getAmount(),paymentModel.getTimeStamp(),paymentModel.getCardNumber(),paymentModel.getLoggedInUserEmail());
         return  PlayupDBConnection.getInstance().updateData(sqlQuery);
     }
 }

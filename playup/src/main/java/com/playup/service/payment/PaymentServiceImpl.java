@@ -8,7 +8,8 @@ import com.playup.dao.payment.PaymentDaoImpl;
 import com.playup.model.payment.CreditCard;
 import com.playup.model.payment.PaymentFactory;
 import com.playup.model.payment.PaymentModel;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
+import com.playup.service.email.IGetLoggedInUserEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -22,7 +23,10 @@ public class PaymentServiceImpl implements IPaymentService {
     private ITransactionIdGeneratorService transactionIdGeneratorService;
 
     @Autowired
-    private IEmailSender emailSender;
+    private IEmailSenderService emailSender;
+
+    @Autowired
+    private IGetLoggedInUserEmail getLoggedInUserEmail;
 
     public boolean completeTransaction(CreditCard creditCard) {
         PaymentModel paymentModel = PaymentFactory.getPaymentObject();
@@ -33,10 +37,11 @@ public class PaymentServiceImpl implements IPaymentService {
         paymentModel.setName(creditCard.getName());
         paymentModel.setAmount(20);
         paymentModel.setTimeStamp(currentTimeStamp.toString());
+        paymentModel.setLoggedInUserEmail(getLoggedInUserEmail.getEmail());
         try {
             boolean response = PaymentDaoImpl.getInstance().completePayment(paymentModel);
             if(response) {
-                emailSender.sendEmail(ApplicationConstants.BOOKING_CONFIRMATION_MAIL_BODY,ApplicationConstants.BOOKING_CONFIRMATION_MAIL_SUBJECT+paymentModel.getTransactionId());
+                emailSender.sendEmail(paymentModel.getLoggedInUserEmail(),ApplicationConstants.BOOKING_CONFIRMATION_MAIL_BODY,ApplicationConstants.BOOKING_CONFIRMATION_MAIL_SUBJECT+paymentModel.getTransactionId());
                 return true;
             }
         } catch (Exception e) {

@@ -1,4 +1,7 @@
-package com.playup.tests;
+/**
+ * @author Shiv Gaurang Desai
+ */
+package com.playup.tests.email;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;

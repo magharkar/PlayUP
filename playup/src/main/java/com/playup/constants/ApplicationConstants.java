@@ -38,5 +38,5 @@ public class ApplicationConstants {
     public final static String CARD_ERROR_MESSAGE = "Card number is not valid";
     public final static String CVV_ERROR_MESSAGE = "CVV is not valid";
     public final static String EXPIRY_DATE_ERROR_MESSAGE = "Expiry date is not valid";
-
+    public final static String APPLICATION_PROPERTIES_PATH = "src/main/resources/application.properties";
 }
