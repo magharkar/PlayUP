@@ -2,6 +2,7 @@
 
 package com.playup.controller.user;
 
+import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.IUser;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
@@ -104,9 +105,9 @@ public class UserRegistrationController {
             } else {
                 model.addAttribute("success", "Send OTP");
                 String response = oneTimePasswordService.sendOTP(user.getEmail());
-                String otpSubject = "Email Verification - PlayUP";
-                String otpBody = "Your 6-digit OTP for Email Verification is - \n" + response + "\n" +
-                        "It is valid for 15 minutes.";
+                String otpSubject = ApplicationConstants.EMAIL_VERIFICATION_SUBJECT;
+                String otpBody = ApplicationConstants.EMAIL_VERIFICATION_BODY + response + "\n" +
+                        ApplicationConstants.EMAIL_VERIFICATION_VALIDITY;
                 emailService.sendEmail(user.getEmail(), otpBody, otpSubject);
                 model.addAttribute("emailId", user.getEmail());
                 model.addAttribute("userName", user.getUserName());

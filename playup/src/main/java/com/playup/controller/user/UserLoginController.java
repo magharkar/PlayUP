@@ -25,7 +25,6 @@ public class UserLoginController {
 
     @GetMapping("/login")
     public String getLogin(Model model) {
-       System.out.println("Reaching here");
         model.addAttribute("user", UserFactory.userObject(new UserObjectFactory()));
         return "login";
     }

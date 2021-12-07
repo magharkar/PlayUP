@@ -5,6 +5,7 @@ package com.playup.service.user;
 import com.playup.service.email.IEmailSender;
 
 public abstract class UserProfileServiceAbstractFactory {
+
     public abstract IUserLoginService userLoginService();
 
     public abstract IEmailSender emailSenderService();

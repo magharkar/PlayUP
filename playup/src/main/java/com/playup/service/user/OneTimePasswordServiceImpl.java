@@ -35,7 +35,6 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
     public String sendOTP(String email) {
         OneTimePassword oneTimePassword = new OneTimePassword();
 
-        //userDao = UserProfileFactoryDao.instance().userDao();
         oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
 
         Random randomOTPNumber = new Random();
@@ -46,11 +45,6 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
         oneTimePassword.setOneTimePasswordDate(new Date());
         oneTimePassword.setEmailId(email);
 
-        String otpSubject = "Email Verification - PlayUP";
-        String otpBody = "Your 6-digit OTP for Email Verification is - \n" + otpValue + "\n" +
-                "It is valid for 15 minutes.";
-
-//        emailService.sendEmail(email, otpBody, otpSubject);
         try {
             oneTimePasswordDao.setOneTimePassword(oneTimePassword);
         } catch (SQLException e) {
@@ -107,7 +101,6 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
         }
-        System.out.println(otpList);
         OneTimePassword latestOtp = otpList.get(otpList.size() - 1);
         Date latestStamp = latestOtp.getOneTimePasswordDate();
 
@@ -115,10 +108,6 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
         current.setTime(latestStamp);
         current.add(Calendar.MINUTE, 15);
         latestStamp = current.getTime();
-        System.out.println("Latest Otp");
-        System.out.println(latestOtp);
-        System.out.println("Latest Stamp");
-        System.out.println(latestStamp);
 
         if (latestStamp.compareTo(new Date()) < 0) {
             return "otp_expired";
