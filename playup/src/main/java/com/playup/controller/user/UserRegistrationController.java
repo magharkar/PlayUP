@@ -52,13 +52,14 @@ public class UserRegistrationController {
     public String verifyOtp(@ModelAttribute OneTimePassword oneTimePassword, @RequestParam String emailId,
                             @RequestParam String password, @RequestParam String userName,
                             @RequestParam String contactNumber, @RequestParam String city,
-                            Model model) {
+                            @RequestParam String sport, Model model) {
         IUser user = UserFactory.userObject(new UserObjectFactory());
         user.setUserName(userName);
         user.setPassword(password);
         user.setContactNumber(contactNumber);
         user.setCity(city);
         user.setEmail(emailId);
+        user.setSport(sport);
         String response = null;
         try {
             response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
@@ -73,7 +74,7 @@ public class UserRegistrationController {
         }
         model.addAttribute("response", response);
         if(response.equals("email_verified") && success) {
-            return "venues";
+            return "redirect:/venues";
         }
 
         return "otp";
@@ -108,6 +109,7 @@ public class UserRegistrationController {
                 model.addAttribute("password", user.getPassword());
                 model.addAttribute("city", user.getCity());
                 model.addAttribute("oneTimePassword", new OneTimePassword());
+                model.addAttribute("sport", user.getSport());
                 return "otp";
             }
         }
