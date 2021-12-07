@@ -2,7 +2,6 @@
 
 package com.playup.controller.user;
 
-import com.playup.model.Venue;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
