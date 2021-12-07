@@ -36,6 +36,11 @@ public class UserRegistrationController {
         this.userRegistrationService = UserProfileServiceFactory.instance().userRegistrationService();
     }
 
+    @RequestMapping("/logout")
+    public String defectDetails() {
+        return "logout";
+    }
+
     @GetMapping("/registration")
     public String registrationForm(Model model) {
         model.addAttribute("user", UserFactory.userObject(new UserObjectFactory()));
