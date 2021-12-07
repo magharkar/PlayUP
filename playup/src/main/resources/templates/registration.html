@@ -75,6 +75,20 @@ body {
 
             <div class="form-row">
                 <div class="col">
+                    <p>Contact Number</p>
+                </div>
+                <div class="col">
+                    <select th:field="*{sport}">
+                        <option th:value="Football" th:text="Football"></option>
+                        <option th:value="Cricket" th:text="Cricket"></option>
+                        <option th:value="Badminton" th:text="Badminton"></option>
+                        <option th:value="Tennis" th:text="Tennis"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
                     <p>Password*</p>
                 </div>
                 <div class="col">

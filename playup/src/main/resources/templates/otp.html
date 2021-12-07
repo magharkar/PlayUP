@@ -58,6 +58,9 @@ body {
             <div th:if="${contactNumber}">
                 <input id="contactNumber" type="text" th:value="${contactNumber}" name="contactNumber" hidden>
             </div>
+            <div th:if="${sport}">
+                <input id="sport" type="text" th:value="${sport}" name="sport" hidden>
+            </div>
             <div th:if="${city}">
                 <input id="city" type="text" th:value="${city}" name="city" hidden>
             </div>

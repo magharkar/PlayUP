@@ -55,10 +55,11 @@ public class UserDaoImpl implements IUserDao {
         String password = user.getPassword();
         String city = user.getCity();
         String username = user.getUserName();
+        String sport = user.getSport();
 
        if(!isUserAlreadyRegistered) {
-           String query = "Insert into User (email, phone, password, city, username) values " +
-                   "('" + email + "'," + "'" + phone + "'," + "'" + password + "'," + "'" + city + "','" + username + "' )";
+           String query = "Insert into User (email, phone, password, sport, city, username) values " +
+                   "('" + email + "'," + "'" + phone + "'," + "'" + password +  "'," + "'" + sport + "'," + "'" + city + "','" + username + "' )";
            String sqlQuery = String.format(query);
            boolean resultSet = false;
            try {
