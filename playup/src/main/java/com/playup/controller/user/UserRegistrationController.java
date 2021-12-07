@@ -74,7 +74,7 @@ public class UserRegistrationController {
         }
         model.addAttribute("response", response);
         if(response.equals("email_verified") && success) {
-            return "venues";
+            return "redirect:/venues";
         }
 
         return "otp";

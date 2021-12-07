@@ -34,7 +34,7 @@ public class UserLoginController {
     public String logUser(@ModelAttribute User user, Model model) throws SQLException {
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            return "venues";
+            return "redirect:/venues";
         } else {
             model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");
