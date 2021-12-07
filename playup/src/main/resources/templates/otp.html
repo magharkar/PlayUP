@@ -1,3 +1,5 @@
+<!--@Author Mugdha Agharkar-->
+
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
@@ -40,11 +42,27 @@ body {
 
 <h2>OTP</h2>
 <div class="container-class">
+
     <div class="otp-text">An OTP has been sent it to your registered Email ID</div>
-    <form action="#" th:action="@{/otp}" th:object="${otp}" method="post">
+    <form action="#" th:action="@{/otp}" th:object="${oneTimePassword}" method="post">
         <div class="form-row">
-            <div class="col">
-                <input id="otp" type="text" th:field="*{oneTimePassword}" />
+            <div class="col">One Time Password
+                <input id="otp" type="text" th:field="*{oneTimePassword}"/>
+            </div>
+            <div th:if="${emailId}">
+                <input id="emailId" type="text" th:value="${emailId}" name="emailId" hidden>
+            </div>
+            <div th:if="${userName}">
+                <input id="userName" type="text" th:value="${userName}" name="userName" hidden>
+            </div>
+            <div th:if="${contactNumber}">
+                <input id="contactNumber" type="text" th:value="${contactNumber}" name="contactNumber" hidden>
+            </div>
+            <div th:if="${city}">
+                <input id="city" type="text" th:value="${city}" name="city" hidden>
+            </div>
+            <div th:if="${password}">
+                <input id="password" type="text" th:value="${password}" name="password" hidden>
             </div>
         </div>
         <p style="margin-top: 16px"><input type="submit" value="Verify" /></p>
