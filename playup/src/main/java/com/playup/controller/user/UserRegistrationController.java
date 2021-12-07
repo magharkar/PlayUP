@@ -6,7 +6,7 @@ import com.playup.model.user.IUser;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 import com.playup.dao.user.IOneTimePasswordDao;
 import com.playup.model.user.*;
 import com.playup.service.user.IOneTimePasswordService;
@@ -29,7 +29,7 @@ public class UserRegistrationController {
     IOneTimePasswordDao oneTimePasswordDao;
 
     @Autowired
-    private IEmailSender emailService;
+    private IEmailSenderService emailService;
 
     public UserRegistrationController() {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();
