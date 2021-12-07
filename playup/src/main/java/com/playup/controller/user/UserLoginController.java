@@ -2,6 +2,7 @@
 
 package com.playup.controller.user;
 
+import com.playup.model.Venue;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
@@ -34,7 +35,7 @@ public class UserLoginController {
     public String logUser(@ModelAttribute User user, Model model) throws SQLException {
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            return "venues";
+            return "redirect:/venues";
         } else {
             model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");
