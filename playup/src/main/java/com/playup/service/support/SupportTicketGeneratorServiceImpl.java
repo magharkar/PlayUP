@@ -18,8 +18,8 @@ public class SupportTicketGeneratorServiceImpl implements ISupportTicketGenerato
                 ticketNumber = (int)(Math.random()*(maximumTicketNumber-minimumTicketNumber+1)+minimumTicketNumber);
                 isNumberExits = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(ticketNumber);
             }
-        }catch(SQLException s) {
-            System.out.println(s);
+        }catch(SQLException e) {
+            e.printStackTrace();
         }
         return ticketNumber;
     }

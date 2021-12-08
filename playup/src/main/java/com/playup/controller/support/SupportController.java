@@ -5,7 +5,7 @@ package com.playup.controller.support;
 
 import com.playup.constants.ApplicationConstants;
 import com.playup.model.support.SupportModel;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 import com.playup.service.email.IEmailValidationService;
 import com.playup.service.support.ISupportFactoryService;
 import com.playup.service.support.ISupportService;
@@ -14,15 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
-
 @Controller
 public class SupportController {
     @Autowired
     private ISupportService supportService;
 
     @Autowired
-    private IEmailSender emailService;
+    private IEmailSenderService emailService;
 
     @Autowired
     private IEmailValidationService emailValidationService;
@@ -37,7 +35,7 @@ public class SupportController {
     }
 
     @PostMapping("/support")
-    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model model){
+    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model ui){
         if (emailValidationService.isEmailValid(supportModel.getEmail())) {
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
             if (isRequestGenerated) {
@@ -46,12 +44,12 @@ public class SupportController {
             }
         }
         else {
-            model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportModel);
-            model.addAttribute(ApplicationConstants.SUPPORT_ERROR,ApplicationConstants.EMAIL_ERROR_MESSAGE);
+            ui.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportModel);
+            ui.addAttribute(ApplicationConstants.SUPPORT_ERROR,ApplicationConstants.EMAIL_ERROR_MESSAGE);
             return ApplicationConstants.SUPPORT_TEXT;
         }
-        model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportModel);
-        model.addAttribute(ApplicationConstants.SUPPORT_ERROR, ApplicationConstants.ERROR_MESSAGE);
+        ui.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportModel);
+        ui.addAttribute(ApplicationConstants.SUPPORT_ERROR, ApplicationConstants.ERROR_MESSAGE);
         return ApplicationConstants.SUPPORT_TEXT;
     }
 }

@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Venues</title>
+</head>
+<style>
+    h1 {
+        text-align: center;
+    }
+    table{
+        border-collapse: collapse;
+    }
+    table, th, td{
+        border: 1px solid black;
+        position: relative;
+    }
+    .navbar {
+        color: #FFF0F5;
+        background-color: #483D8B;
+    }
+    h2 {
+        margin-top: 8px;
+        text-align: center;
+    }
+    body {
+        background-color: #F5FFFA;
+    }
+    .container-class {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 16px;
+    }
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/paymentHistory.js}"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body onload="getPaymentHistory()">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div>PlayUP</div>
+        </div>
+    </div>
+</nav>
+<div class="container-class">
+<h1>Payment History</h1>
+<div id="error-box"></div><br><br><br><br>
+<table id="history" style="width:100%">
+    <tr>
+        <th>Transaction Id</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Time Stamp</th>
+    </tr>
+</table>
+</div>
+</body>
+</html>

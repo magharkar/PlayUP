@@ -1,7 +1,7 @@
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.tests;
+package com.playup.tests.payment;
 
 import com.playup.service.payment.CreditCardValidationServiceImpl;
 import com.playup.service.payment.ICreditCardValidationService;
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreditCardValidationImplTest {
-
     @Test
     public void creditCardValidationServiceTestForNotNull() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.payment.CreditCardValidationServiceImpl", false, getClass().getClassLoader());
