@@ -18,17 +18,17 @@ import com.playup.dao.search.SearchVenueDao;
 
 @RestController
 public class SearchController {
-	
+
 	@GetMapping("/search")
-    public ModelAndView search() {
-    	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("search");
-        return mv;
-    }
-    
-    @RequestMapping(value = "/search/getSearchResults", method = RequestMethod.POST)
-    public @ResponseBody ArrayList<Object> getSearchResults(@RequestBody String searchKey){
+	public ModelAndView search() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("search");
+		return mv;
+	}
+
+	@RequestMapping(value = "/search/getSearchResults", method = RequestMethod.POST)
+	public @ResponseBody ArrayList<Object> getSearchResults(@RequestBody String searchKey) {
 		return new SearchVenueDao().search(searchKey);
-    }
+	}
 
 }

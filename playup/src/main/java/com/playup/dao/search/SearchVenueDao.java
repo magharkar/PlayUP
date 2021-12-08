@@ -23,7 +23,7 @@ public class SearchVenueDao extends AbstractSearchFactory {
 			List<SearchVenue> venuesList = getVenuesFromDB();
 			ArrayList<Object> searchResults = new ArrayList<Object>();
 			searchResults.addAll(filterBySearchKey(venuesList, searchKey));
-			return searchResults; 
+			return searchResults;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -32,30 +32,32 @@ public class SearchVenueDao extends AbstractSearchFactory {
 
 	private Collection<SearchVenue> filterBySearchKey(List<SearchVenue> venuesList, String searchKey) {
 		Collection<SearchVenue> venueCollection = new HashSet<>();
-		for(SearchVenue venue: venuesList) {
-			if(venue.getVenueName().toLowerCase().contains(searchKey.toLowerCase())) {
+		for (SearchVenue venue : venuesList) {
+			if (venue.getVenueName().toLowerCase().contains(searchKey.toLowerCase())) {
 				venueCollection.add(venue);
 				continue;
-			} else if(venue.getVenueID().contains(searchKey.toLowerCase())) {
+			} else if (venue.getVenueID().contains(searchKey.toLowerCase())) {
 				venueCollection.add(venue);
 				continue;
-			}else if(venue.getVenueCity().toLowerCase().contains(searchKey.toLowerCase())) {
+			} else if (venue.getVenueCity().toLowerCase().contains(searchKey.toLowerCase())) {
 				venueCollection.add(venue);
 				continue;
-			} 
+			}
 		}
 		return venueCollection;
 	}
-	
+
 	public List<SearchVenue> getVenuesFromDB() throws SQLException {
 		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues;");
 		while (resultSet != null && resultSet.next()) {
 			venueList.add(new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
-					resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
-					resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
-					resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),
-					resultSet.getString("avg_ratings"), resultSet.getString("category_id")));
+					resultSet.getString("city"), resultSet.getString("available_slots"),
+					resultSet.getString("total_slots"), resultSet.getString("from_time"),
+					resultSet.getString("to_time"), resultSet.getString("contact_info"),
+					resultSet.getString("latitude"), resultSet.getString("longitude"),
+					resultSet.getString("slot_price"), resultSet.getString("avg_ratings"),
+					resultSet.getString("category_id")));
 		}
 		return venueList;
 	}

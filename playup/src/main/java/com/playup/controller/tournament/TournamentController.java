@@ -31,7 +31,7 @@ public class TournamentController {
 	@RequestMapping(value = "/tournamentScheduler/getMatchSchedule", method = RequestMethod.POST)
 	public @ResponseBody List<Object> tournamentScheduler(@RequestBody TournamentDataModel tournamentData) {
 		List<Object> objectList = new ArrayList<>();
-		tournamentData.validate();
+		tournamentData.validate(); 
 		if (tournamentData.getError() != null) {
 			objectList.add(null);
 			objectList.add(tournamentData.getError());

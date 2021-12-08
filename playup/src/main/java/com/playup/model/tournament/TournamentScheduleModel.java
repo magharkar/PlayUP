@@ -7,10 +7,10 @@ package com.playup.model.tournament;
 import java.util.List;
 
 public class TournamentScheduleModel {
-	
+
 	String tournamentId;
 	List<TournamentMatchModel> matchesList;
-	
+
 	public TournamentScheduleModel(String tournamentId, List<TournamentMatchModel> matchesList) {
 		super();
 		this.tournamentId = tournamentId;

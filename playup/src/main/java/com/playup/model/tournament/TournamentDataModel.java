@@ -50,7 +50,7 @@ public class TournamentDataModel {
 	}
 
 	public void setPlayersPerTeam(String playersPerTeam) {
-		this.playersPerTeam = playersPerTeam; 
+		this.playersPerTeam = playersPerTeam;
 	}
 
 	public String getError() {
@@ -71,7 +71,7 @@ public class TournamentDataModel {
 		if (this.playersPerTeam == null || this.playersPerTeam.isEmpty()) {
 			stringBuffer.append("Number of players cannot be empty<br>");
 		}
-		if(notANumber(this.playersPerTeam)) {
+		if (notANumber(this.playersPerTeam)) {
 			stringBuffer.append("Number of players should be a number<br>");
 		}
 		this.error = stringBuffer.toString().isEmpty() ? null : stringBuffer.toString();
@@ -81,7 +81,7 @@ public class TournamentDataModel {
 		try {
 			Double.valueOf(playersPerTeam);
 			return true;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}

@@ -29,7 +29,7 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 		tournamentDataModel.setTournamentId(generateTournamentID());
 		List<User> userList = getEligibleUsers(tournamentDataModel.getTournamentSport());
 		List<TournamentPlayerModel> playerModelList = getPlayers(userList);
-		List<TournamentTeamModel> teamModelList = getTeams(playerModelList, 
+		List<TournamentTeamModel> teamModelList = getTeams(playerModelList,
 				Integer.valueOf(tournamentDataModel.getPlayersPerTeam()));
 		List<TournamentMatchModel> matchModelList = getMatches(teamModelList);
 		updateMatchesTableInDB(matchModelList, tournamentDataModel.getTournamentId());
@@ -44,7 +44,7 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 		try {
 			Double max = 0d;
 			for (String tournamenetID : tournamentIDsList) {
-				if (Double.valueOf(tournamenetID) > max)  {
+				if (Double.valueOf(tournamenetID) > max) {
 					max = Double.valueOf(tournamenetID);
 				}
 			}
@@ -64,8 +64,8 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 				dateOfMatch = addOneDay(dateOfMatch);
 			}
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd");
-			matchModelList
-					.add(new TournamentMatchModel(teamModelList.get(i), teamModelList.get(i + 1), sdf.format(dateOfMatch), null));
+			matchModelList.add(new TournamentMatchModel(teamModelList.get(i), teamModelList.get(i + 1),
+					sdf.format(dateOfMatch), null));
 			i = i + 2;
 		}
 		return matchModelList;
@@ -89,8 +89,8 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 		int teamNumber = 1;
 		int i = 0;
 		while (i + playersPerTeam < playerModelList.size()) {
-			teamModelList
-					.add(new TournamentTeamModel(playerModelList.subList(i, i + playersPerTeam), String.valueOf(teamNumber)));
+			teamModelList.add(new TournamentTeamModel(playerModelList.subList(i, i + playersPerTeam),
+					String.valueOf(teamNumber)));
 			teamNumber++;
 			i = i + playersPerTeam;
 		}
@@ -133,7 +133,7 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 				user.setCity(resultSet.getString("sport"));
 				userList.add((User) user);
 			}
-		} catch (SQLException e) { 
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return userList;

@@ -7,10 +7,10 @@ package com.playup.model.tournament;
 import java.util.List;
 
 public class TournamentTeamModel {
-	
+
 	List<TournamentPlayerModel> players;
 	String teamNumber;
-	
+
 	public TournamentTeamModel(List<TournamentPlayerModel> players, String teamNumber) {
 		super();
 		this.players = players;
@@ -32,5 +32,5 @@ public class TournamentTeamModel {
 	public void setTeamNumber(String teamNumber) {
 		this.teamNumber = teamNumber;
 	}
-	
+
 }
