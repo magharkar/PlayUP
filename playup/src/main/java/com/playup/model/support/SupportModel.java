@@ -9,32 +9,8 @@ public class SupportModel {
     private String email;
     private String venue;
     private String description;
-    private String support;
 
     public SupportModel(){}
-
-    public SupportModel(String name, String email, String venue, String description) {
-        this.name = name;
-        this.email = email;
-        this.venue = venue;
-        this.description = description;
-    }
-
-    public SupportModel(int ticketNumber,String name, String email, String venue, String description) {
-        this.ticketNumber = ticketNumber;
-        this.name = name;
-        this.email = email;
-        this.venue = venue;
-        this.description = description;
-    }
-
-    public String getSupport() {
-        return support;
-    }
-
-    public void setSupport(String support) {
-        this.support = support;
-    }
 
     public String getEmail() {
         return email;

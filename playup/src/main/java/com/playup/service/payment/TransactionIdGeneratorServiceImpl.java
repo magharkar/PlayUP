@@ -4,7 +4,6 @@
 package com.playup.service.payment;
 
 import com.playup.dao.payment.PaymentDaoImpl;
-import com.playup.dao.support.SupportDaoImpl;
 import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 
@@ -14,7 +13,7 @@ public class TransactionIdGeneratorServiceImpl implements ITransactionIdGenerato
     public int generateTransactionId(int minimumTransactionId, int maximumTransactionId) {
         int transactionNumber = (int)(Math.random()*(maximumTransactionId-minimumTransactionId+1)+minimumTransactionId);
         try {
-            boolean isNumberExits = SupportDaoImpl.getInstance().checkWhetherTicketNumberExists(transactionNumber);
+            boolean isNumberExits = PaymentDaoImpl.getInstance().checkWhetherTransactionExist(transactionNumber);
             while(isNumberExits) {
                 transactionNumber = (int)(Math.random()*(maximumTransactionId-minimumTransactionId+1)+minimumTransactionId);
                 isNumberExits = PaymentDaoImpl.getInstance().checkWhetherTransactionExist(transactionNumber);

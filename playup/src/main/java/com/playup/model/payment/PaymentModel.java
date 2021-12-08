@@ -9,21 +9,25 @@ public class PaymentModel {
     private String cardNumber;
     private int amount;
     private String timeStamp;
+    private String loggedInUserEmail;
 
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getLoggedInUserEmail() {
+        return loggedInUserEmail;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setLoggedInUserEmail(String loggedInUserEmail) {
+        this.loggedInUserEmail = loggedInUserEmail;
     }
 
-    public PaymentModel(int transactionId, String name, String cardNumber, int amount, String timeStamp) {
+    public PaymentModel(){}
+
+    public PaymentModel(int transactionId, String name, String cardNumber, int amount, String timeStamp, String loggedInUserEmail) {
         this.transactionId = transactionId;
         this.name = name;
         this.cardNumber = cardNumber;
         this.amount = amount;
         this.timeStamp = timeStamp;
+        this.loggedInUserEmail = loggedInUserEmail;
     }
 
     public PaymentModel(String name, String cardNumber, int amount, String timeStamp) {
@@ -33,7 +37,13 @@ public class PaymentModel {
         this.timeStamp = timeStamp;
     }
 
-    public PaymentModel(){}
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
 
     public int getTransactionId() {
         return transactionId;
