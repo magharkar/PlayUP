@@ -30,9 +30,11 @@ body {
 	margin: 0px;
 	font-family: -apple-system;
 }
+
 table {
 	border-collapse: collapse;
 }
+
 table, th, td {
 	border: 1px solid black;
 	position: relative;
@@ -62,8 +64,8 @@ table, th, td {
 				</div>
 				<div class="form-row">
 					<div class="col">
-						<label for="sport_type">Choose a sport:</label> <select name="sport"
-							id="sports">
+						<label for="sport_type">Choose a sport:</label> <select
+							name="sport" id="sports">
 							<option value="Football">Football</option>
 							<option value="Cricket">Cricket</option>
 							<option value="Badminton">Badminton</option>
@@ -79,12 +81,13 @@ table, th, td {
 					</div>
 				</div>
 				<p style="margin-top: 16px">
-				<input type="button" id="fsubmit" name="submit" onClick = "postData()" value="Submit" />
+					<input type="button" id="fsubmit" name="submit"
+						onClick="postData()" value="Submit" />
 				</p>
 			</form>
-			<div id = "error-info"></div>
+			<div id="error-info"></div>
 		</div>
-		<table id="tournamentTable" style="width:100%">
+		<table id="tournamentTable" style="width: 100%">
 			<tr>
 				<th>Match</th>
 				<th>Team</th>
