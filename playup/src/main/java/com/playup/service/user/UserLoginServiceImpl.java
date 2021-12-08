@@ -24,11 +24,6 @@ public class UserLoginServiceImpl implements IUserLoginService{
         if(existingUser.getEmail() == null) {
             return false;
         }
-//        System.out.println("USER");
-//        System.out.println(existingUser.getUserName());
-//        System.out.println(existingUser.getPassword());
-//        System.out.println(user.getUserName());
-//        System.out.println(user.getPassword());
         boolean isUserValid = ((existingUser.getEmail()).equals(user.getEmail())) && (existingUser.getPassword().equals(user.getPassword()));
         System.out.println(isUserValid);
         return isUserValid;

@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Venues</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <style>
 h1 {
@@ -13,10 +14,35 @@ table, th, td{
 	border: 1px solid black;
 	position: relative;
 }
+.navbar {
+    color: #FFF0F5;
+    background-color: #483D8B;
+}
+body {
+    background-color: #F5FFFA;
+    margin: 0;
+}
+.table-container {
+margin: 8px;
+}
+form {
+margin: 0;
+}
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript" th:src="@{/js/venueDisplay.js}"></script>
 <body onload="postVenueData()">
+<nav class="navbar navbar-default justify-content-between" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
+            <div>PlayUP</div>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
 <h1>Venues</h1>
 <div id="sort-dropdown">
     <label for="sort">Sort By</label>
@@ -28,23 +54,26 @@ table, th, td{
     </select>
 </div>
 <div id="error-box"></div><br><br><br><br>
-<table id="searchResults" style="width:100%">
-    <tr>
-        <th>Venue ID</th>
-        <th>Venue Name</th>
-        <th>Venue City</th>
-        <th>Available Slots</th>
-        <th>Total Slots</th>
-        <th>From Time</th>
-        <th>To Time</th>
-        <th>Contact Info</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Slot Price</th>
-        <th>Average Rating</th>
-        <th>Category ID</th>
-        <th></th>
-    </tr>
-</table>
+<div class="table-container">
+    <table id="searchResults" style="width:100%">
+        <tr>
+            <th>Venue ID</th>
+            <th>Venue Name</th>
+            <th>Venue City</th>
+            <th>Available Slots</th>
+            <th>Total Slots</th>
+            <th>From Time</th>
+            <th>To Time</th>
+            <th>Contact Info</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Slot Price</th>
+            <th>Average Rating</th>
+            <th>Category ID</th>
+            <th></th>
+        </tr>
+    </table>
+</div>
+
 </body>
 </html>
