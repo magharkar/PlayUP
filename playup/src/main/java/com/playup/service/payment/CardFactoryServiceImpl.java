@@ -8,7 +8,7 @@ import com.playup.model.payment.CardFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CardFactoryService implements ICardFactoryService {
+public class CardFactoryServiceImpl implements ICardFactoryService {
     @Override
     public CreditCard getCreditCard() {
         return CardFactory.createCreditCard();

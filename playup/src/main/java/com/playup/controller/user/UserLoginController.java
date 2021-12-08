@@ -25,18 +25,15 @@ public class UserLoginController {
 
     @GetMapping("/login")
     public String getLogin(Model model) {
-       System.out.println("Reaching here");
         model.addAttribute("user", UserFactory.userObject(new UserObjectFactory()));
         return "login";
     }
 
     @PostMapping("/login")
     public String logUser(@ModelAttribute User user, Model model) throws SQLException {
-        System.out.println(user.getUserName());
-        System.out.println(user.getPassword());
         boolean success = userLoginService.verifyUser(user, model);
         if (success) {
-            return "venues";
+            return "redirect:/venues";
         } else {
             model.addAttribute(user);
             model.addAttribute("failure", "Login unsuccessful");

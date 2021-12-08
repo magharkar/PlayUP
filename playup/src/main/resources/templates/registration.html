@@ -21,6 +21,9 @@ body {
 .password-restriction {
     margin: 16px;
 }
+.title {
+margin: 3px 0px;
+}
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript" th:src="@{/js/getOtp.js}"></script>
@@ -29,7 +32,7 @@ body {
     <div class="container-fluid">
         <div class="navbar-header">
 <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
-            <div>PlayUP</div>
+            <div class="title">PlayUP</div>
         </div>
     </div>
 </nav>
@@ -70,6 +73,20 @@ body {
                 </div>
                 <div class="col">
                     <input id="contactNo" type="text" th:field="*{contactNumber}" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <p>Contact Number</p>
+                </div>
+                <div class="col">
+                    <select th:field="*{sport}">
+                        <option th:value="Football" th:text="Football"></option>
+                        <option th:value="Cricket" th:text="Cricket"></option>
+                        <option th:value="Badminton" th:text="Badminton"></option>
+                        <option th:value="Tennis" th:text="Tennis"></option>
+                    </select>
                 </div>
             </div>
 

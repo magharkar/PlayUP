@@ -1,6 +1,6 @@
-//Refered https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
 /**
  * @author Shiv Gaurang Desai
+ * Refered https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
  */
 package com.playup.service.payment;
 
@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Base64;
 
 @Service
-public class CipherService implements ICipherService {
+public class CipherServiceImpl implements ICipherService {
     @Override
     public String encrypt(String messageToEncrypt) {
         try {

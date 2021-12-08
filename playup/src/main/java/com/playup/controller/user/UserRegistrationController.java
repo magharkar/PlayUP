@@ -2,11 +2,12 @@
 
 package com.playup.controller.user;
 
+import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.IUser;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 import com.playup.dao.user.IOneTimePasswordDao;
 import com.playup.model.user.*;
 import com.playup.service.user.IOneTimePasswordService;
@@ -29,11 +30,16 @@ public class UserRegistrationController {
     IOneTimePasswordDao oneTimePasswordDao;
 
     @Autowired
-    private IEmailSender emailService;
+    private IEmailSenderService emailService;
 
     public UserRegistrationController() {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();
         this.userRegistrationService = UserProfileServiceFactory.instance().userRegistrationService();
+    }
+
+    @RequestMapping("/logout")
+    public String defectDetails() {
+        return "logout";
     }
 
     @GetMapping("/registration")
@@ -44,7 +50,6 @@ public class UserRegistrationController {
 
     @GetMapping("/otp")
     public String getOtp(Model model) {
-       // model.addAttribute("otp",otp);
         model.addAttribute("oneTimePassword", new OneTimePassword());
         return "otp";
     }
@@ -53,21 +58,29 @@ public class UserRegistrationController {
     public String verifyOtp(@ModelAttribute OneTimePassword oneTimePassword, @RequestParam String emailId,
                             @RequestParam String password, @RequestParam String userName,
                             @RequestParam String contactNumber, @RequestParam String city,
-                            Model model) throws SQLException, ParseException {
+                            @RequestParam String sport, Model model) {
         IUser user = UserFactory.userObject(new UserObjectFactory());
         user.setUserName(userName);
         user.setPassword(password);
         user.setContactNumber(contactNumber);
         user.setCity(city);
         user.setEmail(emailId);
-        String response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
-        System.out.println(response);
-        System.out.println(user);
-        boolean success = userRegistrationService.registerNewUser(user);
-        System.out.println(success);
+        user.setSport(sport);
+        String response = null;
+        try {
+            response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        boolean success = false;
+        try {
+            success = userRegistrationService.registerNewUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         model.addAttribute("response", response);
-        if(response.equals("email_verified")) {
-            return "venues";
+        if(response.equals("email_verified") && success) {
+            return "redirect:/venues";
         }
 
         return "otp";
@@ -92,9 +105,9 @@ public class UserRegistrationController {
             } else {
                 model.addAttribute("success", "Send OTP");
                 String response = oneTimePasswordService.sendOTP(user.getEmail());
-                String otpSubject = "Email Verification - PlayUP";
-                String otpBody = "Your 6-digit OTP for Email Verification is - \n" + response + "\n" +
-                        "It is valid for 15 minutes.";
+                String otpSubject = ApplicationConstants.EMAIL_VERIFICATION_SUBJECT;
+                String otpBody = ApplicationConstants.EMAIL_VERIFICATION_BODY + response + "\n" +
+                        ApplicationConstants.EMAIL_VERIFICATION_VALIDITY;
                 emailService.sendEmail(user.getEmail(), otpBody, otpSubject);
                 model.addAttribute("emailId", user.getEmail());
                 model.addAttribute("userName", user.getUserName());
@@ -102,6 +115,7 @@ public class UserRegistrationController {
                 model.addAttribute("password", user.getPassword());
                 model.addAttribute("city", user.getCity());
                 model.addAttribute("oneTimePassword", new OneTimePassword());
+                model.addAttribute("sport", user.getSport());
                 return "otp";
             }
         }

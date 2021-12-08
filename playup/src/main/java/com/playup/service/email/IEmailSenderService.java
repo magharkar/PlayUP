@@ -3,6 +3,6 @@
  */
 package com.playup.service.email;
 
-public interface IEmailSender {
+public interface IEmailSenderService {
     void sendEmail(String  toEmail, String body, String subject);
 }

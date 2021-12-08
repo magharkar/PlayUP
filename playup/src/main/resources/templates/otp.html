@@ -29,13 +29,16 @@ body {
 .otp-text {
     margin: 16px;
 }
+.title {
+margin: 3px 0px;
+}
 </style>
 <body>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
-            <div>PlayUP</div>
+            <div class="title">PlayUP</div>
         </div>
     </div>
 </nav>
@@ -57,6 +60,9 @@ body {
             </div>
             <div th:if="${contactNumber}">
                 <input id="contactNumber" type="text" th:value="${contactNumber}" name="contactNumber" hidden>
+            </div>
+            <div th:if="${sport}">
+                <input id="sport" type="text" th:value="${sport}" name="sport" hidden>
             </div>
             <div th:if="${city}">
                 <input id="city" type="text" th:value="${city}" name="city" hidden>

@@ -10,12 +10,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmailSenderService implements IEmailSender {
+public class EmailSenderServiceImpl implements IEmailSenderService {
     @Autowired
      JavaMailSender mailSender;
 
     @Override
-    public void sendEmail(String  toEmail, String body, String subject){
+    public void sendEmail(String toEmail, String body, String subject){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(ApplicationConstants.ADMIN_MAIL_ID);
         message.setTo(toEmail);

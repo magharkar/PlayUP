@@ -2,13 +2,13 @@
 
 package com.playup.service.user;
 
-import com.playup.service.email.EmailSenderService;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.EmailSenderServiceImpl;
+import com.playup.service.email.IEmailSenderService;
 
 public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory {
     private static UserProfileServiceFactory instance = null;
     private IUserLoginService userLoginService;
-    private IEmailSender emailSenderService;
+    private IEmailSenderService emailSenderService;
     private IOneTimePasswordService oneTimePasswordService;
     private IUserRegistrationService userRegistrationService;
 
@@ -32,9 +32,9 @@ public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory
     }
 
     @Override
-    public IEmailSender emailSenderService() {
+    public IEmailSenderService emailSenderService() {
         if(emailSenderService == null) {
-            emailSenderService = new EmailSenderService();
+            emailSenderService = new EmailSenderServiceImpl();
         }
         return emailSenderService;
     }

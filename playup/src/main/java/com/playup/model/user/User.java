@@ -11,6 +11,7 @@ public class User implements IUser {
     private String password;
     private String confirmPassword;
     private String city;
+    private String sport;
 
     @Override
     public int getUserId() {
@@ -80,5 +81,15 @@ public class User implements IUser {
     @Override
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String getSport() {
+        return sport;
+    }
+
+    @Override
+    public void setSport(String sport) {
+        this.sport = sport;
     }
 }
