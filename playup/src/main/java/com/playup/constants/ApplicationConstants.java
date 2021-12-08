@@ -43,4 +43,5 @@ public class ApplicationConstants {
     public final static String EMAIL_VERIFICATION_VALIDITY = "It is valid for 15 minutes.";
     public final static String EMAIL_ID_ATTRIBUTE = "emailId";
     public final static String OTP_ATTRIBUTE = "oneTimePassword";
+    public final static String APPLICATION_PROPERTIES_PATH = "src/main/resources/application.properties";
 }
