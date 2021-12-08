@@ -3,6 +3,7 @@
  */
 package com.playup.tests.payment;
 
+import com.playup.dao.payment.IPaymentHistoryDaoImpl;
 import com.playup.dao.payment.PaymentHistoryDaoImpl;
 import com.playup.model.payment.PaymentModel;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class PaymentHistoryImplTest {
-    PaymentHistoryDaoImpl paymentDao = Mockito.mock(PaymentHistoryDaoImpl.class);
+    IPaymentHistoryDaoImpl paymentHistoryDao = Mockito.mock(PaymentHistoryDaoImpl.class);
+
     @Test
     public void paymentHistoryImplClassTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.payment.PaymentHistoryServiceImpl", false, getClass().getClassLoader());
@@ -33,8 +35,8 @@ public class PaymentHistoryImplTest {
         paymentModel.setCardNumber("ASYBoq/ZKnnXS4B80/EI9j0eDftup3Kj9iGqwlvvwvc=");
         paymentModel.setName("Shiv Desai");
         list.add(paymentModel);
-        when(paymentDao.getPaymentHistoryFromDB("shivgdesai6@gmail.com")).thenReturn(list);
-        assertEquals(paymentDao.getPaymentHistoryFromDB("shivgdesai6@gmail.com"), list);
-        verify(paymentDao).getPaymentHistoryFromDB("shivgdesai6@gmail.com");
+        when(paymentHistoryDao.getPaymentHistoryFromDB("shivgdesai6@gmail.com")).thenReturn(list);
+        assertEquals(paymentHistoryDao.getPaymentHistoryFromDB("shivgdesai6@gmail.com"), list);
+        verify(paymentHistoryDao).getPaymentHistoryFromDB("shivgdesai6@gmail.com");
     }
 }

@@ -9,7 +9,6 @@ import com.playup.model.support.SupportModel;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -39,7 +38,7 @@ public class SupportServiceImpl {
     }
 
     @Test
-    void checkWhetherSupportRequestIsCreated() throws SQLException, ParseException {
+    void checkWhetherSupportRequestIsCreated() throws SQLException {
         ArrayList<SupportModel> list = new ArrayList<>();
         SupportModel supportModel = new SupportModel();
         supportModel.setTicketNumber(1922);

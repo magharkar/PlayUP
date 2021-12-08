@@ -20,10 +20,9 @@ public class PaymentHistoryServiceImpl implements IPaymentHistoryService {
     {
         String emailId = loggedInUserEmail.getEmail();
         ArrayList<PaymentModel> paymentHistoryList = new ArrayList<>();
-        try{
+        try {
             paymentHistoryList =  PaymentHistoryDaoImpl.getInstance().getPaymentHistoryFromDB(emailId);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return paymentHistoryList;

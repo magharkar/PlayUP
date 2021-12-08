@@ -30,12 +30,12 @@ public class SupportController {
 
     @GetMapping("/support")
     public String SupportMethod(Model model) {
-    model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
-    return ApplicationConstants.SUPPORT_TEXT;
+        model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
+        return ApplicationConstants.SUPPORT_TEXT;
     }
 
     @PostMapping("/support")
-    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model ui){
+    public String generateSupportRequest(@ModelAttribute SupportModel supportModel,Model ui){
         if (emailValidationService.isEmailValid(supportModel.getEmail())) {
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
             if (isRequestGenerated) {
