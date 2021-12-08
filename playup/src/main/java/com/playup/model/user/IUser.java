@@ -35,4 +35,8 @@ public interface IUser {
     String getSport();
 
     void setSport(String sport);
+    
+    String getRole();
+    
+    void setRole(String role);
 }

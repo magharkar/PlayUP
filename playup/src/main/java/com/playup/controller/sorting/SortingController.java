@@ -1,7 +1,8 @@
 package com.playup.controller.sorting;
 
+import com.playup.model.search.SearchVenue;
 import com.playup.service.sorting.ISorting;
-import com.playup.model.Venue;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class SortingController
 
     @RequestMapping(value = "/venues/getVenueResults", method = RequestMethod.POST)
     public @ResponseBody
-    ArrayList<Venue> getVenueResults(@RequestBody String sortParam)
+    ArrayList<SearchVenue> getVenueResults(@RequestBody String sortParam)
     {
         return sorting.fetchVenues(sortParam);
     }
