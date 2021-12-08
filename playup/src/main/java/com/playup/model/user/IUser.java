@@ -32,4 +32,7 @@ public interface IUser {
 
     void setCity(String city);
 
+    String getSport();
+
+    void setSport(String sport);
 }

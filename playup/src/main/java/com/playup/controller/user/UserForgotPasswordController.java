@@ -67,7 +67,7 @@ public class UserForgotPasswordController {
         System.out.println(response);
         model.addAttribute("response", response);
         if(response.equals("password_update_successful")) {
-            return "venues";
+            return "redirect:/venues";
         }
         return "forgot_password_otp";
     }
