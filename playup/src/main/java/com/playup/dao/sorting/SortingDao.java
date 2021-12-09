@@ -1,7 +1,7 @@
 package com.playup.dao.sorting;
 
 import com.playup.database.PlayupDBConnection;
-import com.playup.model.Venue;
+import com.playup.model.search.SearchVenue;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,13 +26,13 @@ public class SortingDao
 		return instance;
 	}
 
-	public static List<Venue> getVenuesFromDB() throws SQLException
+	public static List<SearchVenue> getVenuesFromDB() throws SQLException
 	{
-		List<Venue> venueList = new ArrayList<>();
+		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues;");
 		while (resultSet != null && resultSet.next())
 		{
-			venueList.add(new Venue(resultSet.getString("venue_id"), resultSet.getString("name"),
+			venueList.add(new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
 					resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
 					resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
 					resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),
@@ -40,13 +40,13 @@ public class SortingDao
 		}
 		return venueList;
 	}
-	public static List<Venue> getSortAlphabeticalFromDB() throws SQLException
+	public static List<SearchVenue> getSortAlphabeticalFromDB() throws SQLException
 	{
-		List<Venue> venueList = new ArrayList<>();
+		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues order by name ASC;");
 		while (resultSet != null && resultSet.next())
 		{
-			venueList.add(new Venue(resultSet.getString("venue_id"), resultSet.getString("name"),
+			venueList.add(new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
 					resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
 					resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
 					resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),
@@ -55,13 +55,13 @@ public class SortingDao
 		return venueList;
 	}
 
-	public static List<Venue> getSortLowToHighRatingsFromDB() throws SQLException
+	public static List<SearchVenue> getSortLowToHighRatingsFromDB() throws SQLException
 	{
-		List<Venue> venueList = new ArrayList<>();
+		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues order by avg_ratings ASC;");
 		while (resultSet != null && resultSet.next())
 		{
-			venueList.add(new Venue(resultSet.getString("venue_id"), resultSet.getString("name"),
+			venueList.add(new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
 					resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
 					resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
 					resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),
@@ -70,13 +70,13 @@ public class SortingDao
 		return venueList;
 	}
 
-	public static List<Venue> getSortHighToLowRatingsFromDB() throws SQLException
+	public static List<SearchVenue> getSortHighToLowRatingsFromDB() throws SQLException
 	{
-		List<Venue> venueList = new ArrayList<>();
+		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues order by avg_ratings DESC;");
 		while (resultSet != null && resultSet.next())
 		{
-			venueList.add(new Venue(resultSet.getString("venue_id"), resultSet.getString("name"),
+			venueList.add(new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
 					resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
 					resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
 					resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),

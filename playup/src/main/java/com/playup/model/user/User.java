@@ -12,7 +12,8 @@ public class User implements IUser {
     private String confirmPassword;
     private String city;
     private String sport;
-
+    private String role;
+  
     @Override
     public int getUserId() {
         return userId;
@@ -92,4 +93,14 @@ public class User implements IUser {
     public void setSport(String sport) {
         this.sport = sport;
     }
+
+	@Override
+	public String getRole() {
+		return role;
+	}
+
+	@Override
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

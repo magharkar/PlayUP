@@ -9,4 +9,6 @@ public class QueryConstants {
     public final static String CHECK_TRANSACTION_ID_NUMBER_QUERY = "SELECT * from Payment where transactionId = %s;";
     public final static String INSERT_TRANSACTION_QUERY = "INSERT INTO Payment (TransactionId, name, amount, timeStamp, cardNumber, email) VALUES (%s, '%s', '%s', '%s', '%s', '%s');";
     public final static String FETCH_PAYMENT_HISTORY = "SELECT * from Payment where email = '%s';";
+    public final static String INSERT_INTO_MATCHES_TABLE = "INSERT INTO Tournament (Tournament_id, matches_list) VALUES ('";
+    public final static String INSERT_INTO_TOURNAMENT_TABLE = "INSERT INTO Tournament_Details (userId, tournament_id, sport_name, team_number) VALUES ('";
 }

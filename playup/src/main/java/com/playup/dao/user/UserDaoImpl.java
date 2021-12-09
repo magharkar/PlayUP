@@ -39,6 +39,8 @@ public class UserDaoImpl implements IUserDao {
                 user.setContactNumber(resultSet.getString("phone"));
                 user.setPassword(resultSet.getString("password"));
                 user.setUserName(resultSet.getString("username"));
+                user.setCity(resultSet.getString("city"));
+                user.setSport(resultSet.getString("sport"));
             }
             return user;
         } catch (SQLException e) {
@@ -87,7 +89,6 @@ public class UserDaoImpl implements IUserDao {
         String query = "Update User SET password=" + "'" + password + "'" + "WHERE email="
                 + "'" + email + "'";
         String sqlQuery = String.format(query);
-        System.out.println(sqlQuery);
         boolean resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
         return resultSet;
     }

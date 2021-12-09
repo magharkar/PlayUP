@@ -40,7 +40,6 @@ public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
             ArrayList<OneTimePassword> oneTimePasswordArrayList = new ArrayList<>();
             String query = "Select * from user_otp_mapping where email=" + "'" + email + "'";
             String sqlQuery = String.format(query);
-            //String sqlQuery = String.format("select * from CSCI5308_1_DEVINT.User where city = %s;",userName);
             ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
             System.out.println(sqlQuery);
 
