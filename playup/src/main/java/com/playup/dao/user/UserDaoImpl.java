@@ -39,6 +39,7 @@ public class UserDaoImpl implements IUserDao {
                 user.setUserName(resultSet.getString("username"));
                 user.setCity(resultSet.getString("city"));
                 user.setSport(resultSet.getString("sport"));
+                user.setRole(resultSet.getString("role"));
             }
             return user;
         } catch (SQLException e) {

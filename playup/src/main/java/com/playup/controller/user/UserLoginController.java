@@ -31,7 +31,14 @@ public class UserLoginController {
     @PostMapping("/login")
     public String logUser(@ModelAttribute User user, Model model) throws SQLException {
         boolean success = userLoginService.verifyUser(user, model);
+
+
         if (success) {
+            String userRole = userLoginService.getUserRoleByEmail(user, model);
+            System.out.println("userrole" + userRole);
+            if(userRole.equals("admin")) {
+                return "admin_landing_page";
+            }
             return "redirect:/venues";
         } else {
             model.addAttribute(user);
