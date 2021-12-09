@@ -40,7 +40,6 @@ public class NearestVenueLocationDaoImpl implements INearestVenueLocationDao {
     public boolean getSportAvailabilityAtNearestVenue(String nearestVenue, String sport) {
         String query = QueryConstants.SELECT_VENUE_SLOT + sport + VENUE +nearestVenue + COMMA;
         String sqlQuery = String.format(query);
-        System.out.println(sqlQuery);
         ResultSet resultSet = null;
         resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
         try {

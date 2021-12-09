@@ -32,7 +32,6 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
     public SearchVenue getVenueById(int venueId) {
         String query = QueryConstants.GET_VENUE_BY_ID + venueId;
         String sqlQuery = String.format(query);
-        System.out.println(sqlQuery);
         ResultSet resultSet = null;
         try {
             resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
