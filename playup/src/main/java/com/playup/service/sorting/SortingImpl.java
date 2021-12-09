@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class that sorts all venues based on alphabets, low to high ratings and high to low ratings
  * @author Rajath Bharadwaj
  */
 

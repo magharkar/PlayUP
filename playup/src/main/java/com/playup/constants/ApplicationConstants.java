@@ -72,7 +72,6 @@ public class ApplicationConstants {
     public final static String PASSWORD_POLICY_ERROR = "Your new password does not satisfy password policy.";
     public final static String USER_EXISTS = "user_exists";
     public final static String ERROR = "error";
-    public final static String EMAILID_ATTRIBUTE = "emailId";
     public final static String USERNAME_ATTRIBUTE = "userName";
     public final static String CONTACT_ATTRIBUTE = "contactNumber";
     public final static String PASSWORD_ATTRIBUTE = "password";
