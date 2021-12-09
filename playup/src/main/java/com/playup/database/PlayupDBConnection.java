@@ -27,8 +27,8 @@ public class PlayupDBConnection {
 	private PlayupDBConnection() {
 		connect = null;
 		try {
-			connect = DriverManager.getConnection(QueryConstants.PRODUCTION_DB_URL,QueryConstants.PRODUCTION_DB_USERNAME
-					, QueryConstants.PRODUCTION_DB_PASSWORD);
+			connect = DriverManager.getConnection(QueryConstants.DB_URL,QueryConstants.DB_USERNAME
+					, QueryConstants.DB_PASSWORD);
 			if (connect == null) {
 				connect.close();
 				return;
