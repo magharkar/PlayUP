@@ -1,7 +1,5 @@
 package com.playup.service.booking;
 
-import com.playup.service.user.IOneTimePasswordService;
-import com.playup.service.user.OneTimePasswordServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

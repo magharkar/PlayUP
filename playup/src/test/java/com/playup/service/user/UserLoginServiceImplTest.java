@@ -1,8 +1,6 @@
 package com.playup.service.user;
 
-import com.playup.model.user.IUser;
 import com.playup.model.user.User;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
