@@ -12,7 +12,7 @@ public class TournamentMatchModel {
 	TournamentTeamModel winningTeam;
 
 	public TournamentMatchModel(TournamentTeamModel teamOne, TournamentTeamModel teamTwo, String dateOfMatch,
-			TournamentTeamModel winningTeam) {
+								TournamentTeamModel winningTeam) {
 		this.teamOne = teamOne;
 		this.teamTwo = teamTwo;
 		this.matchDate = dateOfMatch;

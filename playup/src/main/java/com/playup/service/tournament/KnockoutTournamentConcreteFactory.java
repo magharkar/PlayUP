@@ -185,10 +185,11 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 				sb.append(matchModel.getTeamOne().getTeamNumber()).append(", ").append("null").append(", ")
 						.append(matchModel.getMatchDate()).append(", ").append(matchModel.getWinningTeam())
 						.append(" || ");
+			} else {
+				sb.append(matchModel.getTeamOne().getTeamNumber()).append(", ")
+						.append(matchModel.getTeamTwo().getTeamNumber()).append(", ").append(matchModel.getMatchDate())
+						.append(", ").append(matchModel.getWinningTeam()).append(" || ");
 			}
-			sb.append(matchModel.getTeamOne().getTeamNumber()).append(", ")
-					.append(matchModel.getTeamTwo().getTeamNumber()).append(", ").append(matchModel.getMatchDate())
-					.append(", ").append(matchModel.getWinningTeam()).append(" || ");
 		}
 		return sb.toString().substring(0, sb.toString().length() - 3);
 	}
