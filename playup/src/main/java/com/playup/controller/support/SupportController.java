@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.controller.support;
 
 import com.playup.constants.ApplicationConstants;
@@ -14,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Controller
 public class SupportController {
     @Autowired
@@ -29,13 +29,13 @@ public class SupportController {
     private ISupportFactoryService supportFactoryService;
 
     @GetMapping("/support")
-    public String SupportMethod(Model model) {
-    model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
-    return ApplicationConstants.SUPPORT_TEXT;
+    public String support(Model model) {
+        model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
+        return ApplicationConstants.SUPPORT_TEXT;
     }
 
     @PostMapping("/support")
-    public String generateSupportRequest(@ModelAttribute SupportModel supportModel, Model ui){
+    public String generateSupportRequest(@ModelAttribute SupportModel supportModel,Model ui){
         if (emailValidationService.isEmailValid(supportModel.getEmail())) {
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);
             if (isRequestGenerated) {

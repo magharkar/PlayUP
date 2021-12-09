@@ -25,8 +25,8 @@ public class PlayupDBConnection {
 	private PlayupDBConnection() {
 		connect = null;
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT",
-					"CSCI5308_1_DEVINT_USER", "piWai3foh6iechee");
+			connect = DriverManager.getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_PRODUCTION",
+					"CSCI5308_1_PRODUCTION_USER", "Ahgheigoo3jaYohl");
 			if (connect == null) {
 				connect.close();
 				return;

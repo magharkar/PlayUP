@@ -1,6 +1,8 @@
-package com.playup.service.sorting;
+package com.playup.service.Sorting;
 
 import com.playup.model.search.SearchVenue;
+import com.playup.service.sorting.ISorting;
+import com.playup.service.sorting.SortingImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

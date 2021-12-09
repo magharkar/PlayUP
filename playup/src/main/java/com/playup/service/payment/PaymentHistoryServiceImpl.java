@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.payment;
 
 import com.playup.dao.payment.PaymentHistoryDaoImpl;
@@ -10,20 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class PaymentHistoryServiceImpl implements IPaymentHistoryService {
     @Autowired
     IGetLoggedInUserEmail loggedInUserEmail;
 
     @Override
-    public ArrayList<PaymentModel> fetchPaymentHistory()
+        public ArrayList<PaymentModel> fetchPaymentHistory()
     {
         String emailId = loggedInUserEmail.getEmail();
         ArrayList<PaymentModel> paymentHistoryList = new ArrayList<>();
-        try{
+        try {
             paymentHistoryList =  PaymentHistoryDaoImpl.getInstance().getPaymentHistoryFromDB(emailId);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return paymentHistoryList;

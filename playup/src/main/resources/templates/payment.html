@@ -46,6 +46,9 @@
 
         </div>
 
+        <div th:if="${amount}">
+            <input id="amount" type="text" th:value="${amount}" name="amount" hidden>
+        </div>
 
         <div class="form-row">
             <div class="col">

@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.controller.payment;
 
 import com.playup.model.payment.PaymentModel;
@@ -11,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 
+/**
+ * @author Shiv Gaurang Desai
+ *
+ */
 @Controller
 public class PaymentHistoryController {
     @Autowired

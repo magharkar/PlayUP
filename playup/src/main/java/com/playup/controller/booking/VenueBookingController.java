@@ -52,21 +52,24 @@ public class VenueBookingController {
         SearchVenue venue = venueBookingService.getVenueDetails(venueId);
 
         ArrayList<VenueSlot> slots = venueBookingService.getAllSlots(venueId);
-
+        System.out.println(venue.getSlotPrice());
         model.addAttribute("venueName", venue.getVenueName());
         model.addAttribute("venueCity", venue.getVenueCity());
         model.addAttribute("availableSlots", venue.getAvailableSlots());
         model.addAttribute("slots", slots);
         model.addAttribute("id", id);
-
+        model.addAttribute("amount", venue.getSlotPrice());
         return "venue";
     }
 
     @PostMapping("/venue/{id}")
     public String setslot(@RequestParam (name = "selectedSlot") String selectedSlot,
-                          @RequestParam (name = "id") String id, Model model) {
+                          @RequestParam (name = "id") String id,
+                          @RequestParam (name = "amount") String amount, Model model) {
         model.addAttribute("id", id);
         model.addAttribute("selectedSlot", selectedSlot);
+        System.out.println(amount);
+        model.addAttribute("amount",amount);
         model.addAttribute(ApplicationConstants.CREDIT_CARD_TEXT,cardFactoryService.getCreditCard());
         return "payment";
     }

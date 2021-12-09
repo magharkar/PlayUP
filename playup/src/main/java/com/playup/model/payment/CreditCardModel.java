@@ -1,22 +1,22 @@
+package com.playup.model.payment;
+
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.model.payment;
-
-public class CreditCard {
+public class CreditCardModel {
     private String name;
     private String cardNumber;
     private int cvv;
     private String expiryDate;
 
-    public CreditCard(String name, String cardNumber, int cvv, String expiryDate) {
+    public CreditCardModel(String name, String cardNumber, int cvv, String expiryDate) {
         this.name = name;
         this.cardNumber = cardNumber;
         this.cvv = cvv;
         this.expiryDate = expiryDate;
     }
 
-    public CreditCard() {}
+    public CreditCardModel() {}
 
 
     public String getName() {
