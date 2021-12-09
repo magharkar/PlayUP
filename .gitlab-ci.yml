@@ -30,7 +30,7 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - mvn -f $(pwd)/playup/pom.xml clean compile
   tags: 
-    - dalfcs_docker_kvm
+    - dalfcs_gitlab_docker_ci
 
 
 # For merge requests do not `deploy` but only run `verify`.
@@ -46,7 +46,7 @@ unit-test-job: # This job runs in the test stage.
             - ./playup/target/surefire-reports/TEST-*.xml
             - ./playup/target/failsafe-reports/TEST-*.xml
   tags: 
-    - dalfcs_docker_kvm
+    - dalfcs_gitlab_docker_ci
     
 deploy:
   stage: deploy
@@ -56,22 +56,8 @@ deploy:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_PLAY_UP_PROD --api-key=$HEROKU_PROD_API_KEY
+    - dpl --provider=heroku --app=$HEROKU_PLAY_UP_PROD --api-key=$HEROKU_API_KEY
   only:
     - master
   tags: 
-    - dalfcs_docker_kvm
-  
-deploy:
-  stage: deploy
-  image: ruby:latest
-  script:
-    - cd playup
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-  only:
-    - dev
-  tags: 
-    - dalfcs_docker_kvm
+    - dalfcs_gitlab_docker_ci
