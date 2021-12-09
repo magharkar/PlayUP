@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.controller.user;
 
 import com.playup.constants.ApplicationConstants;
@@ -13,6 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 @Controller
 public class UserForgotPasswordController {
@@ -56,7 +57,7 @@ public class UserForgotPasswordController {
     @RequestMapping(value = ApplicationConstants.FORGOT_PASSWORD_OTP_URL, method = { RequestMethod.POST, RequestMethod.GET })
     public String setNewPassword(@RequestParam String emailId, @ModelAttribute OneTimePassword oneTimePassword,
                                  @RequestParam String password, Model model) {
-        String response = null;
+        String response;
         response = oneTimePasswordService.verifyOTPForPasswordReset(emailId, oneTimePassword.getOneTimePassword(), password);
         model.addAttribute(ApplicationConstants.RESPONSE_TEXT, response);
         if(response.equals(ApplicationConstants.PASSWORD_UPDATE_SUCCESSFUL)) {

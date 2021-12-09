@@ -1,7 +1,8 @@
+package com.playup.service.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.service.booking;
 
 public class BookingServiceFactory extends BookingServiceAbstractFactory {
     private static BookingServiceFactory instance = null;

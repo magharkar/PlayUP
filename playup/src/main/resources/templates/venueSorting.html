@@ -42,9 +42,18 @@ margin: 0;
             <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
             <div>PlayUP</div>
         </div>
-        <form th:action="@{/logout}" method="post">
-            <button type="submit">Logout</button>
-        </form>
+        <div style="display: flex">
+            <form th:action="@{/paymentHistory}" method="get">
+                <button type="submit">Payment History</button>
+            </form>
+            <form th:action="@{/support}" method="get">
+                <button type="submit">Support</button>
+            </form>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+
     </div>
 </nav>
 <h1>Venues</h1>
@@ -58,7 +67,8 @@ margin: 0;
     </select>
 </div>
 <br>
-<a href="search" class="active">Search for Venue</a>
+<a href="search" class="active">Search for Venue</a> <br>
+<a href="/review" class="active">View Reviews</a>
 <br>
 <div id="error-box"></div><br><br><br><br>
 <div class="table-container">

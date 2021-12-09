@@ -1,7 +1,8 @@
+package com.playup.service.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.service.booking;
 
 import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;

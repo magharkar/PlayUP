@@ -9,7 +9,8 @@ import java.sql.SQLException;
 /**
  * @author Shiv Gaurang Desai
  */
-public class SupportDaoImpl implements ISupportDao{
+
+public class SupportDaoImpl implements ISupportDao {
     private static SupportDaoImpl supportDaoImplInstance;
 
     private SupportDaoImpl(){}

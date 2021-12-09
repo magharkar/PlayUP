@@ -1,7 +1,8 @@
+package com.playup.service.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.service.booking;
 
 public abstract class BookingServiceAbstractFactory {
     public abstract IVenueBookingService venueBookingService();

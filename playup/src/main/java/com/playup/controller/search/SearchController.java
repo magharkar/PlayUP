@@ -1,7 +1,3 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.controller.search;
 
 import java.util.ArrayList;
@@ -16,9 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.playup.dao.search.SearchVenueDao;
 
+/**
+ * @author vibhorbhatnagar
+ */
+
 @RestController
 public class SearchController {
-
 	@GetMapping("/search")
 	public ModelAndView search() {
 		ModelAndView mv = new ModelAndView();

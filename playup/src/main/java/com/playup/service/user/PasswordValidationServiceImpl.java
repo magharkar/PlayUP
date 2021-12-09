@@ -1,12 +1,13 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.service.user;
 
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 @Service
 public class PasswordValidationServiceImpl implements IPasswordValidationService {

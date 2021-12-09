@@ -1,7 +1,3 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.controller.tournament;
 
 import java.util.ArrayList;
@@ -14,13 +10,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.playup.model.tournament.TournamentScheduleModel;
 import com.playup.service.tournament.KnockoutTournamentConcreteFactory;
 import com.playup.model.tournament.TournamentDataModel;
 
+/**
+ * @author vibhorbhatnagar
+ */
+
 @RestController
 public class TournamentController {
-
 	@RequestMapping("/tournamentScheduler")
 	public ModelAndView tournamentScheduling() {
 		ModelAndView mv = new ModelAndView();

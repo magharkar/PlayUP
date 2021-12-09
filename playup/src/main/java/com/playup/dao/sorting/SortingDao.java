@@ -12,8 +12,7 @@ import java.util.List;
  * @author Rajath Bharadwaj
  */
 
-public class SortingDao
-{
+public class SortingDao {
 	private static final String VENUE_ID = "venue_id";
 	private static final String NAME = "name";
 	private static final String CITY = "city";
@@ -33,8 +32,7 @@ public class SortingDao
 	private static final String HIGHTOLOW_QUERY = "Select * from Venues order by avg_ratings DESC;";
 
 	private static SortingDao instance = null;
-	public static SortingDao getInstance()
-	{
+	public static SortingDao getInstance() {
 		if(instance == null)
 		{
 			instance = new SortingDao();
@@ -42,12 +40,10 @@ public class SortingDao
 		return instance;
 	}
 
-	public static List<SearchVenue> getVenuesFromDB() throws SQLException
-	{
+	public static List<SearchVenue> getVenuesFromDB() throws SQLException {
 		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData(DEFAULT_QUERY);
-		while (resultSet != null && resultSet.next())
-		{
+		while (resultSet != null && resultSet.next()) {
 			venueList.add(new SearchVenue(resultSet.getString(VENUE_ID), resultSet.getString(NAME),
 					resultSet.getString(CITY), resultSet.getString(AVAILABLE_SLOTS), resultSet.getString(TOTAL_SLOTS),
 					resultSet.getString(FROM_TIME), resultSet.getString(TO_TIME), resultSet.getString(CONTACT_INFO),
@@ -57,12 +53,10 @@ public class SortingDao
 		return venueList;
 	}
 
-	public static List<SearchVenue> getSortAlphabeticalFromDB() throws SQLException
-	{
+	public static List<SearchVenue> getSortAlphabeticalFromDB() throws SQLException {
 		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData(ALPHABETICAL_QUERY);
-		while (resultSet != null && resultSet.next())
-		{
+		while (resultSet != null && resultSet.next()) {
 			venueList.add(new SearchVenue(resultSet.getString(VENUE_ID), resultSet.getString(NAME),
 					resultSet.getString(CITY), resultSet.getString(AVAILABLE_SLOTS), resultSet.getString(TOTAL_SLOTS),
 					resultSet.getString(FROM_TIME), resultSet.getString(TO_TIME), resultSet.getString(CONTACT_INFO),
@@ -72,12 +66,10 @@ public class SortingDao
 		return venueList;
 	}
 
-	public static List<SearchVenue> getSortLowToHighRatingsFromDB() throws SQLException
-	{
+	public static List<SearchVenue> getSortLowToHighRatingsFromDB() throws SQLException {
 		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData(LOWTOHIGH_QUERY);
-		while (resultSet != null && resultSet.next())
-		{
+		while (resultSet != null && resultSet.next()) {
 			venueList.add(new SearchVenue(resultSet.getString(VENUE_ID), resultSet.getString(NAME),
 					resultSet.getString(CITY), resultSet.getString(AVAILABLE_SLOTS), resultSet.getString(TOTAL_SLOTS),
 					resultSet.getString(FROM_TIME), resultSet.getString(TO_TIME), resultSet.getString(CONTACT_INFO),
@@ -87,12 +79,10 @@ public class SortingDao
 		return venueList;
 	}
 
-	public static List<SearchVenue> getSortHighToLowRatingsFromDB() throws SQLException
-	{
+	public static List<SearchVenue> getSortHighToLowRatingsFromDB() throws SQLException {
 		List<SearchVenue> venueList = new ArrayList<>();
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData(HIGHTOLOW_QUERY);
-		while (resultSet != null && resultSet.next())
-		{
+		while (resultSet != null && resultSet.next()) {
 			venueList.add(new SearchVenue(resultSet.getString(VENUE_ID), resultSet.getString(NAME),
 					resultSet.getString(CITY), resultSet.getString(AVAILABLE_SLOTS), resultSet.getString(TOTAL_SLOTS),
 					resultSet.getString(FROM_TIME), resultSet.getString(TO_TIME), resultSet.getString(CONTACT_INFO),

@@ -1,7 +1,8 @@
+package com.playup.dao.user;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.dao.user;
 
 public class UserProfileFactoryDao extends UserProfileAbstractFactoryDao {
     private static UserProfileFactoryDao instance = null;

@@ -1,7 +1,3 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.service.tournament;
 
 import java.sql.ResultSet;
@@ -12,7 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
 import com.playup.constants.QueryConstants;
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.tournament.TournamentMatchModel;
@@ -21,6 +16,10 @@ import com.playup.model.tournament.TournamentScheduleModel;
 import com.playup.model.tournament.TournamentTeamModel;
 import com.playup.model.tournament.TournamentDataModel;
 import com.playup.model.user.User;
+
+/**
+ * @author vibhorbhatnagar
+ */
 
 public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 
@@ -59,7 +58,8 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 	private List<TournamentMatchModel> getMatches(List<TournamentTeamModel> teamModelList) {
 		List<TournamentMatchModel> matchModelList = new ArrayList<TournamentMatchModel>();
 		Date dateOfMatch = getStartDate();
-		for (int i = 0; i < teamModelList.size();) {
+		int length = teamModelList.size() % 2 == 0 ? teamModelList.size() : teamModelList.size() - 1;
+		for (int i = 0; i < length;) {
 			if (i + 1 % 5 == 0) {
 				dateOfMatch = addOneDay(dateOfMatch);
 			}
@@ -67,6 +67,11 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 			matchModelList.add(new TournamentMatchModel(teamModelList.get(i), teamModelList.get(i + 1),
 					sdf.format(dateOfMatch), null));
 			i = i + 2;
+		}
+		if (teamModelList.size() % 2 != 0) {
+			matchModelList.add(new TournamentMatchModel(teamModelList.get(teamModelList.size() - 1), null,
+					matchModelList.get(matchModelList.size() - 1).getMatchDate(),
+					teamModelList.get(teamModelList.size() - 1)));
 		}
 		return matchModelList;
 	}
@@ -88,7 +93,7 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 		List<TournamentTeamModel> teamModelList = new ArrayList<TournamentTeamModel>();
 		int teamNumber = 1;
 		int i = 0;
-		while (i + playersPerTeam < playerModelList.size()) {
+		while (i + playersPerTeam <= playerModelList.size()) {
 			teamModelList.add(new TournamentTeamModel(playerModelList.subList(i, i + playersPerTeam),
 					String.valueOf(teamNumber)));
 			teamNumber++;
@@ -110,7 +115,7 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 		Iterator<User> iterator = userList.iterator();
 		while (iterator.hasNext()) {
 			User user = iterator.next();
-			if (!user.getCity().equalsIgnoreCase(tournamentSport)) {
+			if (!user.getSport().equalsIgnoreCase(tournamentSport)) {
 				iterator.remove();
 			}
 		}
@@ -129,8 +134,8 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 				user.setPassword(resultSet.getString("password"));
 				user.setUserName(resultSet.getString("username"));
 				user.setCity(resultSet.getString("city"));
-				user.setCity(resultSet.getString("role"));
-				user.setCity(resultSet.getString("sport"));
+				user.setRole(resultSet.getString("role"));
+				user.setSport(resultSet.getString("sport"));
 				userList.add((User) user);
 			}
 		} catch (SQLException e) {
@@ -165,9 +170,25 @@ public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 	private static String convertToString(List<TournamentMatchModel> matchModelList) {
 		StringBuffer sb = new StringBuffer();
 		for (TournamentMatchModel matchModel : matchModelList) {
-			sb.append(matchModel.getTeamOne().getTeamNumber()).append(", ")
-					.append(matchModel.getTeamTwo().getTeamNumber()).append(", ").append(matchModel.getMatchDate())
-					.append(", ").append(matchModel.getWinningTeam()).append(" || ");
+			if (matchModel == null) {
+				continue;
+			}
+			if (matchModel.getTeamOne() == null) {
+				if (matchModel.getTeamTwo() == null) {
+					continue;
+				}
+				sb.append("null").append(", ").append(matchModel.getTeamTwo().getTeamNumber()).append(", ")
+						.append(matchModel.getMatchDate()).append(", ")
+						.append(matchModel.getWinningTeam().getTeamNumber()).append(" || ");
+			} else if (matchModel.getTeamTwo() == null) {
+				sb.append(matchModel.getTeamOne().getTeamNumber()).append(", ").append("null").append(", ")
+						.append(matchModel.getMatchDate()).append(", ").append(matchModel.getWinningTeam())
+						.append(" || ");
+			} else {
+				sb.append(matchModel.getTeamOne().getTeamNumber()).append(", ")
+						.append(matchModel.getTeamTwo().getTeamNumber()).append(", ").append(matchModel.getMatchDate())
+						.append(", ").append(matchModel.getWinningTeam()).append(" || ");
+			}
 		}
 		return sb.toString().substring(0, sb.toString().length() - 3);
 	}

@@ -1,9 +1,10 @@
+package com.playup.dao.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.dao.booking;
 
-public class BookingFactoryDao extends BookingAbstractFactoryDao{
+public class BookingFactoryDao extends BookingAbstractFactoryDao {
     private static BookingFactoryDao instance = null;
     private ISlotBookingDao slotBookingDao;
     private INearestVenueLocationDao nearestLocationDao;

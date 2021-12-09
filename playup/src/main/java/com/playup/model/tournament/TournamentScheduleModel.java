@@ -1,13 +1,12 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.model.tournament;
 
 import java.util.List;
 
-public class TournamentScheduleModel {
+/**
+ * @author vibhorbhatnagar
+ */
 
+public class TournamentScheduleModel {
 	String tournamentId;
 	List<TournamentMatchModel> matchesList;
 

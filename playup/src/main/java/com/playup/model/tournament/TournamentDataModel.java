@@ -1,13 +1,11 @@
+package com.playup.model.tournament;
+
 /**
  * @author vibhorbhatnagar
  */
 
-package com.playup.model.tournament;
-
 public class TournamentDataModel {
-
 	String tournamentId;
-	String tournamentName;
 	String tournamentType;
 	String tournamentSport;
 	String playersPerTeam;
@@ -19,14 +17,6 @@ public class TournamentDataModel {
 
 	public void setTournamentId(String tournamentId) {
 		this.tournamentId = tournamentId;
-	}
-
-	public String getTournamentName() {
-		return tournamentName;
-	}
-
-	public void setTournamentName(String tournamentName) {
-		this.tournamentName = tournamentName;
 	}
 
 	public String getTournamentType() {
@@ -59,9 +49,6 @@ public class TournamentDataModel {
 
 	public void validate() {
 		StringBuffer stringBuffer = new StringBuffer();
-		if (this.tournamentName == null || this.tournamentName.isEmpty()) {
-			stringBuffer.append("Tournament name cannot be empty<br>");
-		}
 		if (this.tournamentSport == null || this.tournamentSport.isEmpty()) {
 			stringBuffer.append("Tournament sport must be selected<br>");
 		}
@@ -80,9 +67,9 @@ public class TournamentDataModel {
 	private boolean notANumber(String playersPerTeam) {
 		try {
 			Double.valueOf(playersPerTeam);
-			return true;
-		} catch (Exception e) {
 			return false;
+		} catch (Exception e) {
+			return true;
 		}
 	}
 

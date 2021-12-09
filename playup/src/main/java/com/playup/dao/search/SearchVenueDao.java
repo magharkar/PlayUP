@@ -1,7 +1,3 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.dao.search;
 
 import java.sql.ResultSet;
@@ -15,8 +11,11 @@ import com.playup.database.PlayupDBConnection;
 import com.playup.model.search.AbstractSearchFactory;
 import com.playup.model.search.SearchVenue;
 
-public class SearchVenueDao extends AbstractSearchFactory {
+/**
+ * @author vibhorbhatnagar
+ */
 
+public class SearchVenueDao extends AbstractSearchFactory {
 	@Override
 	public ArrayList<Object> search(String searchKey) {
 		try {

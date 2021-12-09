@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class EmailSenderServiceImpl implements IEmailSenderService {
     @Autowired

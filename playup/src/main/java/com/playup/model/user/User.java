@@ -1,10 +1,10 @@
+package com.playup.model.user;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.model.user;
 
 public class User implements IUser {
-
     private int userId;
     private String userName;
     private String emailId;

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class PaymentServiceImpl implements IPaymentService {
     private static PaymentServiceImpl paymentServiceInstance;
@@ -44,7 +45,7 @@ public class PaymentServiceImpl implements IPaymentService {
         PaymentModel paymentModel = PaymentFactory.getPaymentObject();
         int transactionNumber = transactionIdGeneratorService.generateTransactionId(ApplicationConstants.MINIMUM_TRANSACTION_NUMBER,ApplicationConstants.MAXIMUM_TRANSACTION_NUMBER);
         LocalDateTime currentTimeStamp = LocalDateTime.now();
-        amount = amount.substring(1);
+        amount = amount.substring(1).trim();
         paymentModel.setTransactionId(transactionNumber);
         paymentModel.setCardNumber(cipherService.encrypt(creditCardModel.getCardNumber()));
         paymentModel.setName(creditCardModel.getName());

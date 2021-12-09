@@ -11,8 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 
 @Controller
-public class ReviewController
-{
+public class ReviewController {
     public static final String VENUE_ID = "venueID";
     public static final String POST_REVIEW = "postReview";
     public static final String REDIRECT = "redirect:/review";
@@ -24,8 +23,7 @@ public class ReviewController
 
 
     @GetMapping(REVIEW)
-    public ModelAndView search()
-    {
+    public ModelAndView search() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName(VIEW_NAME);
         return mv;
@@ -33,29 +31,25 @@ public class ReviewController
 
     @RequestMapping(value = REVIEW_PAGE, method = RequestMethod.POST)
     public @ResponseBody
-    ArrayList<ReviewModel> getVenueResults()
-    {
+    ArrayList<ReviewModel> getVenueResults() {
         return ReviewImpl.getInstance().fetchVenues();
     }
 
     @RequestMapping(value = VIEW_REVIEW_PAGE, method = RequestMethod.POST)
     public @ResponseBody
-    ArrayList<ViewReviewModel> getViewReviewResults()
-    {
+    ArrayList<ViewReviewModel> getViewReviewResults() {
         return ReviewImpl.getInstance().viewReviews();
     }
 
     @RequestMapping(value = POST_REVIEW_PAGE, method = RequestMethod.GET)
     public
-    String getPostReviewResults(@PathVariable(VENUE_ID) int venueID, Model model)
-    {
+    String getPostReviewResults(@PathVariable(VENUE_ID) int venueID, Model model) {
         model.addAttribute(VENUE_ID,venueID);
         return POST_REVIEW;
     }
 
     @PostMapping(POST_REVIEW_PAGE)
-    public String postReview(@RequestParam (name = VENUE_ID) int venueID, @RequestParam String title, @RequestParam String description, @RequestParam int rating)
-    {
+    public String postReview(@RequestParam (name = VENUE_ID) int venueID, @RequestParam String title, @RequestParam String description, @RequestParam int rating) {
         ReviewImpl.getInstance().postReviews(venueID,title,description,rating);
         return REDIRECT;
     }

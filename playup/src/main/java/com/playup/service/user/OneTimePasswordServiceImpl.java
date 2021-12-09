@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.service.user;
 
 import com.playup.dao.user.IOneTimePasswordDao;
@@ -15,6 +12,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 @Service
 public class OneTimePasswordServiceImpl implements IOneTimePasswordService {

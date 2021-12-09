@@ -1,18 +1,17 @@
+package com.playup.model.tournament;
+
 /**
  * @author vibhorbhatnagar
  */
 
-package com.playup.model.tournament;
-
 public class TournamentMatchModel {
-
 	TournamentTeamModel teamOne;
 	TournamentTeamModel teamTwo;
 	String matchDate;
 	TournamentTeamModel winningTeam;
 
 	public TournamentMatchModel(TournamentTeamModel teamOne, TournamentTeamModel teamTwo, String dateOfMatch,
-			TournamentTeamModel winningTeam) {
+								TournamentTeamModel winningTeam) {
 		this.teamOne = teamOne;
 		this.teamTwo = teamTwo;
 		this.matchDate = dateOfMatch;

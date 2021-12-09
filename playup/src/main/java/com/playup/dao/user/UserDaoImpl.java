@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.dao.user;
 
 import com.playup.database.PlayupDBConnection;
@@ -10,6 +7,10 @@ import com.playup.model.user.UserObjectFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 public class UserDaoImpl implements IUserDao {
     private static UserDaoImpl userDaoImpl;
