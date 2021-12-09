@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class EmailValidationServiceTest {
     private IEmailValidationService emailValidationService = EmailValidationServiceImpl.getInstance();
     @Test

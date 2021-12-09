@@ -7,6 +7,7 @@ import java.sql.SQLException;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class SupportTicketGeneratorServiceImpl implements ISupportTicketGeneratorService {
     private static SupportTicketGeneratorServiceImpl supportTicketGeneratorService;
