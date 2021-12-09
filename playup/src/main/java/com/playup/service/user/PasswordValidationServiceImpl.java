@@ -1,5 +1,6 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.user;
 
 import java.util.regex.Matcher;
@@ -9,7 +10,7 @@ public class PasswordValidationService {
 
     char singlePasswordCharacter;
 
-    //Password should be atleast 8 characters long,
+    //Password should be at-least 8 characters long,
     // with 1 capital letter and 1  of the special characters - (@#$%^&*)
 
     public boolean isPasswordValid(String password) {
