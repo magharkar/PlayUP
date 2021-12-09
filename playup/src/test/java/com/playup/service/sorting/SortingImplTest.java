@@ -1,21 +1,23 @@
-package com.playup.service.Sorting;
+package com.playup.service.sorting;
 
 import com.playup.model.search.SearchVenue;
-import com.playup.service.sorting.ISorting;
-import com.playup.service.sorting.SortingImpl;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.when;
 
 /**
  * Unit test for Sorting class.
  * @author Rajath Bharadwaj
  */
 
+@RunWith(MockitoJUnitRunner.class)
 public class SortingImplTest
 {
     @Mock
@@ -27,7 +29,7 @@ public class SortingImplTest
     @Test
     public void NotNullTest() throws ClassNotFoundException
     {
-        Class<?> classFinder = Class.forName("com.playup.service.Sorting.SortingImpl", false, getClass().getClassLoader());
+        Class<?> classFinder = Class.forName("com.playup.service.sorting.SortingImpl", false, getClass().getClassLoader());
         assertNotNull(classFinder);
     }
 
@@ -49,6 +51,7 @@ public class SortingImplTest
         venueList.add(venue2);
         venueList.add(venue3);
         venueList.add(venue4);
+        when(sorting.fetchVenues("default")).thenReturn(venueList);
         ArrayList<SearchVenue> expectedList = sorting.fetchVenues("default");
         assertEquals(venueList.size(), expectedList.size());
     }
@@ -72,6 +75,7 @@ public class SortingImplTest
         venueList.add(venue2);
         venueList.add(venue3);
         venueList.add(venue4);
+        when(sorting.fetchVenues("alphabetical")).thenReturn(venueList);
         ArrayList<SearchVenue> expectedList = sorting.fetchVenues("alphabetical");
         assertEquals(venueList.size(), expectedList.size());
     }
@@ -95,6 +99,7 @@ public class SortingImplTest
         venueList.add(venue2);
         venueList.add(venue3);
         venueList.add(venue4);
+        when(sorting.fetchVenues("lowtohigh")).thenReturn(venueList);
         ArrayList<SearchVenue> expectedList = sorting.fetchVenues("lowtohigh");
         assertEquals(venueList.size(), expectedList.size());
     }
@@ -118,6 +123,7 @@ public class SortingImplTest
         venueList.add(venue2);
         venueList.add(venue3);
         venueList.add(venue4);
+        when(sorting.fetchVenues("hightolow")).thenReturn(venueList);
         ArrayList<SearchVenue> expectedList = sorting.fetchVenues("hightolow");
         assertEquals(venueList.size(), expectedList.size());
     }
