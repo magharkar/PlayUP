@@ -17,9 +17,9 @@ import java.util.List;
 public class SortingImpl implements ISorting
 {
     public static final String DEFAULT = "default";
-    public static final String ALPHABETICAL = "default";
-    public static final String LOWTOHIGH = "default";
-    public static final String HIGHTOLOW = "default";
+    public static final String ALPHABETICAL = "alphabetical";
+    public static final String LOWTOHIGH = "lowtohigh";
+    public static final String HIGHTOLOW = "hightolow";
 
     @Override
     public ArrayList<SearchVenue> fetchVenues(String sortParam)
