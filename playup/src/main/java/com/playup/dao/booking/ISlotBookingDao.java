@@ -5,7 +5,7 @@ import com.playup.model.booking.VenueSlot;
 
 import java.util.ArrayList;
 
-public interface IBookingDao {
+public interface ISlotBookingDao {
 
     Venue getVenueById(int venueId);
 

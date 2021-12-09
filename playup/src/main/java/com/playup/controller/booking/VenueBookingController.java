@@ -13,8 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Properties;
 
 @Controller
 public class VenueBookingController {
@@ -25,6 +30,27 @@ public class VenueBookingController {
     public VenueBookingController() {
         this.venueBookingService = BookingServiceFactory.instance().venueBookingService();
         this.nearestVenueLocatorService = BookingServiceFactory.instance().nearestVenueLocatorService();
+    }
+
+    @RequestMapping(value = "venue/nearest_venue/{id}", method = {RequestMethod.GET})
+    public String getNearestVenue(@PathVariable ("id") String ide, Model model) {
+
+        String id = nearestVenueLocatorService.getNearestVenue(ide);
+        Venue venue = venueBookingService.getVenueDetails(Integer.parseInt(id));
+
+        ArrayList<VenueSlot> slots = venueBookingService.getAllSlots(Integer.parseInt(id));
+        System.out.println(venue.getVenueID());
+        System.out.println(venue.getVenueName());
+        System.out.println(venue.getVenueCity());
+
+        model.addAttribute("venueName", venue.getVenueName());
+        model.addAttribute("venueCity", venue.getVenueCity());
+        model.addAttribute("availableSlots", venue.getAvailableSlots());
+        model.addAttribute("slots", slots);
+        model.addAttribute("id", id);
+        return "venue";
+
+
     }
 
     @RequestMapping(value = "/venue/{id}", method = {RequestMethod.GET})
@@ -54,6 +80,8 @@ public class VenueBookingController {
         System.out.println(id);
         boolean success = venueBookingService.bookSlot(Integer.parseInt(id), Integer.parseInt(selectedSlot));
         System.out.println(success);
+        String dynamicUrl = id + "/" + selectedSlot;
+        model.addAttribute("id", dynamicUrl);
         return "venue";
     }
 

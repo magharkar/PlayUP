@@ -6,23 +6,26 @@ public class VenueSlot {
     private String slotTiming;
     private String slotType;
     private String bookingStatus;
+    private String sport;
 
     public VenueSlot() {
 
     }
 
-    public VenueSlot(int venueId, int slotId, String slotTiming, String slotType, String bookingStatus) {
+    public VenueSlot(int venueId, int slotId, String slotTiming, String slotType, String bookingStatus, String sport) {
         this.venueId = venueId;
         this.slotId = slotId;
         this.slotTiming = slotTiming;
         this.slotType  = slotType;
         this.bookingStatus = bookingStatus;
+        this.sport = sport;
     }
 
-    public VenueSlot(int slotId, String slotType, String bookingStatus) {
+    public VenueSlot(int slotId, String slotType, String bookingStatus, String sport) {
         this.slotId = slotId;
         this.slotType = slotType;
         this.bookingStatus = bookingStatus;
+        this.sport = sport;
     }
 
     public int getVenueId() {
@@ -58,5 +61,12 @@ public class VenueSlot {
     }
     public void setBookingStatus(String bookingStatus) {
         this.bookingStatus = bookingStatus;
+    }
+
+    public String getSport() {
+        return sport;
+    }
+    public void setSport(String sport) {
+        this.sport = sport;
     }
 }

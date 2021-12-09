@@ -39,50 +39,114 @@ body {
 
 <h2>Venue</h2>
 <div class="container-class">
-  <div th:if="${venueName}" class="form-row">
-    <div class="col">
-      <p>Venue Name:</p>
+  <div>
+    <div th:if="${venueName}" class="row">
+      <div class="col">
+        <div>Venue Name:</div>
+      </div>
+      <div class="col">
+        <div th:text="${venueName}" />
+      </div>
     </div>
-    <div class="col">
-      <p th:text="${venueName}" />
+
+    <div th:if="${venueCity}" class="row">
+      <div class="col">
+        <div>Venue City:</div>
+      </div>
+      <div class="col">
+        <div th:text="${venueCity}" />
+      </div>
     </div>
+
+    <div th:if="${availableSlots}" class="row">
+      <div class="col">
+        <div>Available Slots:</div>
+      </div>
+      <div class="col">
+        <div th:text="${availableSlots}" />
+      </div>
+    </div>
+
+    <form th:action="@{/venue/{id}(id=${id})}" method="post" class="row">
+      <div th:if="${id}">
+        <input id="id" type="text" th:value="${id}" name="id" hidden>
+        <div>Select a slot:</div>
+      </div>
+      <div>
+        <select name="selectedSlot" onchange="postSelectedSlot()">
+          <option th:each="venueSlot : ${slots}"
+                  th:value="${venueSlot.getSlotId()}"
+                  th:text="${venueSlot.getSlotType() + '(' + venueSlot.getSport() + ')'}"
+                  th:disabled="${venueSlot.getBookingStatus() == 'unavailable'}">Options</option>
+        </select>
+      </div>
+
+
+      <p style="margin-top: 16px"><input type="submit" value="Book Now" /></p>
+      <a th:href="@{/venue/nearest_venue/{id}(id=${id})}">Did not get the desired slot? Here is a nearby venue with the same sport</a>
+
+    </form>
   </div>
 
-  <div th:if="${venueCity}" class="form-row">
-    <div class="col">
-      <p>Venue City:</p>
+
+  <h3>Slot Details</h3>
+  <div style="min-width: 40%">
+    <div class="row">
+      <div class="col">
+        <div>Early Morning</div>
+      </div>
+      <div class="col">
+        <div>7:00 to 9:00</div>
+      </div>
     </div>
-    <div class="col">
-      <p th:text="${venueCity}" />
+
+    <div class="row">
+      <div class="col">
+        <div>Morning</div>
+      </div>
+      <div class="col">
+        <div>9:00 to 11:00</div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <div>Afternoon</div>
+      </div>
+      <div class="col">
+        <div>13:00 to 15:00</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div>Early Evening</div>
+      </div>
+      <div class="col">
+        <div>15:00 to 17:00</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div>Evening</div>
+      </div>
+      <div class="col">
+        <div>17:00 to 19:00</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div>Late Evening</div>
+      </div>
+      <div class="col">
+        <div>19:00 to 21:00</div>
+      </div>
+    </div>
+
   </div>
 
-  <div th:if="${availableSlots}" class="form-row">
-    <div class="col">
-      <p>Available Slots:</p>
-    </div>
-    <div class="col">
-      <p th:text="${availableSlots}" />
-    </div>
-  </div>
-
-  <form th:action="@{/venue/{id}(id=${id})}" method="post">
-    <div th:if="${id}" class="form-row">
-      <input id="id" type="text" th:value="${id}" name="id" hidden>
-    </div>
-    <div class="form-row">
-      <select name="selectedSlot">
-        <option th:each="venueSlot : ${slots}"
-                th:value="${venueSlot.getSlotId()}"
-                th:text="${venueSlot.getSlotType()}"
-                th:disabled="${venueSlot.getBookingStatus() == 'unavailable'}">Options</option>
-      </select>
-    </div>
-
-
-    <p style="margin-top: 16px"><input type="submit" value="Login" /></p>
-
-  </form>
 
 <!--  <p></p>-->
 <!--  <a th:href="@{/forgot_password}">Forgot Password?</a><br /> <a-->

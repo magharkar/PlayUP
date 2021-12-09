@@ -40,8 +40,7 @@ function postVenueData() {
 				cell11.innerHTML = result[i].slotPrice;
 				cell12.innerHTML = result[i].averageRating;
 				cell13.innerHTML = result[i].categoryID;
-				console.log("i" + i);
-				 let btn = document.createElement("button");
+				let btn = document.createElement("button");
 				    var venueid = result[i].venueID;
                     btn.innerHTML = "Book";
                     (function(index){
@@ -49,12 +48,7 @@ function postVenueData() {
                           window.location.href = "venue/"+index;
                         })
                       })(venueid)
-//                    btn.onclick = function() {
-//                    redirect(venueid);
-//                    }
                     cell14.append(btn);
-//				cell14.innerHTML = "<input type='button' id='book' name='book' onClick="redirect(\''+i+'\')" value='book' />";
-
 			}
 		}
 	});

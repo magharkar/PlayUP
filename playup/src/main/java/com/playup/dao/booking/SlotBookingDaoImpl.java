@@ -9,15 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class BookingDaoImpl implements IBookingDao {
+public class SlotBookingDaoImpl implements ISlotBookingDao {
 
-    private static BookingDaoImpl bookingDaoInstance;
+    private static SlotBookingDaoImpl bookingDaoInstance;
 
-    private BookingDaoImpl(){}
+    public SlotBookingDaoImpl(){}
 
-    public static BookingDaoImpl getInstance () {
+    public static SlotBookingDaoImpl getInstance () {
         if(bookingDaoInstance==null) {
-            bookingDaoInstance = new BookingDaoImpl();
+            bookingDaoInstance = new SlotBookingDaoImpl();
             return bookingDaoInstance;
         }
         return bookingDaoInstance;
@@ -63,6 +63,7 @@ public class BookingDaoImpl implements IBookingDao {
                     venueSlot.setSlotTiming(resultSet.getString("slot_timing"));
                     venueSlot.setSlotType(resultSet.getString("slot_type"));
                     venueSlot.setBookingStatus(resultSet.getString("booking_status"));
+                    venueSlot.setSport(resultSet.getString("sport"));
                     venueSlots.add(venueSlot);
                 }
             } catch (SQLException e) {
