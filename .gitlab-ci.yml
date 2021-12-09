@@ -38,7 +38,7 @@ unit-test-job: # This job runs in the test stage.
             - ./playup/target/surefire-reports/TEST-*.xml
             - ./playup/target/failsafe-reports/TEST-*.xml
   tags: 
-    - ugrad
+    - dalfcs_docker_autoscale
    
 deploy:
   stage: deploy
@@ -52,4 +52,4 @@ deploy:
   only:
     - master
   tags: 
-    - ugrad
+    - dalfcs_docker_autoscale
