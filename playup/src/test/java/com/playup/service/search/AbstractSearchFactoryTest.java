@@ -1,4 +1,4 @@
-package com.playup.tests;
+package com.playup.service.search;
 
 import static org.junit.jupiter.api.Assertions.*;
 
