@@ -78,4 +78,35 @@ public class ApplicationConstants {
     public final static String PASSWORD_ATTRIBUTE = "password";
     public final static String CITY = "city";
     public final static String SPORT = "sport";
+    public final static String VENUE_NAME = "venueName";
+    public final static String VENUE_CITY = "venueCity";
+    public final static String AVAILABLE_SLOTS = "availableSlots";
+    public final static String SLOTS = "slots";
+    public final static String ID_OBJECT = "id" ;
+    public final static String VENUE_OBJECT = "venue";
+    public final static String AMOUNT = "amount";
+    public final static String SELECTED_SLOT = "selectedSlot";
+    public final static String EMAIL = "email";
+    public final static String USERNAME = "username";
+    public final static String USER_ID = "user_id";
+    public final static String PHONE = "phone";
+    public final static String PASSWORD = "password";
+    public final static String ROLE = "role";
+    public final static String VENUE_ID = "venue_id";
+    public final static String LATITUDE = "latitude";
+    public final static String LONGITUDE = "longitude";
+    public final static String NAME = "name";
+    public final static String AVAILABLE_SLOTS_TABLE = "available_slots";
+    public final static String TOTAL_SLOTS = "total_slots";
+    public final static String FROM_TIME = "from_time";
+    public final static String TO_TIME = "to_time";
+    public final static String CONTACT_INFO = "contact_info";
+    public final static String SLOT_PRICE = "slot_price";
+    public final static String CATEGORY = "category_id";
+    public final static String AVG = "avg_ratings";
+    public final static String SLOT_ID = "slot_id";
+    public final static String SLOT_TYPE = "slot_type";
+    public final static String BOOKING_STATUS = "booking_status";
+    public final static String SLOT_TIMING = "slot_timing";
+
 }

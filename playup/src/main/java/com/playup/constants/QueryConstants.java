@@ -21,5 +21,16 @@ public class QueryConstants {
     public final static String PRODUCTION_DB_URL = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_PRODUCTION";
     public final static String PRODUCTION_DB_USERNAME = "CSCI5308_1_PRODUCTION_USER";
     public final static String PRODUCTION_DB_PASSPORT = "INSERT INTO Tournament_Details (userId, tournament_id, sport_name, team_number) VALUES ('";
-
+    public final static String GET_VENUE_BY_ID = "Select * from Venues where venue_id=";
+    public final static String GET_SLOT_BY_VENUE_ID = "Select * from venue_slot_mapping where venue_id=";
+    public final static String GET_LOCATION_OF_ALL_VENUES = "Select venue_id, latitude, longitude from Venues";
+    public final static String INSERT_USER = "Insert into User (email, phone, password, sport, city, username) values ";
+    public final static String QUERY_SEPERATOR = "','";
+    public final static String USER_SET_PASSWORD = "Update User SET password='";
+    public final static String INSERT_USER_OTP = "Insert into user_otp_mapping (otp, email, date) values ";
+    public final static String SELECT_USER_OTP = "Select * from user_otp_mapping where email='";
+    public final static String SELECT_USER = "Select * from User where email='";
+    public final static String SELECT_VENUE_SLOT = "Select * from venue_slot_mapping where sport='";
+    public final static String UPDATE_SLOT_QUERY = "Update venue_slot_mapping SET booking_status= 'unavailable' WHERE venue_id='";
+    public final static String UPDATE_VENUES = "Update Venues SET available_slots='";
 }

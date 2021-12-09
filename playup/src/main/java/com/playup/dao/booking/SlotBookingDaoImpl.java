@@ -4,10 +4,13 @@ package com.playup.dao.booking;
  * @author Mugdha Anil Agharkar
  */
 
+import com.playup.constants.ApplicationConstants;
+import com.playup.constants.QueryConstants;
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;
 import com.playup.model.booking.VenueSlotFactory;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,18 +30,18 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
 
     @Override
     public SearchVenue getVenueById(int venueId) {
-        String query = "Select * from Venues where venue_id=" + venueId;
+        String query = QueryConstants.GET_VENUE_BY_ID + venueId;
         String sqlQuery = String.format(query);
         System.out.println(sqlQuery);
         ResultSet resultSet = null;
         try {
             resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
             while (resultSet!= null && resultSet.next()) {
-                SearchVenue venue = new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
-                        resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
-                        resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
-                        resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),
-                        resultSet.getString("avg_ratings"), resultSet.getString("category_id"));
+                SearchVenue venue = new SearchVenue(resultSet.getString(ApplicationConstants.VENUE_ID), resultSet.getString(ApplicationConstants.NAME),
+                        resultSet.getString(ApplicationConstants.CITY), resultSet.getString(ApplicationConstants.AVAILABLE_SLOTS_TABLE), resultSet.getString(ApplicationConstants.TOTAL_SLOTS),
+                        resultSet.getString(ApplicationConstants.FROM_TIME), resultSet.getString(ApplicationConstants.TO_TIME), resultSet.getString(ApplicationConstants.CONTACT_INFO),
+                        resultSet.getString(ApplicationConstants.LATITUDE), resultSet.getString(ApplicationConstants.LONGITUDE), resultSet.getString(ApplicationConstants.SLOT_PRICE),
+                        resultSet.getString(ApplicationConstants.AVG), resultSet.getString(ApplicationConstants.CATEGORY));
                 return venue;
             }
 
@@ -50,7 +53,7 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
 
     @Override
     public ArrayList<VenueSlot> getSlotsByVenueId(int venueId) {
-        String query = "Select * from venue_slot_mapping where venue_id=" + venueId;
+        String query = QueryConstants.GET_SLOT_BY_VENUE_ID + venueId;
         String sqlQuery = String.format(query);
         ResultSet resultSet = null;
         ArrayList<VenueSlot> venueSlots = new ArrayList<>();
@@ -58,12 +61,12 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
                 resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
                 while (resultSet.next()) {
                     VenueSlot venueSlot = VenueSlotFactory.getVenueSlot();
-                    venueSlot.setVenueId(resultSet.getInt("venue_id"));
-                    venueSlot.setSlotId(resultSet.getInt("slot_id"));
-                    venueSlot.setSlotTiming(resultSet.getString("slot_timing"));
-                    venueSlot.setSlotType(resultSet.getString("slot_type"));
-                    venueSlot.setBookingStatus(resultSet.getString("booking_status"));
-                    venueSlot.setSport(resultSet.getString("sport"));
+                    venueSlot.setVenueId(resultSet.getInt(ApplicationConstants.VENUE_ID));
+                    venueSlot.setSlotId(resultSet.getInt(ApplicationConstants.SLOT_ID));
+                    venueSlot.setSlotTiming(resultSet.getString(ApplicationConstants.SLOT_TIMING));
+                    venueSlot.setSlotType(resultSet.getString(ApplicationConstants.SLOT_TYPE));
+                    venueSlot.setBookingStatus(resultSet.getString(ApplicationConstants.BOOKING_STATUS));
+                    venueSlot.setSport(resultSet.getString(ApplicationConstants.SPORT));
                     venueSlots.add(venueSlot);
                 }
             } catch (SQLException e) {
@@ -74,9 +77,10 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
 
     @Override
     public boolean updateSlot(int venueId, int slotId) {
+        String TEXT = "' AND slot_id='";
+        String COMMA = "'";
         boolean success = false;
-        String query = "Update venue_slot_mapping SET booking_status= 'unavailable' WHERE venue_id="
-                + "'" + venueId + "'" + " AND slot_id=" + "'" + slotId + "'";
+        String query = QueryConstants.UPDATE_SLOT_QUERY +venueId + TEXT + slotId + COMMA;
         String sqlQuery = String.format(query);
         try {
             success = PlayupDBConnection.getInstance().updateData(sqlQuery);
@@ -89,10 +93,12 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
     @Override
     public boolean updateVenueSlot(SearchVenue venue) {
         boolean success = false;
+        String WHERE = "'WHERE venue_id='";
+        String COMMA = "'";
         String updatedSlotCount = venue.getAvailableSlots();
         String venueId = venue.getVenueID();
-        String query = "Update Venues SET available_slots=" + "'" + updatedSlotCount + "'" + "WHERE venue_id="
-                + "'" + venueId + "'";
+        String query = QueryConstants.UPDATE_VENUES + updatedSlotCount + WHERE
+                + venueId + COMMA;
         String sqlQuery = String.format(query);
         try {
             success = PlayupDBConnection.getInstance().updateData(sqlQuery);

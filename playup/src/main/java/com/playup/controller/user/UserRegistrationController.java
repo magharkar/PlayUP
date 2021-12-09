@@ -76,7 +76,6 @@ public class UserRegistrationController {
         if(response.equals(ApplicationConstants.EMAIL_VERIFIED) && success) {
             return ApplicationConstants.REDIRECT_VENUE_HTML;
         }
-
         return ApplicationConstants.OTP_HTML;
     }
 
