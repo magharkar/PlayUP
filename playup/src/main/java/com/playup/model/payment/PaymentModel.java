@@ -3,6 +3,7 @@ package com.playup.model.payment;
 /**
  * @Author Shiv Gaurang Desai
  */
+
 public class PaymentModel {
     private int transactionId;
     private String name;

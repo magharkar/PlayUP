@@ -10,7 +10,8 @@ import java.util.ArrayList;
 /**
  * @author Shiv Gaurang Desai
  */
-public class PaymentHistoryDaoImpl implements IPaymentHistoryDaoImpl{
+
+public class PaymentHistoryDaoImpl implements IPaymentHistoryDaoImpl {
     private static PaymentHistoryDaoImpl paymentHistoryDaoInstance;
 
     private PaymentHistoryDaoImpl(){}
@@ -28,10 +29,8 @@ public class PaymentHistoryDaoImpl implements IPaymentHistoryDaoImpl{
         ArrayList<PaymentModel> paymentHistoryList = new ArrayList<>();
         String sqlQuery = String.format(QueryConstants.FETCH_PAYMENT_HISTORY,email);
         ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
-        while (resultSet != null && resultSet.next())
-        {
+        while (resultSet != null && resultSet.next()) {
             paymentHistoryList.add(new PaymentModel( Integer.parseInt(resultSet.getString(QueryConstants.PAYMENT_QUERY_TRANSACTION_ID)), resultSet.getString(QueryConstants.PAYMENT_QUERY_NAME), resultSet.getString(QueryConstants.PAYMENT_QUERY_CARD_NUMBER), Integer.parseInt(resultSet.getString(QueryConstants.PAYMENT_QUERY_AMOUNT)), resultSet.getString(QueryConstants.PAYMENT_QUERY_TIME_STAMP), resultSet.getString(QueryConstants.PAYMENT_QUERY_EMAIL)));
-
         }
         return paymentHistoryList;
     }

@@ -1,7 +1,8 @@
+package com.playup.dao.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.dao.booking;
 
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.search.SearchVenue;
@@ -53,7 +54,6 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
         String sqlQuery = String.format(query);
         ResultSet resultSet = null;
         ArrayList<VenueSlot> venueSlots = new ArrayList<>();
-
             try {
                 resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
                 while (resultSet.next()) {

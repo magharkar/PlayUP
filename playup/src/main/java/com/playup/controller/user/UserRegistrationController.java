@@ -1,8 +1,5 @@
 package com.playup.controller.user;
 
-/**
- * @author Mugdha Anil Agharkar
- */
 import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.IUser;
 import com.playup.model.user.User;
@@ -19,9 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
+/**
+ * @author Mugdha Anil Agharkar
+ */
+
 @Controller
 public class UserRegistrationController {
-
     IUserRegistrationService userRegistrationService;
 
     IOneTimePasswordService oneTimePasswordService;

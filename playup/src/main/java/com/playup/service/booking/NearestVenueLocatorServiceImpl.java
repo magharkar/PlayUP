@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.service.booking;
 
 import com.playup.dao.booking.BookingFactoryDao;
@@ -13,6 +10,7 @@ import java.util.*;
 /**
  * @author Mugdha Anil Agharkar
  */
+
 public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorService {
     INearestVenueLocationDao nearestVenueLocationDao;
 
@@ -42,7 +40,6 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
         }
         return null;
     }
-
 
     private String calculateShortestDistance(String currentVenueId,
                                              HashMap<String, String[]> locationData, String sport) {
@@ -90,5 +87,4 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
             return (dist);
         }
     }
-
 }

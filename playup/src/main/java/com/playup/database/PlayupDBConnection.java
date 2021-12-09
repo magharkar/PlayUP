@@ -1,7 +1,3 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.database;
 
 import java.sql.Connection;
@@ -9,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+/**
+ * @author vibhorbhatnagar
+ */
 
 public class PlayupDBConnection {
 

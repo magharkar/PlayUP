@@ -1,8 +1,8 @@
+package com.playup.model.search;
+
 /**
  * @author vibhorbhatnagar
  */
-
-package com.playup.model.search;
 
 public class SearchVenue {
 	String venueID;

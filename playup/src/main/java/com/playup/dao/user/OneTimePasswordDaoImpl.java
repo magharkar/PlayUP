@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.dao.user;
 
 import com.playup.database.PlayupDBConnection;
@@ -13,6 +10,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
     @Override

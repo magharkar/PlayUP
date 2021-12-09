@@ -1,8 +1,5 @@
 package com.playup.controller.user;
 
-/**
- * @author Mugdha Anil Agharkar
- */
 import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
@@ -14,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import java.sql.SQLException;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 @Controller
 public class UserLoginController {

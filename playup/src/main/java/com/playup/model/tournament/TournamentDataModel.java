@@ -1,11 +1,10 @@
+package com.playup.model.tournament;
+
 /**
  * @author vibhorbhatnagar
  */
 
-package com.playup.model.tournament;
-
 public class TournamentDataModel {
-
 	String tournamentId;
 	String tournamentType;
 	String tournamentSport;

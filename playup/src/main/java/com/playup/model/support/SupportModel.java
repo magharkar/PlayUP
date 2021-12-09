@@ -3,6 +3,7 @@ package com.playup.model.support;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class SupportModel {
     private int ticketNumber;
     private String name;

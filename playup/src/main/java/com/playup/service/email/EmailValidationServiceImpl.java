@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class EmailValidationServiceImpl implements IEmailValidationService {
     @Override

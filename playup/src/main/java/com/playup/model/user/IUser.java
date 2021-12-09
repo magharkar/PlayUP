@@ -3,6 +3,7 @@ package com.playup.model.user;
 /**
  * @author Mugdha Anil Agharkar
  */
+
 public interface IUser {
 
     int getUserId();

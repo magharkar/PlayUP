@@ -1,12 +1,13 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.dao.booking;
 
 import com.playup.database.PlayupDBConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+
+/**
+ * @author Mugdha Anil Agharkar
+ */
 
 public class NearestVenueLocationDaoImpl implements INearestVenueLocationDao {
     @Override

@@ -9,7 +9,8 @@ import java.sql.SQLException;
 /**
  * @author Shiv Gaurang Desai
  */
-public class PaymentDaoImpl implements IPaymentDao{
+
+public class PaymentDaoImpl implements IPaymentDao {
     private static PaymentDaoImpl paymentDaoInstance;
 
     private PaymentDaoImpl(){}

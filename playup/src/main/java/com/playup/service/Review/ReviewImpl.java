@@ -8,45 +8,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewImpl {
-
     private static ReviewImpl instance = null;
-    public static ReviewImpl getInstance()
-    {
-        if(instance == null)
-        {
+    public static ReviewImpl getInstance() {
+        if(instance == null) {
             instance = new ReviewImpl();
         }
         return instance;
     }
 
-    public ArrayList<ReviewModel> fetchVenues()
-    {
+    public ArrayList<ReviewModel> fetchVenues() {
         List<ReviewModel> venueList = new ArrayList<>();
-        try
-        {
+        try {
             venueList = ReviewDao.getInstance().getVenuesFromDB();
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return (ArrayList<ReviewModel>) venueList;
     }
 
-    public ArrayList<ViewReviewModel> viewReviews()
-    {
+    public ArrayList<ViewReviewModel> viewReviews() {
         List<ViewReviewModel> viewReviewList = new ArrayList<>();
-        try
-        {
+        try {
             viewReviewList = ReviewDao.getInstance().getReviewsFromDB();
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return (ArrayList<ViewReviewModel>) viewReviewList;
     }
 
-    public void postReviews(int venueID, String title, String description, int rating)
-    {
+    public void postReviews(int venueID, String title, String description, int rating) {
        ReviewDao.getInstance().postReviewToDB( venueID,title,description,rating);
     }
 }

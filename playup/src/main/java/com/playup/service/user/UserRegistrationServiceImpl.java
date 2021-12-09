@@ -12,6 +12,7 @@ import java.util.Properties;
 /**
  * @author Mugdha Anil Agharkar
  */
+
 public class UserRegistrationServiceImpl implements IUserRegistrationService {
     @Override
     public boolean registerNewUser(IUser user) {
