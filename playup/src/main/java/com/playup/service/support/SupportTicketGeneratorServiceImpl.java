@@ -1,12 +1,12 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.support;
 
 import com.playup.dao.support.SupportDaoImpl;
 import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class SupportTicketGeneratorServiceImpl implements ISupportTicketGeneratorService {
     @Override

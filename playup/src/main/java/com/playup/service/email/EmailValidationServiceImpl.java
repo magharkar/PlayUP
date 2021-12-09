@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.email;
 
 import com.playup.constants.ApplicationConstants;
@@ -8,6 +5,9 @@ import org.springframework.stereotype.Service;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class EmailValidationServiceImpl implements IEmailValidationService {
     @Override

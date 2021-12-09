@@ -1,8 +1,8 @@
+package com.playup.model.support;
+
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.model.support;
-
 public class SupportModel {
     private int ticketNumber;
     private String name;

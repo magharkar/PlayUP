@@ -1,13 +1,12 @@
+package com.playup.service.email;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.tests.email;
-
-import static org.junit.jupiter.api.Assertions.*;
-import com.playup.service.email.EmailValidationServiceImpl;
-import com.playup.service.email.IEmailValidationService;
-import org.junit.jupiter.api.Test;
-
 public class EmailValidationServiceTest {
     @Test
     public void emailValidationServiceTestForNotNull() throws ClassNotFoundException {

@@ -1,7 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- * Refered https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
- */
 package com.playup.service.payment;
 
 import com.playup.constants.ApplicationConstants;
@@ -12,6 +8,10 @@ import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Base64;
 
+/**
+ * @author Shiv Gaurang Desai
+ * Refered https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
+ */
 @Service
 public class CipherServiceImpl implements ICipherService {
     @Override

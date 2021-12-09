@@ -39,7 +39,7 @@ public class OneTimePasswordServiceImplTest {
         when(oneTimePasswordServiceMock.verifyOTP("test@gmail.com", "testpassword")).thenReturn("password_updated");
         assertEquals(oneTimePasswordServiceMock.verifyOTP("test@gmail.com", "testpassword"), "password_updated",
                 "otp_invalid");
-        System.out.println(verify(oneTimePasswordServiceMock).verifyOTP("test@gmail.com", "testpassword"));
+        verify(oneTimePasswordServiceMock).verifyOTP("test@gmail.com", "testpassword");
 
     }
 

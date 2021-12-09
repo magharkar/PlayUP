@@ -1,13 +1,13 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.support;
+package com.playup.service.support;
 
 import static org.junit.jupiter.api.Assertions.*;
 import com.playup.constants.ApplicationConstants;
-import com.playup.service.support.SupportTicketGeneratorServiceImpl;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class TicketGeneratorServiceTest {
     @Test
     void ticketGeneratorServiceNotNullTest() throws ClassNotFoundException {
