@@ -39,8 +39,15 @@ function postVenueData() {
 				cell11.innerHTML = result[i].slotPrice;
 				cell12.innerHTML = result[i].averageRating;
 				cell13.innerHTML = result[i].categoryID;
-				cell14.innerHTML = "<input type='button' id='book' name='book' onClick= '' value='book' />";
-
+				let btn = document.createElement("button");
+				    var venueid = result[i].venueID;
+                    btn.innerHTML = "Book";
+                    (function(index){
+                        btn.addEventListener("click", function() {
+                          window.location.href = "venue/"+index;
+                        })
+                      })(venueid)
+                    cell14.append(btn);
 			}
 		}
 	});
@@ -48,4 +55,8 @@ function postVenueData() {
 	request.fail(function(jqXHR, textStatus) {
 		confirm("Request failed: " + textStatus);
 	});
+}
+
+function redirect(i) {
+      window.location.href = "venue.htm?data="+i
 }
