@@ -29,13 +29,13 @@ public class SupportController {
     @Autowired
     private ISupportFactoryService supportFactoryService;
 
-    @GetMapping("/support")
+    @GetMapping(ApplicationConstants.SUPPORT_URL)
     public String support(Model model) {
         model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
         return ApplicationConstants.SUPPORT_TEXT;
     }
 
-    @PostMapping("/support")
+    @PostMapping(ApplicationConstants.SUPPORT_URL)
     public String generateSupportRequest(@ModelAttribute SupportModel supportModel,Model ui){
         if (emailValidationService.isEmailValid(supportModel.getEmail())) {
             boolean isRequestGenerated = supportService.generateSupportRequest(supportModel);

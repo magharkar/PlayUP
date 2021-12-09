@@ -108,5 +108,9 @@ public class ApplicationConstants {
     public final static String SLOT_TYPE = "slot_type";
     public final static String BOOKING_STATUS = "booking_status";
     public final static String SLOT_TIMING = "slot_timing";
+    public final static String PAYMENT_URL = "/payment";
+    public final static String PAYMENT_HISTORY = "/paymentHistory";
+    public final static String PAYMENT_HISTORY_HTML = "payment_history";
+    public final static String SUPPORT_URL = "/support";
 
 }

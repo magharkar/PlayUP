@@ -33,6 +33,7 @@ public class UserRegistrationServiceImpl implements IUserRegistrationService {
             in.close();
             FileOutputStream out = new FileOutputStream("src/main/resources/application.properties");
             props.setProperty("loggedInUserSport", user.getSport());
+            props.setProperty("loggedInUser",user.getEmail());
             props.store(out, null);
             out.close();
 

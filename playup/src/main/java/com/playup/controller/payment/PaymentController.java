@@ -1,6 +1,7 @@
 package com.playup.controller.payment;
 
 import com.playup.constants.ApplicationConstants;
+import com.playup.constants.QueryConstants;
 import com.playup.model.payment.CreditCardModel;
 import com.playup.service.payment.ICardFactoryService;
 import com.playup.service.payment.ICreditCardValidationService;
@@ -26,13 +27,13 @@ public class PaymentController {
     @Autowired
     private IPaymentService paymentService;
 
-    @GetMapping("/payment")
+    @GetMapping(ApplicationConstants.PAYMENT_URL)
     public String paymentGateway(Model ui) {
         ui.addAttribute(ApplicationConstants.CREDIT_CARD_TEXT,cardFactoryService.getCreditCard());
         return ApplicationConstants.PAYMENT_TEXT;
     }
 
-    @RequestMapping(value = "/payment", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = ApplicationConstants.PAYMENT_URL, method = {RequestMethod.POST, RequestMethod.GET})
     public String paymentGateway(@ModelAttribute CreditCardModel creditCardModel, Model ui, @RequestParam String selectedSlot, @RequestParam String id, @RequestParam String amount) {
         HashMap<Boolean,String> validationResponse = creditCardValidationService.isCardDetailsValid(creditCardModel);
         if(validationResponse.containsKey(true)) {
