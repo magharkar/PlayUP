@@ -1,20 +1,11 @@
+package com.playup.service.email;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.tests.email;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import com.playup.model.user.OneTimePassword;
-import org.junit.jupiter.api.Test;
-
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-
 public class EmailServiceTest {
     @Test
     public void emailServiceClassNotNullTest() throws ClassNotFoundException {

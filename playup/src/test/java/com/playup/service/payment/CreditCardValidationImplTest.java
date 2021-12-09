@@ -1,13 +1,14 @@
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.tests.payment;
+package com.playup.service.payment;
 
-import com.playup.service.payment.CreditCardValidationServiceImpl;
-import com.playup.service.payment.ICreditCardValidationService;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class CreditCardValidationImplTest {
     @Test
     public void creditCardValidationServiceClassNotNullTest() throws ClassNotFoundException {

@@ -1,11 +1,11 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.payment;
+package com.playup.dao.payment;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class PaymentDaoImplTest {
     @Test
     public void paymentDaoClassNotNullTest() throws ClassNotFoundException {

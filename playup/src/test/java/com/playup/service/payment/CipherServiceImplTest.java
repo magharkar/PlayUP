@@ -1,14 +1,12 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.payment;
+package com.playup.service.payment;
 
-import com.playup.service.payment.CipherServiceImpl;
-import com.playup.service.payment.ICipherService;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class CipherServiceImplTest {
     @Test
     public void cipherServiceClassForNotNull() throws ClassNotFoundException {

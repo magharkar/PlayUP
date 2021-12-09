@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.payment;
 
 import com.playup.constants.ApplicationConstants;
@@ -12,6 +9,9 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class CreditCardValidationServiceImpl implements ICreditCardValidationService {
     @Override

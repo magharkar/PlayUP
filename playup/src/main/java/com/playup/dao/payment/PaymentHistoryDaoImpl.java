@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.dao.payment;
 
 import com.playup.constants.QueryConstants;
@@ -10,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class PaymentHistoryDaoImpl implements IPaymentHistoryDaoImpl{
     private static PaymentHistoryDaoImpl paymentHistoryDaoInstance;
 

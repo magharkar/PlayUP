@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.dao.support;
 
 import com.playup.constants.QueryConstants;
@@ -9,6 +6,9 @@ import com.playup.model.support.SupportModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class SupportDaoImpl implements ISupportDao{
     private static SupportDaoImpl supportDaoImplInstance;
 

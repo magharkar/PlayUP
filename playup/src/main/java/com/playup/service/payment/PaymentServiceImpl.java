@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.payment;
 
 import com.playup.constants.ApplicationConstants;
@@ -14,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class PaymentServiceImpl implements IPaymentService {
     @Autowired
@@ -28,14 +28,15 @@ public class PaymentServiceImpl implements IPaymentService {
     @Autowired
     private IGetLoggedInUserEmail getLoggedInUserEmail;
 
-    public boolean completeTransaction(CreditCardModel creditCardModel) {
+    public boolean completeTransaction(CreditCardModel creditCardModel, String amount) {
         PaymentModel paymentModel = PaymentFactory.getPaymentObject();
         int transactionNumber = transactionIdGeneratorService.generateTransactionId(ApplicationConstants.MINIMUM_TRANSACTION_NUMBER,ApplicationConstants.MAXIMUM_TRANSACTION_NUMBER);
         LocalDateTime currentTimeStamp = LocalDateTime.now();
+        amount = amount.substring(1);
         paymentModel.setTransactionId(transactionNumber);
         paymentModel.setCardNumber(cipherService.encrypt(creditCardModel.getCardNumber()));
         paymentModel.setName(creditCardModel.getName());
-        paymentModel.setAmount(20);
+        paymentModel.setAmount(Integer.parseInt(amount));
         paymentModel.setTimeStamp(currentTimeStamp.toString());
         paymentModel.setLoggedInUserEmail(getLoggedInUserEmail.getEmail());
         try {

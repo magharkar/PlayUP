@@ -1,8 +1,8 @@
+package com.playup.model.payment;
+
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.model.payment;
-
 public class CreditCardModel {
     private String name;
     private String cardNumber;

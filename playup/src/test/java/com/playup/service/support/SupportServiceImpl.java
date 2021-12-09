@@ -1,7 +1,4 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.support;
+package com.playup.service.support;
 
 import com.playup.dao.support.ISupportDao;
 import com.playup.dao.support.SupportDaoImpl;
@@ -15,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class SupportServiceImpl {
     ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
     @Test

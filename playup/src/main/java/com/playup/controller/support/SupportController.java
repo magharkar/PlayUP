@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.controller.support;
 
 import com.playup.constants.ApplicationConstants;
@@ -14,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Controller
 public class SupportController {
     @Autowired

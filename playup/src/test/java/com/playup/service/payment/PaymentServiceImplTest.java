@@ -1,7 +1,4 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.payment;
+package com.playup.service.payment;
 
 import com.playup.dao.payment.IPaymentDao;
 import com.playup.dao.payment.PaymentDaoImpl;
@@ -16,6 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class PaymentServiceImplTest {
     private IPaymentDao paymentDao = Mockito.mock(PaymentDaoImpl.class);
     @Test

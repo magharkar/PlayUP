@@ -1,11 +1,11 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.support;
+package com.playup.dao.support;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class SupportDaoTest {
     @Test
     public void supportDaoClassNotNullTest() throws ClassNotFoundException {

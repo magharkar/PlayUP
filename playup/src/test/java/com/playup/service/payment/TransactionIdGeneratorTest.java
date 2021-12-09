@@ -1,14 +1,12 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.payment;
+package com.playup.service.payment;
 
 import com.playup.constants.ApplicationConstants;
-import com.playup.service.payment.ITransactionIdGeneratorService;
-import com.playup.service.payment.TransactionIdGeneratorServiceImpl;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class TransactionIdGeneratorTest {
     @Test
         void TransactionIdGeneratorServiceNotNullTest() throws ClassNotFoundException {

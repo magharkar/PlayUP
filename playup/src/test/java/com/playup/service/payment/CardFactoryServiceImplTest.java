@@ -1,11 +1,11 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.payment;
+package com.playup.service.payment;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class CardFactoryServiceImplTest {
     @Test
     public void cardFactoryServiceImplClassNotNullTest() throws ClassNotFoundException {

@@ -44,5 +44,8 @@ public class ApplicationConstants {
     public final static String EMAIL_ID_ATTRIBUTE = "emailId";
     public final static String OTP_ATTRIBUTE = "oneTimePassword";
     public final static String APPLICATION_PROPERTIES_PATH = "src/main/resources/application.properties";
-    public final static String EMAIL_ID_TEXT = "emailId";
+    public final static String EMAIL_ID_TEXT = "loggedInUser";
+    public final static String PAYMENT_CONFIRMATION = "redirect:/payment_confirmation/";
+    public final static String CLASH = "/";
+
 }

@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.email;
 
 import com.playup.constants.ApplicationConstants;
@@ -10,6 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class GetLoggedInUserEmail implements  IGetLoggedInUserEmail{
     @Override

@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.email;
 
 import com.playup.constants.ApplicationConstants;
@@ -9,6 +6,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class EmailSenderServiceImpl implements IEmailSenderService {
     @Autowired

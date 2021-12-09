@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.payment;
 
 import com.playup.dao.payment.PaymentHistoryDaoImpl;
@@ -10,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class PaymentHistoryServiceImpl implements IPaymentHistoryService {
     @Autowired
