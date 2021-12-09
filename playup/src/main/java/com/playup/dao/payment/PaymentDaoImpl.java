@@ -26,7 +26,7 @@ public class PaymentDaoImpl implements IPaymentDao{
     public boolean checkWhetherTransactionExist(int ticketNumber) throws SQLException {
         String sqlQuery = String.format(QueryConstants.CHECK_TRANSACTION_ID_NUMBER_QUERY,ticketNumber);
         ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
-        if (resultSet.next()) {
+        if (resultSet!=null&&resultSet.next()) {
             return true;
         }
         return false;
