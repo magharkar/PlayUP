@@ -1,10 +1,10 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.model.user;
 
 import java.util.Date;
 
+/**
+ * @author Mugdha Anil Agharkar
+ */
 public class OneTimePassword {
     private Integer id;
     private String userName;

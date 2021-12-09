@@ -10,6 +10,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author Mugdha Anil Agharkar
+ */
 public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorService {
     INearestVenueLocationDao nearestVenueLocationDao;
 
@@ -29,11 +32,10 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
             props.load(in);
             in.close();
             FileOutputStream out = new FileOutputStream("src/main/resources/application.properties");
-            String sportArray = props.getProperty("loggedInUser");
-            String[] testArray = sportArray.split("\\|");
+            String sport = props.getProperty("loggedInUserSport");
             props.store(out, null);
             out.close();
-            return testArray[1];
+            return sport;
 
         } catch (IOException e) {
             e.printStackTrace();

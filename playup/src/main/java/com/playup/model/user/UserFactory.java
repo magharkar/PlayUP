@@ -1,8 +1,8 @@
+package com.playup.model.user;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.model.user;
-
 public class UserFactory {
 
     public static IUser userObject(UserAbstractFactory userAbstractFactory) {

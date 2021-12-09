@@ -1,8 +1,8 @@
+package com.playup.model.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.model.booking;
-
 public class VenueSlot {
     private int venueId;
     private int slotId;

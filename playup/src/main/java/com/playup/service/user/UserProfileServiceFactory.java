@@ -1,8 +1,8 @@
+package com.playup.service.user;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.service.user;
-
 public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory {
     private static UserProfileServiceFactory instance = null;
     private IUserLoginService userLoginService;
