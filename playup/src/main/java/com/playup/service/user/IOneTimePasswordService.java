@@ -6,8 +6,6 @@ package com.playup.service.user;
 import java.sql.SQLException;
 
 public interface IOneTimePasswordService {
-    String createOtp();
-
     String sendOTP(String email) throws SQLException;
 
     String verifyOTPForPasswordReset(String email, String oneTimePassword, String password);

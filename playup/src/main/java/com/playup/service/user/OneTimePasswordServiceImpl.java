@@ -25,11 +25,6 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
     private IEmailSenderService emailService;
 
     @Override
-    public String createOtp() {
-        return null;
-    }
-
-    @Override
     public String sendOTP(String email) {
         OneTimePassword oneTimePassword = new OneTimePassword();
 

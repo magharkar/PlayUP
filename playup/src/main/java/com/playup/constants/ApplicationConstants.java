@@ -1,8 +1,8 @@
+package com.playup.constants;
+
 /**
  * @author Shiv Gaurang Desai
  */
-package com.playup.constants;
-
 public class ApplicationConstants {
     public final static String ADMIN_MAIL_ID = "shiv.course@gmail.com";
     public final static String SUPPORT_EMAIL_BODY = "We are really sorry for the issue you faced. Our team will reach out to you regarding the issue.";
@@ -44,6 +44,9 @@ public class ApplicationConstants {
     public final static String EMAIL_ID_ATTRIBUTE = "emailId";
     public final static String OTP_ATTRIBUTE = "oneTimePassword";
     public final static String APPLICATION_PROPERTIES_PATH = "src/main/resources/application.properties";
+    public final static String EMAIL_ID_TEXT = "loggedInUser";
+    public final static String PAYMENT_CONFIRMATION = "redirect:/payment_confirmation/";
+    public final static String CLASH = "/";
     public final static String FORGOT_PASSWORD_URL = "/forgot_password";
     public final static String FORGOT_PASSWORD_HTML = "forgot_password";
     public final static String FORGOT_PASSWORD_OTP_URL = "/forgot_password_otp";
@@ -69,12 +72,9 @@ public class ApplicationConstants {
     public final static String PASSWORD_POLICY_ERROR = "Your new password does not satisfy password policy.";
     public final static String USER_EXISTS = "user_exists";
     public final static String ERROR = "error";
-    public final static String EMAILID_ATTRIBUTE = "emailId";
     public final static String USERNAME_ATTRIBUTE = "userName";
     public final static String CONTACT_ATTRIBUTE = "contactNumber";
     public final static String PASSWORD_ATTRIBUTE = "password";
     public final static String CITY = "city";
     public final static String SPORT = "sport";
-
-
 }

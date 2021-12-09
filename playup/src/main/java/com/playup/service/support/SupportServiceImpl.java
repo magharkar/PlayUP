@@ -1,6 +1,3 @@
-/**
- * @author Shiv Gaurang Desai
- */
 package com.playup.service.support;
 
 import com.playup.constants.ApplicationConstants;
@@ -9,6 +6,9 @@ import com.playup.model.support.SupportModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 @Service
 public class SupportServiceImpl implements ISupportService {
     @Autowired

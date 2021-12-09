@@ -37,6 +37,8 @@ body {
   </div>
 </nav>
 
+
+
 <h2>Venue</h2>
 <div class="container-class">
   <div>
@@ -81,7 +83,9 @@ body {
         </select>
       </div>
 
-
+      <div th:if="${amount}">
+        <input id="amount" type="text" th:value="${amount}" name="amount" hidden>
+      </div>
       <p style="margin-top: 16px"><input type="submit" value="Book Now" /></p>
       <a th:href="@{/venue/nearest_venue/{id}(id=${id})}">Did not get the desired slot? Here is a nearby venue with the same sport</a>
 

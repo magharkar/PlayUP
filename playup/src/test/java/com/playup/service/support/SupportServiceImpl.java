@@ -1,7 +1,4 @@
-/**
- * @author Shiv Gaurang Desai
- */
-package com.playup.tests.support;
+package com.playup.service.support;
 
 import com.playup.dao.support.ISupportDao;
 import com.playup.dao.support.SupportDaoImpl;
@@ -9,17 +6,19 @@ import com.playup.model.support.SupportModel;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Shiv Gaurang Desai
+ */
 public class SupportServiceImpl {
     ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
     @Test
-    public void cardFactoryServiceImplClassTest() throws ClassNotFoundException {
+    public void cardFactoryServiceImplClassNotNullTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.support.SupportServiceImpl", false, getClass().getClassLoader());
         assertNotNull(classExists);
     }
@@ -39,7 +38,7 @@ public class SupportServiceImpl {
     }
 
     @Test
-    void checkWhetherSupportRequestIsCreated() throws SQLException, ParseException {
+    void checkWhetherSupportRequestIsCreatedTest() throws SQLException {
         ArrayList<SupportModel> list = new ArrayList<>();
         SupportModel supportModel = new SupportModel();
         supportModel.setTicketNumber(1922);
