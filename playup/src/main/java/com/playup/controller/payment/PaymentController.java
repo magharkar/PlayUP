@@ -4,7 +4,7 @@
 package com.playup.controller.payment;
 
 import com.playup.constants.ApplicationConstants;
-import com.playup.model.payment.CreditCard;
+import com.playup.model.payment.CreditCardModel;
 import com.playup.service.payment.ICardFactoryService;
 import com.playup.service.payment.ICreditCardValidationService;
 import com.playup.service.payment.IPaymentService;
@@ -34,10 +34,10 @@ public class PaymentController {
     }
 
     @PostMapping("/payment")
-    public String paymentGateway(@ModelAttribute CreditCard creditCard, Model ui) {
-        HashMap<Boolean,String> validationResponse = creditCardValidationService.isCardDetailsValid(creditCard);
+        public String completeTransaction(@ModelAttribute CreditCardModel creditCardModel, Model ui) {
+        HashMap<Boolean,String> validationResponse = creditCardValidationService.isCardDetailsValid(creditCardModel);
         if(validationResponse.containsKey(true)) {
-            boolean isSuccess = paymentService.completeTransaction(creditCard);
+            boolean isSuccess = paymentService.completeTransaction(creditCardModel);
             if(isSuccess) {
                 return ApplicationConstants.PAYMENT_CONFIRMATION_TEXT;
             }else {

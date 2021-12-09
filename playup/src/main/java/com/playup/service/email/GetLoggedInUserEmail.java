@@ -13,17 +13,17 @@ import java.util.Properties;
 @Service
 public class GetLoggedInUserEmail implements  IGetLoggedInUserEmail{
     @Override
-    public  String getEmail() {
+    public String getEmail() {
         String userEmail = "";
         try {
-            FileInputStream in = new FileInputStream(ApplicationConstants.APPLICATION_PROPERTIES_PATH);
+            FileInputStream fileInputStream = new FileInputStream(ApplicationConstants.APPLICATION_PROPERTIES_PATH);
             Properties props = new Properties();
-            props.load(in);
-            in.close();
-            FileOutputStream out = new FileOutputStream(ApplicationConstants.APPLICATION_PROPERTIES_PATH);
-            props.store(out, null);
-            userEmail = props.get("emailId").toString();
-            out.close();
+            props.load(fileInputStream);
+            fileInputStream.close();
+            FileOutputStream fileOutputStream = new FileOutputStream(ApplicationConstants.APPLICATION_PROPERTIES_PATH);
+            props.store(fileOutputStream, null);
+            userEmail = props.get(ApplicationConstants.EMAIL_ID_TEXT).toString();
+            fileOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

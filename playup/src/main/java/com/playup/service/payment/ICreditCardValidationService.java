@@ -3,7 +3,7 @@
  */
 package com.playup.service.payment;
 
-import com.playup.model.payment.CreditCard;
+import com.playup.model.payment.CreditCardModel;
 import java.util.HashMap;
 
 public interface ICreditCardValidationService {
@@ -11,5 +11,5 @@ public interface ICreditCardValidationService {
     boolean validateDate(String expiryDate);
     boolean validateName(String Name);
     boolean validateCardNumber(String name);
-    HashMap<Boolean,String> isCardDetailsValid(CreditCard creditCard);
+    HashMap<Boolean,String> isCardDetailsValid(CreditCardModel creditCardModel);
 }

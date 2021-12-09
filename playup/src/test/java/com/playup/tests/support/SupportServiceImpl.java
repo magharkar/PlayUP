@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class SupportServiceImpl {
     ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
     @Test
-    public void cardFactoryServiceImplClassTest() throws ClassNotFoundException {
+    public void cardFactoryServiceImplClassNotNullTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.support.SupportServiceImpl", false, getClass().getClassLoader());
         assertNotNull(classExists);
     }
@@ -38,7 +38,7 @@ public class SupportServiceImpl {
     }
 
     @Test
-    void checkWhetherSupportRequestIsCreated() throws SQLException {
+    void checkWhetherSupportRequestIsCreatedTest() throws SQLException {
         ArrayList<SupportModel> list = new ArrayList<>();
         SupportModel supportModel = new SupportModel();
         supportModel.setTicketNumber(1922);

@@ -29,7 +29,7 @@ public class SupportController {
     private ISupportFactoryService supportFactoryService;
 
     @GetMapping("/support")
-    public String SupportMethod(Model model) {
+    public String support(Model model) {
         model.addAttribute(ApplicationConstants.SUPPORT_TEXT,supportFactoryService.getSupportModel());
         return ApplicationConstants.SUPPORT_TEXT;
     }

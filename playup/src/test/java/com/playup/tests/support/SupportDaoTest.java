@@ -1,2 +1,15 @@
-package com.playup.tests.support;public class SupportDaoTest {
+/**
+ * @author Shiv Gaurang Desai
+ */
+package com.playup.tests.support;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+public class SupportDaoTest {
+    @Test
+    public void supportDaoClassNotNullTest() throws ClassNotFoundException {
+        Class<?> classExists = Class.forName("com.playup.dao.support.SupportDaoImpl", false, getClass().getClassLoader());
+        assertNotNull(classExists);
+    }
 }

@@ -5,7 +5,7 @@ package com.playup.service.payment;
 
 import com.playup.constants.ApplicationConstants;
 import com.playup.dao.payment.PaymentDaoImpl;
-import com.playup.model.payment.CreditCard;
+import com.playup.model.payment.CreditCardModel;
 import com.playup.model.payment.PaymentFactory;
 import com.playup.model.payment.PaymentModel;
 import com.playup.service.email.IEmailSenderService;
@@ -28,13 +28,13 @@ public class PaymentServiceImpl implements IPaymentService {
     @Autowired
     private IGetLoggedInUserEmail getLoggedInUserEmail;
 
-    public boolean completeTransaction(CreditCard creditCard) {
+    public boolean completeTransaction(CreditCardModel creditCardModel) {
         PaymentModel paymentModel = PaymentFactory.getPaymentObject();
         int transactionNumber = transactionIdGeneratorService.generateTransactionId(ApplicationConstants.MINIMUM_TRANSACTION_NUMBER,ApplicationConstants.MAXIMUM_TRANSACTION_NUMBER);
         LocalDateTime currentTimeStamp = LocalDateTime.now();
         paymentModel.setTransactionId(transactionNumber);
-        paymentModel.setCardNumber(cipherService.encrypt(creditCard.getCardNumber()));
-        paymentModel.setName(creditCard.getName());
+        paymentModel.setCardNumber(cipherService.encrypt(creditCardModel.getCardNumber()));
+        paymentModel.setName(creditCardModel.getName());
         paymentModel.setAmount(20);
         paymentModel.setTimeStamp(currentTimeStamp.toString());
         paymentModel.setLoggedInUserEmail(getLoggedInUserEmail.getEmail());

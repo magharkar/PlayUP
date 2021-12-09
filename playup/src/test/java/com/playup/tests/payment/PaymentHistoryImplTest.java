@@ -19,13 +19,13 @@ public class PaymentHistoryImplTest {
     IPaymentHistoryDaoImpl paymentHistoryDao = Mockito.mock(PaymentHistoryDaoImpl.class);
 
     @Test
-    public void paymentHistoryImplClassTest() throws ClassNotFoundException {
+    public void paymentHistoryImplClassNotNullTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.payment.PaymentHistoryServiceImpl", false, getClass().getClassLoader());
         assertNotNull(classExists);
     }
 
     @Test
-    void paymentHistoryTest () throws SQLException {
+    void paymentHistoryTest() throws SQLException {
         ArrayList<PaymentModel> list = new ArrayList<>();
         PaymentModel paymentModel = new PaymentModel();
         paymentModel.setTransactionId(5401);

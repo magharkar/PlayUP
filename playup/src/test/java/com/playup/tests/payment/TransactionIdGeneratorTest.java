@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TransactionIdGeneratorTest {
     @Test
-    void TransactionIdGeneratorServiceNotNullTest() throws ClassNotFoundException {
+        void TransactionIdGeneratorServiceNotNullTest() throws ClassNotFoundException {
         Class<?> classFinder = Class.forName("com.playup.service.payment.TransactionIdGeneratorServiceImpl", false, getClass().getClassLoader());
         assertNotNull(classFinder);
     }

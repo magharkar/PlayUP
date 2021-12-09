@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailSenderServiceImpl implements IEmailSenderService {
     @Autowired
-     JavaMailSender mailSender;
+    private JavaMailSender mailSender;
 
     @Override
     public void sendEmail(String toEmail, String body, String subject){

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SupportFactoryServiceImplTest {
     @Test
-    public void supportFactoryServiceImplClassTest() throws ClassNotFoundException {
+    public void supportFactoryServiceImplClassNotNullTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.support.SupportFactoryServiceImpl", false, getClass().getClassLoader());
         assertNotNull(classExists);
     }

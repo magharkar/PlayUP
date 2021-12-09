@@ -4,7 +4,7 @@
 package com.playup.service.payment;
 
 import com.playup.constants.ApplicationConstants;
-import com.playup.model.payment.CreditCard;
+import com.playup.model.payment.CreditCardModel;
 import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,21 +15,21 @@ import java.util.regex.Pattern;
 @Service
 public class CreditCardValidationServiceImpl implements ICreditCardValidationService {
     @Override
-    public HashMap<Boolean,String> isCardDetailsValid(CreditCard creditCard) {
+    public HashMap<Boolean,String> isCardDetailsValid(CreditCardModel creditCardModel) {
         HashMap<Boolean,String> response = new HashMap<>();
-        if(!validateName(creditCard.getName())) {
+        if(!validateName(creditCardModel.getName())) {
             response.put(false,ApplicationConstants.NAME_ERROR_MESSAGE);
             return response;
         }
-        if(!validateCardNumber(creditCard.getCardNumber())) {
+        if(!validateCardNumber(creditCardModel.getCardNumber())) {
             response.put(false,ApplicationConstants.CARD_ERROR_MESSAGE);
             return response;
         }
-        if(!validateCVV(creditCard.getCvv())) {
+        if(!validateCVV(creditCardModel.getCvv())) {
             response.put(false,ApplicationConstants.CVV_ERROR_MESSAGE);
             return response;
         }
-        if(!validateDate(creditCard.getExpiryDate())) {
+        if(!validateDate(creditCardModel.getExpiryDate())) {
             response.put(false,ApplicationConstants.EXPIRY_DATE_ERROR_MESSAGE);
             return response;
         }
@@ -88,9 +88,9 @@ public class CreditCardValidationServiceImpl implements ICreditCardValidationSer
         String timeStamp = new SimpleDateFormat(ApplicationConstants.DATE_FORMAT).format(new Date());
         try {
             SimpleDateFormat DateFormat = new SimpleDateFormat(ApplicationConstants.DATE_FORMAT);
-            Date d1 = DateFormat.parse(expiryDate);
-            Date d2 = DateFormat.parse(timeStamp);
-            if(d1.compareTo(d2)>0) {
+            Date expiry = DateFormat.parse(expiryDate);
+            Date current = DateFormat.parse(timeStamp);
+            if(expiry.compareTo(current)>0) {
                 return true;
             }
         }

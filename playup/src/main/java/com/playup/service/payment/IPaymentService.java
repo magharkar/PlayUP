@@ -3,8 +3,8 @@
  */
 package com.playup.service.payment;
 
-import com.playup.model.payment.CreditCard;
+import com.playup.model.payment.CreditCardModel;
 
 public interface IPaymentService {
-    boolean completeTransaction(CreditCard creditCard);
+    boolean completeTransaction(CreditCardModel creditCardModel);
 }
