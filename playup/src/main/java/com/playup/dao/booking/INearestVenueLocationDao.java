@@ -1,6 +1,6 @@
 package com.playup.dao.booking;
 
-import com.playup.model.Venue;
+import com.playup.model.search.SearchVenue;
 
 import java.util.ArrayList;
 import java.util.HashMap;

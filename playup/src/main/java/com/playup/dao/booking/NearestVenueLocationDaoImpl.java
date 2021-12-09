@@ -41,10 +41,9 @@ public class NearestVenueLocationDaoImpl implements INearestVenueLocationDao {
         ResultSet resultSet = null;
         HashMap<String, String[]> venueCoordinates = new HashMap<>();
         boolean test = true;
-        try {
-            resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
-            System.out.println("RESULTSET");
-            System.out.println(resultSet);
+        resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
+        System.out.println("RESULTSET");
+        System.out.println(resultSet);
 //            while (resultSet!= null && resultSet.next()) {
 //                String venueId = resultSet.getString("venue_id");
 //                String latitude = resultSet.getString("latitude");
@@ -53,9 +52,6 @@ public class NearestVenueLocationDaoImpl implements INearestVenueLocationDao {
 //                venueCoordinates.put(venueId,latLongArray);
 //            }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         try {
             if(resultSet.next()) {
                 System.out.println("Its present");

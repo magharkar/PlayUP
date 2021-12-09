@@ -1,8 +1,9 @@
 package com.playup.service.booking;
 
 import com.playup.dao.booking.SlotBookingDaoImpl;
-import com.playup.model.Venue;
+import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;
+import com.playup.model.search.SearchVenue;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,14 +37,14 @@ public class VenueBookingServiceImpl implements  IVenueBookingService{
     }
 
     @Override
-    public Venue getVenueDetails(int venueId) {
-        Venue venue = SlotBookingDaoImpl.getInstance().getVenueById(venueId);
+    public SearchVenue getVenueDetails(int venueId) {
+        SearchVenue venue = SlotBookingDaoImpl.getInstance().getVenueById(venueId);
         return venue;
     }
 
     @Override
     public boolean updateVenueAvailability(int venueId) {
-        Venue venue = SlotBookingDaoImpl.getInstance().getVenueById(venueId);
+        SearchVenue venue = SlotBookingDaoImpl.getInstance().getVenueById(venueId);
         String currentAvailableSlot = venue.getAvailableSlots();
         int currentSlotCount = Integer.parseInt(currentAvailableSlot);
         int updatedSlot = currentSlotCount - 1;

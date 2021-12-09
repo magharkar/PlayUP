@@ -1,9 +1,10 @@
 package com.playup.dao.booking;
 
 import com.playup.database.PlayupDBConnection;
-import com.playup.model.Venue;
+import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;
 import com.playup.model.booking.VenueSlotFactory;
+import com.playup.model.search.SearchVenue;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
     }
 
     @Override
-    public Venue getVenueById(int venueId) {
+    public SearchVenue getVenueById(int venueId) {
         String query = "Select * from Venues where venue_id=" + venueId;
         String sqlQuery = String.format(query);
         System.out.println(sqlQuery);
@@ -32,7 +33,7 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
         try {
             resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
             while (resultSet!= null && resultSet.next()) {
-                Venue venue = new Venue(resultSet.getString("venue_id"), resultSet.getString("name"),
+                SearchVenue venue = new SearchVenue(resultSet.getString("venue_id"), resultSet.getString("name"),
                         resultSet.getString("city"), resultSet.getString("available_slots"), resultSet.getString("total_slots"),
                         resultSet.getString("from_time"), resultSet.getString("to_time"), resultSet.getString("contact_info"),
                         resultSet.getString("latitude"), resultSet.getString("longitude"), resultSet.getString("slot_price"),
@@ -88,7 +89,7 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
     }
 
     @Override
-    public boolean updateVenueSlot(Venue venue) {
+    public boolean updateVenueSlot(SearchVenue venue) {
         boolean success = false;
         String updatedSlotCount = venue.getAvailableSlots();
         String venueId = venue.getVenueID();
