@@ -32,54 +32,54 @@ public class VenueBookingController {
     }
 
     @RequestMapping(value = "venue/nearest_venue/{id}", method = {RequestMethod.GET})
-    public String getNearestVenue(@PathVariable ("id") String ide, Model model) {
+    public String getNearestVenue(@PathVariable (ApplicationConstants.ID_OBJECT) String ide, Model model) {
         String id = nearestVenueLocatorService.getNearestVenue(ide);
         SearchVenue venue = venueBookingService.getVenueDetails(Integer.parseInt(id));
 
         ArrayList<VenueSlot> slots = venueBookingService.getAllSlots(Integer.parseInt(id));
 
-        model.addAttribute("venueName", venue.getVenueName());
-        model.addAttribute("venueCity", venue.getVenueCity());
-        model.addAttribute("availableSlots", venue.getAvailableSlots());
-        model.addAttribute("slots", slots);
-        model.addAttribute("id", id);
-        return "venue";
+        model.addAttribute(ApplicationConstants.VENUE_NAME, venue.getVenueName());
+        model.addAttribute(ApplicationConstants.VENUE_CITY, venue.getVenueCity());
+        model.addAttribute(ApplicationConstants.AVAILABLE_SLOTS, venue.getAvailableSlots());
+        model.addAttribute(ApplicationConstants.SLOTS, slots);
+        model.addAttribute(ApplicationConstants.ID_OBJECT, id);
+        return ApplicationConstants.VENUE_OBJECT;
     }
 
     @RequestMapping(value = "/venue/{id}", method = {RequestMethod.GET})
-    public String getVenue(@PathVariable("id") String id, Model model) {
+    public String getVenue(@PathVariable(ApplicationConstants.ID_OBJECT) String id, Model model) {
         int venueId = Integer.parseInt(id);
 
         SearchVenue venue = venueBookingService.getVenueDetails(venueId);
 
         ArrayList<VenueSlot> slots = venueBookingService.getAllSlots(venueId);
         System.out.println(venue.getSlotPrice());
-        model.addAttribute("venueName", venue.getVenueName());
-        model.addAttribute("venueCity", venue.getVenueCity());
-        model.addAttribute("availableSlots", venue.getAvailableSlots());
-        model.addAttribute("slots", slots);
-        model.addAttribute("id", id);
-        model.addAttribute("amount", venue.getSlotPrice());
-        return "venue";
+        model.addAttribute(ApplicationConstants.VENUE_NAME, venue.getVenueName());
+        model.addAttribute(ApplicationConstants.VENUE_CITY, venue.getVenueCity());
+        model.addAttribute(ApplicationConstants.AVAILABLE_SLOTS, venue.getAvailableSlots());
+        model.addAttribute(ApplicationConstants.SLOTS, slots);
+        model.addAttribute(ApplicationConstants.ID_OBJECT, id);
+        model.addAttribute(ApplicationConstants.AMOUNT, venue.getSlotPrice());
+        return ApplicationConstants.VENUE_OBJECT;
     }
 
     @PostMapping("/venue/{id}")
-    public String setslot(@RequestParam (name = "selectedSlot") String selectedSlot,
-                          @RequestParam (name = "id") String id,
-                          @RequestParam (name = "amount") String amount, Model model) {
-        model.addAttribute("id", id);
-        model.addAttribute("selectedSlot", selectedSlot);
-        System.out.println(amount);
-        model.addAttribute("amount",amount);
+    public String setSlot(@RequestParam (name = ApplicationConstants.SELECTED_SLOT) String selectedSlot,
+                          @RequestParam (name = ApplicationConstants.ID_OBJECT) String id,
+                          @RequestParam (name = ApplicationConstants.AMOUNT) String amount, Model model) {
+        model.addAttribute(ApplicationConstants.ID_OBJECT, id);
+        model.addAttribute(ApplicationConstants.SELECTED_SLOT, selectedSlot);
+        model.addAttribute(ApplicationConstants.AMOUNT,amount);
         model.addAttribute(ApplicationConstants.CREDIT_CARD_TEXT,cardFactoryService.getCreditCard());
-        return "payment";
+        return ApplicationConstants.PAYMENT_TEXT;
     }
 
     @GetMapping("/payment_confirmation/{id}/{selectedSlot}")
-    public String book(@PathVariable("id") String id, @PathVariable("selectedSlot") String selectedSlot,
+    public String book(@PathVariable(ApplicationConstants.ID_OBJECT) String id,
+                       @PathVariable(ApplicationConstants.SELECTED_SLOT) String selectedSlot,
                        Model model) {
         boolean success = venueBookingService.bookSlot(Integer.parseInt(id), Integer.parseInt(selectedSlot));
-        return "payment_confirmation";
+        return ApplicationConstants.PAYMENT_CONFIRMATION_TEXT;
     }
 
 }
