@@ -24,30 +24,7 @@
 
 # This template uses jdk8 for verifying and deploying images
 image: maven:latest
-    
-build-job:       # This job runs in the build stage, which runs first.
-  stage: build
-  script:
-    - mvn -f $(pwd)/playup/pom.xml clean compile
-  tags: 
-    - dalfcs_gitlab_docker_ci
-
-
-# For merge requests do not `deploy` but only run `verify`.
-# See https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
-unit-test-job: # This job runs in the test stage.
-  stage: test
-  script:
-    - mvn -f $(pwd)/playup/pom.xml clean verify
-  artifacts: 
-    when: always      
-    reports:        
-        junit:          
-            - ./playup/target/surefire-reports/TEST-*.xml
-            - ./playup/target/failsafe-reports/TEST-*.xml
-  tags: 
-    - dalfcs_gitlab_docker_ci
-    
+        
 deploy:
   stage: deploy
   image: ruby:latest
@@ -60,4 +37,4 @@ deploy:
   only:
     - master
   tags: 
-    - dalfcs_gitlab_docker_ci
+    - ugrad
