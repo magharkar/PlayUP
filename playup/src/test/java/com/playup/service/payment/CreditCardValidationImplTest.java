@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author Shiv Gaurang Desai
  */
-@Component
+
 public class CreditCardValidationImplTest {
     private final ICreditCardValidationService creditCardValidationService = CreditCardValidationServiceImpl.getInstance();
 

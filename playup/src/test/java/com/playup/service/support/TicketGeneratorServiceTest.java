@@ -8,8 +8,10 @@ import java.sql.SQLException;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class TicketGeneratorServiceTest {
     private ISupportTicketGeneratorService supportTicketGeneratorService = SupportTicketGeneratorServiceImpl.getInstance();
+
     @Test
     void ticketGeneratorServiceNotNullTest() throws ClassNotFoundException {
         Class<?> classFinder = Class.forName("com.playup.service.support.SupportTicketGeneratorServiceImpl", false, getClass().getClassLoader());
