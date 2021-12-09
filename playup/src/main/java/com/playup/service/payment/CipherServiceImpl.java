@@ -12,8 +12,21 @@ import java.util.Base64;
  * @author Shiv Gaurang Desai
  * Refered https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
  */
+
 @Service
 public class CipherServiceImpl implements ICipherService {
+    private static CipherServiceImpl cipherServiceInstance;
+
+    private CipherServiceImpl(){}
+
+    public static CipherServiceImpl getInstance () {
+        if(cipherServiceInstance==null) {
+            cipherServiceInstance = new CipherServiceImpl();
+            return cipherServiceInstance;
+        }
+        return cipherServiceInstance;
+    }
+
     @Override
     public String encrypt(String messageToEncrypt) {
         try {
@@ -28,7 +41,7 @@ public class CipherServiceImpl implements ICipherService {
             return Base64.getEncoder().encodeToString(cipher.doFinal(messageToEncrypt.getBytes(ApplicationConstants.UTF_FORMAT)));
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -47,7 +60,7 @@ public class CipherServiceImpl implements ICipherService {
             return new String(cipher.doFinal(Base64.getDecoder().decode(messageToDecrypt)));
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }

@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.service.booking;
 
 import com.playup.dao.booking.BookingFactoryDao;
@@ -12,7 +9,9 @@ import java.util.*;
 
 /**
  * @author Mugdha Anil Agharkar
+ * Reference for distance calculation - https://stackoverflow.com/questions/18883601/function-to-calculate-distance-between-two-coordinates
  */
+
 public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorService {
     INearestVenueLocationDao nearestVenueLocationDao;
 
@@ -42,7 +41,6 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
         }
         return null;
     }
-
 
     private String calculateShortestDistance(String currentVenueId,
                                              HashMap<String, String[]> locationData, String sport) {
@@ -90,5 +88,4 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
             return (dist);
         }
     }
-
 }

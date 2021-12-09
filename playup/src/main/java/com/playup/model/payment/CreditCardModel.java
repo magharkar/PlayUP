@@ -3,6 +3,7 @@ package com.playup.model.payment;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class CreditCardModel {
     private String name;
     private String cardNumber;
@@ -17,7 +18,6 @@ public class CreditCardModel {
     }
 
     public CreditCardModel() {}
-
 
     public String getName() {
         return name;

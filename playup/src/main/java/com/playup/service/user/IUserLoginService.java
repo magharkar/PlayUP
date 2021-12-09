@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 /**
  * @author Mugdha Anil Agharkar
  */
+
 public interface IUserLoginService {
     boolean verifyUser(User user, Model model);
 

@@ -9,8 +9,21 @@ import org.springframework.stereotype.Service;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class SupportServiceImpl implements ISupportService {
+    private static SupportServiceImpl supportServiceInstance;
+
+    private SupportServiceImpl(){}
+
+    public static SupportServiceImpl getInstance () {
+        if(supportServiceInstance==null) {
+            supportServiceInstance = new SupportServiceImpl();
+            return supportServiceInstance;
+        }
+        return supportServiceInstance;
+    }
+
     @Autowired
     private ISupportTicketGeneratorService supportTicketGeneratorService;
 
@@ -21,7 +34,7 @@ public class SupportServiceImpl implements ISupportService {
             supportModel.setTicketNumber(supportTicketGeneratorService.generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER, ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER));
             isSupportRequestCreated = SupportDaoImpl.getInstance().generateSupportRequest(supportModel);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return isSupportRequestCreated;
     }

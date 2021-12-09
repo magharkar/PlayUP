@@ -1,8 +1,7 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.dao.user;
 
+import com.playup.constants.ApplicationConstants;
+import com.playup.constants.QueryConstants;
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.user.OneTimePassword;
 
@@ -14,7 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author Mugdha Anil Agharkar
+ */
+
 public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
+    private final String COMMA = "','";
+    private final String SINGLE_QUOTE = "'";
     @Override
     public boolean setOneTimePassword(OneTimePassword oneTimePassword) {
         try {
@@ -23,8 +28,7 @@ public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date = dateFormat.format(oneTimePassword.getOneTimePasswordDate());
 
-            String query = "Insert into user_otp_mapping (otp, email, date) values " +
-                    "('" + otp + "'," + "'" + email + "'," + "'" + date + "' )";
+            String query = QueryConstants.INSERT_USER_OTP + "('" + otp + COMMA + email + COMMA + date + "' )";
             String sqlQuery = String.format(query);
             boolean resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
             return resultSet;
@@ -38,16 +42,16 @@ public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
     public ArrayList<OneTimePassword> getOneTimePasswordByEmail(String email) {
         try{
             ArrayList<OneTimePassword> oneTimePasswordArrayList = new ArrayList<>();
-            String query = "Select * from user_otp_mapping where email=" + "'" + email + "'";
+            String query = QueryConstants.SELECT_USER_OTP + email + SINGLE_QUOTE;
             String sqlQuery = String.format(query);
             ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
 
             while (resultSet.next()) {
                 OneTimePassword oneTimePassword = new OneTimePassword();
 
-                oneTimePassword.setEmailId(resultSet.getString("email"));
-                oneTimePassword.setUserName(resultSet.getString("username"));
-                oneTimePassword.setOneTimePassword(resultSet.getString("otp"));
+                oneTimePassword.setEmailId(resultSet.getString(ApplicationConstants.EMAIL));
+                oneTimePassword.setUserName(resultSet.getString(ApplicationConstants.USERNAME));
+                oneTimePassword.setOneTimePassword(resultSet.getString(ApplicationConstants.OTP_HTML));
                 Date date = null;
                 try {
                     date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(resultSet.getString("date"));

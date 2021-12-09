@@ -5,6 +5,7 @@ import java.sql.SQLException;
 /**
  * @author Mugdha Anil Agharkar
  */
+
 public interface IOneTimePasswordService {
     String sendOTP(String email) throws SQLException;
 

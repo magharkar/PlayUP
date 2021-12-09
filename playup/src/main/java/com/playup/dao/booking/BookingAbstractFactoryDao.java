@@ -1,7 +1,8 @@
+package com.playup.dao.booking;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.dao.booking;
 
 public abstract class BookingAbstractFactoryDao {
     public abstract ISlotBookingDao slotBookingDao();

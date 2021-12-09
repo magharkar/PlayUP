@@ -9,7 +9,8 @@ import java.sql.SQLException;
 /**
  * @author Shiv Gaurang Desai
  */
-public class SupportDaoImpl implements ISupportDao{
+
+public class SupportDaoImpl implements ISupportDao {
     private static SupportDaoImpl supportDaoImplInstance;
 
     private SupportDaoImpl(){}
@@ -26,7 +27,7 @@ public class SupportDaoImpl implements ISupportDao{
     public boolean checkWhetherTicketNumberExists(int ticketNumber) throws SQLException {
         String sqlQuery = String.format(QueryConstants.CHECK_SUPPORT_TICKET_NUMBER_QUERY,ticketNumber);
 		ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
-		if (resultSet!=null&&resultSet.next()) {
+		if (resultSet != null && resultSet.next()) {
             return true;
 		}
 		return false;

@@ -1,7 +1,3 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.service.tournament;
 
 import java.sql.ResultSet;
@@ -12,7 +8,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
 import com.playup.constants.QueryConstants;
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.tournament.TournamentMatchModel;
@@ -21,6 +16,10 @@ import com.playup.model.tournament.TournamentScheduleModel;
 import com.playup.model.tournament.TournamentTeamModel;
 import com.playup.model.tournament.TournamentDataModel;
 import com.playup.model.user.User;
+
+/**
+ * @author vibhorbhatnagar
+ */
 
 public class KnockoutTournamentConcreteFactory implements ITournamentFactory {
 

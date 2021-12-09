@@ -1,11 +1,10 @@
+package com.playup.model.tournament;
+
 /**
  * @author vibhorbhatnagar
  */
 
-package com.playup.model.tournament;
-
 public class TournamentPlayerModel {
-
 	String playerName;
 	String userName;
 

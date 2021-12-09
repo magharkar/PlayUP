@@ -10,19 +10,20 @@ import java.util.Properties;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
-public class GetLoggedInUserEmail implements  IGetLoggedInUserEmail{
+public class GetLoggedInUserEmail implements IGetLoggedInUserEmail {
     @Override
     public String getEmail() {
         String userEmail = "";
         try {
             FileInputStream fileInputStream = new FileInputStream(ApplicationConstants.APPLICATION_PROPERTIES_PATH);
-            Properties props = new Properties();
-            props.load(fileInputStream);
+            Properties properties = new Properties();
+            properties.load(fileInputStream);
             fileInputStream.close();
             FileOutputStream fileOutputStream = new FileOutputStream(ApplicationConstants.APPLICATION_PROPERTIES_PATH);
-            props.store(fileOutputStream, null);
-            userEmail = props.get(ApplicationConstants.EMAIL_ID_TEXT).toString();
+            properties.store(fileOutputStream, null);
+            userEmail = properties.get(ApplicationConstants.EMAIL_ID_TEXT).toString();
             fileOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();

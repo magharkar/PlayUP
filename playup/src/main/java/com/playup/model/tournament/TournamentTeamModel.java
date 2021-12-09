@@ -1,13 +1,12 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.model.tournament;
 
 import java.util.List;
 
-public class TournamentTeamModel {
+/**
+ * @author vibhorbhatnagar
+ */
 
+public class TournamentTeamModel {
 	List<TournamentPlayerModel> players;
 	String teamNumber;
 

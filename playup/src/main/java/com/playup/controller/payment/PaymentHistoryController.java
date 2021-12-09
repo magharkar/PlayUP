@@ -1,5 +1,6 @@
 package com.playup.controller.payment;
 
+import com.playup.constants.ApplicationConstants;
 import com.playup.model.payment.PaymentModel;
 import com.playup.service.payment.IPaymentHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +13,20 @@ import java.util.ArrayList;
  * @author Shiv Gaurang Desai
  *
  */
+
 @Controller
 public class PaymentHistoryController {
     @Autowired
     private IPaymentHistoryService paymentHistory;
 
-    @GetMapping("/paymentHistory")
+    @GetMapping(ApplicationConstants.PAYMENT_HISTORY)
     public ModelAndView paymentHistory() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("payment_history");
+        mv.setViewName(ApplicationConstants.PAYMENT_HISTORY_HTML);
         return mv;
     }
 
-    @RequestMapping(value = "/paymentHistory", method = RequestMethod.POST)
+    @RequestMapping(value = ApplicationConstants.PAYMENT_HISTORY, method = RequestMethod.POST)
     public @ResponseBody ArrayList<PaymentModel> getPaymentHistory() {
         return paymentHistory.fetchPaymentHistory();
     }

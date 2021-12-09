@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 /**
  * @author Mugdha Anil Agharkar
  */
+
 @Service
 public class PasswordValidationServiceImpl implements IPasswordValidationService {
     char singlePasswordCharacter;

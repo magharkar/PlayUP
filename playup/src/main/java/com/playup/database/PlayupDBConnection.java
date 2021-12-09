@@ -1,14 +1,16 @@
-/**
- * @author vibhorbhatnagar
- */
-
 package com.playup.database;
+
+import com.playup.constants.QueryConstants;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+/**
+ * @author vibhorbhatnagar
+ */
 
 public class PlayupDBConnection {
 
@@ -25,8 +27,8 @@ public class PlayupDBConnection {
 	private PlayupDBConnection() {
 		connect = null;
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_PRODUCTION",
-					"CSCI5308_1_PRODUCTION_USER", "Ahgheigoo3jaYohl");
+			connect = DriverManager.getConnection(QueryConstants.PRODUCTION_DB_URL,QueryConstants.PRODUCTION_DB_USERNAME
+					, QueryConstants.PRODUCTION_DB_PASSWORD);
 			if (connect == null) {
 				connect.close();
 				return;

@@ -10,14 +10,26 @@ import java.util.ArrayList;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class PaymentHistoryServiceImpl implements IPaymentHistoryService {
+    private static PaymentHistoryServiceImpl paymentHistoryServiceInstance;
+
+    private PaymentHistoryServiceImpl(){}
+
+    public static PaymentHistoryServiceImpl getInstance () {
+        if(paymentHistoryServiceInstance==null) {
+            paymentHistoryServiceInstance = new PaymentHistoryServiceImpl();
+            return paymentHistoryServiceInstance;
+        }
+        return paymentHistoryServiceInstance;
+    }
+
     @Autowired
     IGetLoggedInUserEmail loggedInUserEmail;
 
     @Override
-        public ArrayList<PaymentModel> fetchPaymentHistory()
-    {
+        public ArrayList<PaymentModel> fetchPaymentHistory() {
         String emailId = loggedInUserEmail.getEmail();
         ArrayList<PaymentModel> paymentHistoryList = new ArrayList<>();
         try {

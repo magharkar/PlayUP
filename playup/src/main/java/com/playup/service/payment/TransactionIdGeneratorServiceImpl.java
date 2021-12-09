@@ -7,8 +7,20 @@ import java.sql.SQLException;
 /**
  * @author Shiv Gaurang Desai
  */
+
 @Service
 public class TransactionIdGeneratorServiceImpl implements ITransactionIdGeneratorService{
+    private static TransactionIdGeneratorServiceImpl transactionIdGeneratorService;
+
+    private TransactionIdGeneratorServiceImpl(){}
+
+    public static TransactionIdGeneratorServiceImpl getInstance () {
+        if(transactionIdGeneratorService==null) {
+            transactionIdGeneratorService = new TransactionIdGeneratorServiceImpl();
+            return transactionIdGeneratorService;
+        }
+        return transactionIdGeneratorService;
+    }
     @Override
     public int generateTransactionId(int minimumTransactionId, int maximumTransactionId) {
         int transactionId = (int)(Math.random()*(maximumTransactionId-minimumTransactionId+1)+minimumTransactionId);
