@@ -1,6 +1,5 @@
 package com.playup.dao.Review;
 
-
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.Review.ReviewModel;
 import com.playup.model.Review.ViewReviewModel;
@@ -11,13 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used to execute queries and fetch data from the database
  * @author Rajath Bharadwaj
  */
-public class ReviewDao {
-
+public class ReviewDao
+{
     public static final String SELECT_QUERY = "Select * from Venues;";
     public static final String SELECT_QUERY_JOINS = "Select review_ratings.title,review_ratings.description,review_ratings.rating,Venues.venue_id,Venues.name from review_ratings INNER JOIN Venues on review_ratings.venue_id= Venues.venue_id";
+    public static final String SELECT_QUERY_POST_REVIEW = "Insert into review_ratings(title,description,venue_id,rating) values(";
+    public static final String SINGLE_QUOTE = "'";
+    public static final String COMMA = ",";
+    public static final String BRACKET = ")";
     public static final String VENUE_ID = "venue_id";
     public static final String NAME = "name";
     public static final String CITY = "city";
@@ -62,11 +64,12 @@ public class ReviewDao {
         return reviewList;
     }
     
-    public static boolean postReviewToDB(int venueID, String title, String description, int rating) {
+    public static boolean postReviewToDB(int venueID, String title, String description, int rating)
+    {
         boolean resultSet = false;
         try
         {
-            String query = "Insert into review_ratings(title,description,venue_id,rating) values("+"'"+title+"'"+","+"'"+description+"'"+","+venueID+","+rating+")";
+            String query = SELECT_QUERY_POST_REVIEW+SINGLE_QUOTE+title+SINGLE_QUOTE+COMMA+SINGLE_QUOTE+description+SINGLE_QUOTE+COMMA+venueID+COMMA+rating+BRACKET;
             System.out.println(query);
             resultSet = PlayupDBConnection.getInstance().updateData(query);
         } catch (Exception e) {
