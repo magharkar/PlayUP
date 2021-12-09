@@ -1,10 +1,9 @@
 function postVenueData() {
 	document.getElementById("searchResults").innerHTML = "<tr><th>Venue ID</th><th>Venue Name</th><th>Venue City</th><th>Available Slots</th><th>Total Slots</th><th>From Time</th><th>To Time</th><th>Contact Info</th><th>Latitude</th><th>Longitude</th><th>Slot Price</th><th>Average Rating</th><th>Category ID</th><th></th></tr>";
-    var sortParam = document.getElementById("sort").value;
-
+	var sortParam = document.getElementById("sort").value;
 	var windowLocation = window.location.href;
 	var request = $.ajax({
-		url:  windowLocation + "/getVenueResults",
+		url: windowLocation + "/getVenueResults",
 		type: "POST",
 		data: sortParam,
 		contentType: 'application/json; charset=utf-8',

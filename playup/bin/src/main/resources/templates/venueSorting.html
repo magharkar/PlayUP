@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Venues</title>
+</head>
+<style>
+h1 {
+	text-align: center;
+}
+table{
+	border-collapse: collapse;
+}
+table, th, td{
+	border: 1px solid black;
+	position: relative;
+}
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/venueDisplay.js}"></script>
+<body onload="postVenueData()">
+<h1>Venues</h1>
+<div id="sort-dropdown">
+    <label for="sort">Sort By</label>
+    <select name="sort" id="sort" onchange="postVenueData()" >
+        <option value="default" id="default"></option>
+        <option value="alphabetical" id="alphabetical">A-Z</option>
+        <option value="lowtohigh" id="lowtohigh">Low-High Ratings</option>
+        <option value="hightolow" id="hightolow">High-Low Ratings</option>
+    </select>
+</div>
+<div id="error-box"></div><br><br><br><br>
+<table id="searchResults" style="width:100%">
+    <tr>
+        <th>Venue ID</th>
+        <th>Venue Name</th>
+        <th>Venue City</th>
+        <th>Available Slots</th>
+        <th>Total Slots</th>
+        <th>From Time</th>
+        <th>To Time</th>
+        <th>Contact Info</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Slot Price</th>
+        <th>Average Rating</th>
+        <th>Category ID</th>
+        <th></th>
+    </tr>
+</table>
+</body>
+</html>
