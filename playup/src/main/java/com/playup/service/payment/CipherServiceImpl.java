@@ -15,6 +15,18 @@ import java.util.Base64;
 
 @Service
 public class CipherServiceImpl implements ICipherService {
+    private static CipherServiceImpl cipherServiceInstance;
+
+    private CipherServiceImpl(){}
+
+    public static CipherServiceImpl getInstance () {
+        if(cipherServiceInstance==null) {
+            cipherServiceInstance = new CipherServiceImpl();
+            return cipherServiceInstance;
+        }
+        return cipherServiceInstance;
+    }
+
     @Override
     public String encrypt(String messageToEncrypt) {
         try {

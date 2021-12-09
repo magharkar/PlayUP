@@ -17,6 +17,18 @@ import java.time.LocalDateTime;
 
 @Service
 public class PaymentServiceImpl implements IPaymentService {
+    private static PaymentServiceImpl paymentServiceInstance;
+
+    private PaymentServiceImpl(){}
+
+    public static PaymentServiceImpl getInstance () {
+        if(paymentServiceInstance==null) {
+            paymentServiceInstance = new PaymentServiceImpl();
+            return paymentServiceInstance;
+        }
+        return paymentServiceInstance;
+    }
+
     @Autowired
     private ICipherService cipherService;
 

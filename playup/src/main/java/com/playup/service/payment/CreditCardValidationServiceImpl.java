@@ -14,6 +14,18 @@ import java.util.regex.Pattern;
  */
 @Service
 public class CreditCardValidationServiceImpl implements ICreditCardValidationService {
+    private static CreditCardValidationServiceImpl creditCardValidationServiceInstance;
+
+    private CreditCardValidationServiceImpl(){}
+
+    public static CreditCardValidationServiceImpl getInstance () {
+        if(creditCardValidationServiceInstance==null) {
+            creditCardValidationServiceInstance = new CreditCardValidationServiceImpl();
+            return creditCardValidationServiceInstance;
+        }
+        return creditCardValidationServiceInstance;
+    }
+
     @Override
     public HashMap<Boolean,String> isCardDetailsValid(CreditCardModel creditCardModel) {
         HashMap<Boolean,String> response = new HashMap<>();

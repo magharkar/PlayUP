@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Shiv Gaurang Desai
  */
 public class TransactionIdGeneratorTest {
+    private ITransactionIdGeneratorService TransactionIdGeneratorService = TransactionIdGeneratorServiceImpl.getInstance();
     @Test
         void TransactionIdGeneratorServiceNotNullTest() throws ClassNotFoundException {
         Class<?> classFinder = Class.forName("com.playup.service.payment.TransactionIdGeneratorServiceImpl", false, getClass().getClassLoader());
@@ -16,14 +17,12 @@ public class TransactionIdGeneratorTest {
 
     @Test
     void TransactionIdNumberValidTest() {
-        ITransactionIdGeneratorService TransactionIdGeneratorService = new TransactionIdGeneratorServiceImpl();
         int number = TransactionIdGeneratorService.generateTransactionId(ApplicationConstants.MINIMUM_TRANSACTION_NUMBER,ApplicationConstants.MAXIMUM_TRANSACTION_NUMBER);
         assertTrue(number>=1000&&number<=10000);
     }
 
     @Test
     void TransactionIdNotValidTest() {
-        ITransactionIdGeneratorService TransactionIdGeneratorService = new TransactionIdGeneratorServiceImpl();
         int number = TransactionIdGeneratorService.generateTransactionId(ApplicationConstants.MINIMUM_TRANSACTION_NUMBER,ApplicationConstants.MAXIMUM_TRANSACTION_NUMBER);
         assertFalse(number<1000||number>10000);
     }

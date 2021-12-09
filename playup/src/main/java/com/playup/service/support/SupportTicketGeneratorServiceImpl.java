@@ -9,6 +9,17 @@ import java.sql.SQLException;
  */
 @Service
 public class SupportTicketGeneratorServiceImpl implements ISupportTicketGeneratorService {
+    private static SupportTicketGeneratorServiceImpl supportTicketGeneratorService;
+
+    private SupportTicketGeneratorServiceImpl(){}
+
+    public static SupportTicketGeneratorServiceImpl getInstance () {
+        if(supportTicketGeneratorService==null) {
+            supportTicketGeneratorService = new SupportTicketGeneratorServiceImpl();
+            return supportTicketGeneratorService;
+        }
+        return supportTicketGeneratorService;
+    }
     @Override
     public int generateTicketNumber(int minimumTicketNumber, int maximumTicketNumber) {
         int ticketNumber = (int)(Math.random()*(maximumTicketNumber-minimumTicketNumber+1)+minimumTicketNumber);

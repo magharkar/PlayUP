@@ -12,6 +12,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SupportServiceImpl implements ISupportService {
+    private static SupportServiceImpl supportServiceInstance;
+
+    private SupportServiceImpl(){}
+
+    public static SupportServiceImpl getInstance () {
+        if(supportServiceInstance==null) {
+            supportServiceInstance = new SupportServiceImpl();
+            return supportServiceInstance;
+        }
+        return supportServiceInstance;
+    }
+
     @Autowired
     private ISupportTicketGeneratorService supportTicketGeneratorService;
 

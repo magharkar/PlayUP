@@ -11,6 +11,18 @@ import java.util.regex.Pattern;
 
 @Service
 public class EmailValidationServiceImpl implements IEmailValidationService {
+    private static EmailValidationServiceImpl emailValidationServiceInstance;
+
+    private EmailValidationServiceImpl(){}
+
+    public static EmailValidationServiceImpl getInstance () {
+        if(emailValidationServiceInstance==null) {
+            emailValidationServiceInstance = new EmailValidationServiceImpl();
+            return emailValidationServiceInstance;
+        }
+        return emailValidationServiceInstance;
+    }
+
     @Override
     public boolean isEmailValid(String email) {
         boolean isSpecialCharacterPresent = false;
