@@ -11,9 +11,8 @@ import com.playup.service.payment.IPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 
 @Controller
@@ -33,13 +32,19 @@ public class PaymentController {
         return ApplicationConstants.PAYMENT_TEXT;
     }
 
-    @PostMapping("/payment")
-    public String paymentGateway(@ModelAttribute CreditCard creditCard, Model ui) {
+    @RequestMapping(value = "/payment", method = {RequestMethod.POST, RequestMethod.GET})
+    public String paymentGateway(@ModelAttribute CreditCard creditCard, Model ui,
+                                 @RequestParam String selectedSlot, @RequestParam String id) {
+        System.out.println("Payment controller");
+        System.out.println(id);
+        System.out.println(selectedSlot);
         HashMap<Boolean,String> validationResponse = creditCardValidationService.isCardDetailsValid(creditCard);
         if(validationResponse.containsKey(true)) {
             boolean isSuccess = paymentService.completeTransaction(creditCard);
             if(isSuccess) {
-                return ApplicationConstants.PAYMENT_CONFIRMATION_TEXT;
+                ui.addAttribute("id",id);
+                ui.addAttribute("selectedSlot", selectedSlot);
+                return "redirect:/payment_confirmation/" + id + "/" + selectedSlot;
             }else {
                 ui.addAttribute(ApplicationConstants.SUPPORT_ERROR,ApplicationConstants.CARD_VALIDATION_ERROR);
             }

@@ -1,16 +1,14 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.dao.user;
 
 import com.playup.model.user.OneTimePassword;
 
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public interface IOneTimePasswordDao {
+    boolean setOneTimePassword(OneTimePassword oneTimePassword);
 
-    boolean setOneTimePassword(OneTimePassword oneTimePassword) throws SQLException;
-
-    ArrayList<OneTimePassword> getOneTimePasswordByEmail(String email) throws SQLException, ParseException;
+    ArrayList<OneTimePassword> getOneTimePasswordByEmail(String email);
 }

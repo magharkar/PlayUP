@@ -1,5 +1,6 @@
-// Author: Mugdha Anil Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.controller.user;
 
 import com.playup.constants.ApplicationConstants;
@@ -11,13 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.SQLException;
-import java.text.ParseException;
 
 @Controller
 public class UserForgotPasswordController {
-
     @Autowired
     private IEmailSenderService emailService;
 
@@ -59,12 +57,7 @@ public class UserForgotPasswordController {
     public String setNewPassword(@RequestParam String emailId, @ModelAttribute OneTimePassword oneTimePassword,
                                  @RequestParam String password, Model model) {
         String response = null;
-        try {
-            response = oneTimePasswordService.verifyOTPForPasswordReset(emailId, oneTimePassword.getOneTimePassword(), password);
-        } catch (SQLException | ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println(response);
+        response = oneTimePasswordService.verifyOTPForPasswordReset(emailId, oneTimePassword.getOneTimePassword(), password);
         model.addAttribute("response", response);
         if(response.equals("password_update_successful")) {
             return "redirect:/venues";

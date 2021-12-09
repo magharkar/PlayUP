@@ -1,15 +1,16 @@
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.booking;
 
 import com.playup.dao.booking.BookingFactoryDao;
 import com.playup.dao.booking.INearestVenueLocationDao;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
 public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorService {
-
     INearestVenueLocationDao nearestVenueLocationDao;
 
     @Override
@@ -17,7 +18,6 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
         nearestVenueLocationDao = BookingFactoryDao.instance().nearestLocationDao();
         String sport = getCurrentUserSport();
         HashMap<String, String[]> locationData = nearestVenueLocationDao.getLocationsOfAllVenues();
-        System.out.println("Location data");
         String nearestVenueId = calculateShortestDistance(currentVenueId, locationData, sport);
         return nearestVenueId;
     }
@@ -29,11 +29,8 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
             props.load(in);
             in.close();
             FileOutputStream out = new FileOutputStream("src/main/resources/application.properties");
-            System.out.println("USER");
             String sportArray = props.getProperty("loggedInUser");
             String[] testArray = sportArray.split("\\|");
-            System.out.println(Arrays.toString(testArray));
-            System.out.println(testArray[1]);
             props.store(out, null);
             out.close();
             return testArray[1];
@@ -54,8 +51,6 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
         for (Map.Entry<String, String[]> entry : locationData.entrySet()) {
             String venueId = entry.getKey();
             String[] latLongData = entry.getValue();
-            System.out.println(venueId);
-            System.out.println(Arrays.toString(latLongData));
             double venueLatitude = Double.parseDouble(latLongData[0]);
             double venueLongitude = Double.parseDouble(latLongData[1]);
             double distance = getDistanceBetweenTwoVenues(currentVenueLatitude, currentVenueLongitude, venueLatitude, venueLongitude);
@@ -68,12 +63,9 @@ public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorServi
     private String getNearestVenueWithSameSport(Map<Double, String> distanceMap, String sport) {
         TreeMap<Double, String> sortedDistanceMap = new TreeMap<>();
         sortedDistanceMap.putAll(distanceMap);
-        System.out.println("SORTED DISTANCE MAP");
-        System.out.println(sortedDistanceMap);
         boolean isSportAvailable;
         for (Map.Entry<Double, String> entry : sortedDistanceMap.entrySet()) {
             if(entry.getKey() != 0.0) {
-                System.out.println(entry.getKey());
                 isSportAvailable = nearestVenueLocationDao.getSportAvailabilityAtNearestVenue(entry.getValue(), sport);
                 if(isSportAvailable) {
                     return entry.getValue();

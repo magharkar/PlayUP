@@ -1,5 +1,6 @@
-// Author: Mugdha Anil Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.controller.user;
 
 import com.playup.model.user.User;
@@ -12,12 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.sql.SQLException;
 
 @Controller
 public class UserLoginController {
-
     IUserLoginService userLoginService;
     public UserLoginController() {
         this.userLoginService = UserProfileServiceFactory.instance().userLoginService();

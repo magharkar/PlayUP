@@ -1,5 +1,6 @@
-// Author: Mugdha Anil Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.controller.user;
 
 import com.playup.constants.ApplicationConstants;
@@ -10,27 +11,28 @@ import com.playup.model.user.UserObjectFactory;
 import com.playup.service.email.IEmailSenderService;
 import com.playup.dao.user.IOneTimePasswordDao;
 import com.playup.model.user.*;
-import com.playup.service.user.IOneTimePasswordService;
-import com.playup.service.user.IUserRegistrationService;
-import com.playup.service.user.PasswordValidationService;
-import com.playup.service.user.UserProfileServiceFactory;
+import com.playup.service.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 
 @Controller
 public class UserRegistrationController {
 
     IUserRegistrationService userRegistrationService;
+
     IOneTimePasswordService oneTimePasswordService;
+
     IOneTimePasswordDao oneTimePasswordDao;
 
     @Autowired
     private IEmailSenderService emailService;
+
+    @Autowired
+    private IPasswordValidationService passwordValidationService;
 
     public UserRegistrationController() {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();
@@ -67,17 +69,9 @@ public class UserRegistrationController {
         user.setEmail(emailId);
         user.setSport(sport);
         String response = null;
-        try {
-            response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
-        } catch (SQLException | ParseException e) {
-            e.printStackTrace();
-        }
+        response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
         boolean success = false;
-        try {
-            success = userRegistrationService.registerNewUser(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        success = userRegistrationService.registerNewUser(user);
         model.addAttribute("response", response);
         if(response.equals("email_verified") && success) {
             return "redirect:/venues";
@@ -88,10 +82,7 @@ public class UserRegistrationController {
 
     @PostMapping("/registration")
     public String registerNewUser(@ModelAttribute User user, Model model) throws SQLException {
-        PasswordValidationService passwordValidationService = new PasswordValidationService();
-        System.out.println(user.getPassword());
-        System.out.println(model.getAttribute("user"));
-        boolean isPasswordValid = passwordValidationService.isPasswordValid(user.getPassword());
+        boolean isPasswordValid = passwordValidationService.isPasswordValid(user.getPassword(), user.getConfirmPassword());
         boolean isRegisteredUser = userRegistrationService.isUserAlreadyRegistered(user);
 
         boolean isOtpValid = false;

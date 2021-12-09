@@ -1,5 +1,6 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.model.user;
 
 public interface IUser {

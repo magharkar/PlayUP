@@ -1,14 +1,14 @@
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.dao.booking;
 
 public class BookingFactoryDao extends BookingAbstractFactoryDao{
-
     private static BookingFactoryDao instance = null;
     private ISlotBookingDao slotBookingDao;
     private INearestVenueLocationDao nearestLocationDao;
 
-    private BookingFactoryDao() {
-
-    }
+    private BookingFactoryDao() {}
 
     public static BookingFactoryDao instance() {
         if (null == instance) {

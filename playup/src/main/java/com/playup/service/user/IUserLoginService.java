@@ -1,13 +1,11 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.user;
 
 import com.playup.model.user.User;
 import org.springframework.ui.Model;
 
-import java.sql.SQLException;
-
 public interface IUserLoginService {
-
-    boolean verifyUser(User user, Model model) throws SQLException;
+    boolean verifyUser(User user, Model model);
 }

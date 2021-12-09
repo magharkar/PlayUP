@@ -1,5 +1,6 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.user;
 
 import com.playup.dao.user.IUserDao;
@@ -9,7 +10,6 @@ import com.playup.model.user.IUser;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class UserRegistrationServiceImpl implements IUserRegistrationService {
@@ -17,13 +17,9 @@ public class UserRegistrationServiceImpl implements IUserRegistrationService {
     public boolean registerNewUser(IUser user) {
         IUserDao userDao = UserProfileFactoryDao.instance().userDao();
         boolean isUserAdded = false;
-        try {
-            isUserAdded = userDao.addNewUser(user);
-            if(isUserAdded) {
-                setUserDetails(user);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        isUserAdded = userDao.addNewUser(user);
+        if(isUserAdded) {
+            setUserDetails(user);
         }
         return isUserAdded;
     }
@@ -48,11 +44,7 @@ public class UserRegistrationServiceImpl implements IUserRegistrationService {
     public boolean isUserAlreadyRegistered(IUser user) {
         IUserDao userDao = UserProfileFactoryDao.instance().userDao();
         boolean isUserAlreadyRegistered = false;
-        try {
-            isUserAlreadyRegistered = userDao.isUserAlreadyRegistered(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        isUserAlreadyRegistered = userDao.isUserAlreadyRegistered(user);
         return isUserAlreadyRegistered;
     }
 }

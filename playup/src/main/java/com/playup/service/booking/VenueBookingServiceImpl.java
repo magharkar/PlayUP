@@ -1,17 +1,16 @@
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.booking;
 
 import com.playup.dao.booking.SlotBookingDaoImpl;
 import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;
-import com.playup.model.search.SearchVenue;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 @Service
 public class VenueBookingServiceImpl implements  IVenueBookingService{
-
-
     @Override
     public boolean bookSlot(int venueId, int selectedSlot) {
         boolean success = SlotBookingDaoImpl.getInstance().updateSlot(venueId, selectedSlot);
@@ -51,6 +50,5 @@ public class VenueBookingServiceImpl implements  IVenueBookingService{
         venue.setAvailableSlots(String.valueOf(updatedSlot));
         boolean success = SlotBookingDaoImpl.getInstance().updateVenueSlot(venue);
         return success;
-
     }
 }
