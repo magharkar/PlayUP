@@ -12,6 +12,18 @@ import java.util.ArrayList;
  */
 @Service
 public class PaymentHistoryServiceImpl implements IPaymentHistoryService {
+    private static PaymentHistoryServiceImpl paymentHistoryServiceInstance;
+
+    private PaymentHistoryServiceImpl(){}
+
+    public static PaymentHistoryServiceImpl getInstance () {
+        if(paymentHistoryServiceInstance==null) {
+            paymentHistoryServiceInstance = new PaymentHistoryServiceImpl();
+            return paymentHistoryServiceInstance;
+        }
+        return paymentHistoryServiceInstance;
+    }
+
     @Autowired
     IGetLoggedInUserEmail loggedInUserEmail;
 

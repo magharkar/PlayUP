@@ -5,9 +5,7 @@ import com.playup.dao.payment.PaymentDaoImpl;
 import com.playup.model.payment.PaymentModel;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
