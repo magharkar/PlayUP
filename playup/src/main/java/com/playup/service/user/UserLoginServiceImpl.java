@@ -30,6 +30,14 @@ public class UserLoginServiceImpl implements IUserLoginService{
         return isUserValid;
     }
 
+    @Override
+    public String getUserRoleByEmail(User user, Model model) {
+        IUserDao userDao = UserProfileFactoryDao.instance().userDao();
+        IUser existingUser = null;
+        existingUser = userDao.getUserByUserEmail(user.getEmail());
+        return existingUser.getRole();
+    }
+
     private void setUserDetails(IUser user) {
         try {
             FileInputStream in = new FileInputStream("src/main/resources/application.properties");

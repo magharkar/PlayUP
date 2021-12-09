@@ -27,8 +27,17 @@ function postData() {
 					var cell2 = row.insertCell(1);
 					var cell3 = row.insertCell(2);
 
+					if (result[0].matchesList[i].teamOne == null) {
+						if (result[0].matchesList[i].teamTwo == null) {
+							continue;
+						}
+						cell2.innerHTML = "Team A(" + result[0].matchesList[i].teamOne.teamNumber + ") goes to next round";
+					} else if (result[0].matchesList[i].teamTwo == null) {
+						cell2.innerHTML = "Team A(" + result[0].matchesList[i].teamOne.teamNumber + ") goes to next round";
+					} else {
+						cell2.innerHTML = "Team A (" + result[0].matchesList[i].teamOne.teamNumber + ") Vs Team B (" + result[0].matchesList[i].teamTwo.teamNumber + ")";
+					}
 					cell1.innerHTML = i + 1;
-					cell2.innerHTML = "Team A (" + result[0].matchesList[i].teamOne.teamNumber + ") Vs Team B (" + result[0].matchesList[i].teamTwo.teamNumber + ")";
 					cell3.innerHTML = result[0].matchesList[i].matchDate;
 				}
 			}
