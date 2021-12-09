@@ -13,18 +13,23 @@ import java.util.ArrayList;
 @Controller
 public class SortingController
 {
+
+    public static final String VENUE_PATH = "/venues";
+    public static final String VENUE_RESULTS_PATH = "/venues/getVenueResults";
+    public static final String VIEW_NAME = "venueSorting";
+
     @Autowired
     ISorting sorting;
 
-    @GetMapping("/venues")
+    @GetMapping(VENUE_PATH)
     public ModelAndView search()
     {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("venueSorting");
+        mv.setViewName(VIEW_NAME);
         return mv;
     }
 
-    @RequestMapping(value = "/venues/getVenueResults", method = RequestMethod.POST)
+    @RequestMapping(value = VENUE_RESULTS_PATH, method = RequestMethod.POST)
     public @ResponseBody
     ArrayList<SearchVenue> getVenueResults(@RequestBody String sortParam)
     {

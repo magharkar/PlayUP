@@ -1,14 +1,15 @@
 package com.playup.model.Review;
 
-public class ViewReviewModel {
-
+public class ViewReviewModel
+{
     int venueID;
     String venueName;
     String averageRating;
     String reviewTitle;
     String reviewDescription;
 
-    public ViewReviewModel(int venue_id, String venueName, String reviewTitle, String reviewDescription, String averageRating) {
+    public ViewReviewModel(int venue_id, String venueName, String reviewTitle, String reviewDescription, String averageRating)
+    {
         super();
         this.venueID = venue_id;
         this.venueName = venueName;
@@ -47,5 +48,4 @@ public class ViewReviewModel {
     public void setAverageRating(String averageRating) {
         this.averageRating = averageRating;
     }
-
 }
