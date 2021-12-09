@@ -112,5 +112,4 @@ public class ApplicationConstants {
     public final static String PAYMENT_HISTORY = "/paymentHistory";
     public final static String PAYMENT_HISTORY_HTML = "payment_history";
     public final static String SUPPORT_URL = "/support";
-
 }
