@@ -12,7 +12,7 @@ import java.util.Properties;
  */
 
 @Service
-public class GetLoggedInUserEmail implements  IGetLoggedInUserEmail {
+public class GetLoggedInUserEmail implements IGetLoggedInUserEmail {
     @Override
     public String getEmail() {
         String userEmail = "";
