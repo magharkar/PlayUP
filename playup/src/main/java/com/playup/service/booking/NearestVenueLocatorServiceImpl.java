@@ -9,6 +9,7 @@ import java.util.*;
 
 /**
  * @author Mugdha Anil Agharkar
+ * Reference for distance calculation - https://stackoverflow.com/questions/18883601/function-to-calculate-distance-between-two-coordinates
  */
 
 public class NearestVenueLocatorServiceImpl implements INearestVenueLocatorService {

@@ -43,6 +43,7 @@ public class VenueBookingController {
         model.addAttribute(ApplicationConstants.AVAILABLE_SLOTS, venue.getAvailableSlots());
         model.addAttribute(ApplicationConstants.SLOTS, slots);
         model.addAttribute(ApplicationConstants.ID_OBJECT, id);
+        model.addAttribute(ApplicationConstants.AMOUNT, venue.getSlotPrice());
         return ApplicationConstants.VENUE_OBJECT;
     }
 
@@ -53,7 +54,6 @@ public class VenueBookingController {
         SearchVenue venue = venueBookingService.getVenueDetails(venueId);
 
         ArrayList<VenueSlot> slots = venueBookingService.getAllSlots(venueId);
-        System.out.println(venue.getSlotPrice());
         model.addAttribute(ApplicationConstants.VENUE_NAME, venue.getVenueName());
         model.addAttribute(ApplicationConstants.VENUE_CITY, venue.getVenueCity());
         model.addAttribute(ApplicationConstants.AVAILABLE_SLOTS, venue.getAvailableSlots());
