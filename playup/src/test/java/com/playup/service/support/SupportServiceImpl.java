@@ -15,8 +15,10 @@ import static org.mockito.Mockito.when;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class SupportServiceImpl {
     ISupportDao supportDao = Mockito.mock(SupportDaoImpl.class);
+
     @Test
     public void cardFactoryServiceImplClassNotNullTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.support.SupportServiceImpl", false, getClass().getClassLoader());

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class EmailServiceTest {
     @Test
     public void emailServiceClassNotNullTest() throws ClassNotFoundException {

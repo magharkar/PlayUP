@@ -14,8 +14,10 @@ import static org.mockito.Mockito.when;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class PaymentServiceImplTest {
     private IPaymentDao paymentDao = Mockito.mock(PaymentDaoImpl.class);
+
     @Test
     public void paymentServiceImplClassNotNullTest() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.payment.PaymentServiceImpl", false, getClass().getClassLoader());

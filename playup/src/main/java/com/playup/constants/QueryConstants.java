@@ -1,7 +1,8 @@
+package com.playup.constants;
+
 /**
  * @Author Shiv Gaurang Desai
  */
-package com.playup.constants;
 
 public class QueryConstants {
     public final static String CHECK_SUPPORT_TICKET_NUMBER_QUERY = "SELECT * from Support where ticketNumber = %s;";

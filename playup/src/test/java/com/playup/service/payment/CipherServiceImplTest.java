@@ -7,8 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author Shiv Gaurang Desai
  */
+
 public class CipherServiceImplTest {
     private final ICipherService cipherService = CipherServiceImpl.getInstance();
+
     @Test
     public void cipherServiceClassForNotNull() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.payment.CipherServiceImpl", false, getClass().getClassLoader());
