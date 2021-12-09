@@ -26,14 +26,14 @@ public class PaymentServiceImplTest {
     @Test
     public void checkWhetherTransactionNumberExistsTest() throws SQLException {
         when(paymentDao.checkWhetherTransactionExist(5401)).thenReturn(true);
-        boolean output = PaymentDaoImpl.getInstance().checkWhetherTransactionExist(5401);
+        boolean output = paymentDao.checkWhetherTransactionExist(5401);
         assertEquals(paymentDao.checkWhetherTransactionExist(5401),output);
     }
 
     @Test
     public void checkWhetherTransactionNumberNotExistsTest() throws SQLException {
         when(paymentDao.checkWhetherTransactionExist(304)).thenReturn(false);
-        boolean output = PaymentDaoImpl.getInstance().checkWhetherTransactionExist(304);
+        boolean output = paymentDao.checkWhetherTransactionExist(304);
         assertEquals(paymentDao.checkWhetherTransactionExist(304),output);
     }
 
