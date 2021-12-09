@@ -42,8 +42,17 @@ margin: 0;
             <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
             <div>PlayUP</div>
         </div>
+        <form th:action="@{/paymentHistory}" method="get">
+            <button type="submit">Payment History</button>
+        </form>
+        <form th:action="@{/support}" method="get">
+            <button type="submit">Support</button>
+        </form>
         <form th:action="@{/logout}" method="post">
             <button type="submit">Logout</button>
+        </form>
+        <form th:action="@{/review}" method="get">
+            <button type="submit">review</button>
         </form>
     </div>
 </nav>
