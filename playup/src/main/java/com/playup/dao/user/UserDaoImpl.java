@@ -1,5 +1,6 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.dao.user;
 
 import com.playup.database.PlayupDBConnection;
@@ -11,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDaoImpl implements IUserDao {
-
     private static UserDaoImpl userDaoImpl;
 
     public static UserDaoImpl getInstance () {
@@ -29,9 +29,7 @@ public class UserDaoImpl implements IUserDao {
         ResultSet resultSet = null;
         try {
             resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
-            System.out.println(sqlQuery);
             IUser user = UserFactory.userObject(new UserObjectFactory());
-
 
             while (resultSet.next()) {
                 user.setUserId(resultSet.getInt("user_id"));
@@ -82,14 +80,19 @@ public class UserDaoImpl implements IUserDao {
     }
 
     @Override
-    public boolean updatePasswordAfterReset(IUser user) throws SQLException {
+    public boolean updatePasswordAfterReset(IUser user) {
         String email = user.getEmail();
         String password = user.getPassword();
 
         String query = "Update User SET password=" + "'" + password + "'" + "WHERE email="
                 + "'" + email + "'";
         String sqlQuery = String.format(query);
-        boolean resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
+        boolean resultSet = false;
+        try {
+            resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return resultSet;
     }
 }

@@ -87,6 +87,13 @@
             <input  style="margin-top: 16px" type="submit" value="Submit"/>
         </div>
 
+        <div th:if="${id}">
+            <input id="id" type="text" th:value="${id}" name="id" hidden>
+        </div>
+        <div th:if="${selectedSlot}">
+            <input id="selectedSlot" type="text" th:value="${selectedSlot}" name="selectedSlot" hidden>
+        </div>
+
     </form>
 
 </div>

@@ -1,20 +1,15 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.user;
-
-import com.playup.service.email.EmailSenderServiceImpl;
-import com.playup.service.email.IEmailSenderService;
 
 public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory {
     private static UserProfileServiceFactory instance = null;
     private IUserLoginService userLoginService;
-    private IEmailSenderService emailSenderService;
     private IOneTimePasswordService oneTimePasswordService;
     private IUserRegistrationService userRegistrationService;
 
-    private UserProfileServiceFactory() {
-
-    }
+    private UserProfileServiceFactory() {}
 
     public static UserProfileServiceFactory instance() {
         if (instance == null) {
@@ -29,14 +24,6 @@ public class UserProfileServiceFactory extends UserProfileServiceAbstractFactory
             userLoginService = new UserLoginServiceImpl();
         }
         return userLoginService;
-    }
-
-    @Override
-    public IEmailSenderService emailSenderService() {
-        if(emailSenderService == null) {
-            emailSenderService = new EmailSenderServiceImpl();
-        }
-        return emailSenderService;
     }
 
     @Override

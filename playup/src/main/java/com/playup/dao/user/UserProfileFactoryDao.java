@@ -1,16 +1,14 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.dao.user;
 
 public class UserProfileFactoryDao extends UserProfileAbstractFactoryDao {
-
     private static UserProfileFactoryDao instance = null;
     private IOneTimePasswordDao oneTimePasswordDao;
     private IUserDao userDao;
 
-    private UserProfileFactoryDao() {
-
-    }
+    private UserProfileFactoryDao() {}
 
     public static UserProfileFactoryDao instance() {
         if (null == instance) {

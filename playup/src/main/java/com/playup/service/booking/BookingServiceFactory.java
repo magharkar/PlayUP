@@ -1,15 +1,14 @@
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.booking;
 
-
 public class BookingServiceFactory extends BookingServiceAbstractFactory {
-
     private static BookingServiceFactory instance = null;
     private IVenueBookingService venueBookingService;
     private INearestVenueLocatorService nearestVenueLocatorService;
 
-    private BookingServiceFactory() {
-
-    }
+    private BookingServiceFactory() {}
 
     public static BookingServiceFactory instance() {
         if (instance == null) {

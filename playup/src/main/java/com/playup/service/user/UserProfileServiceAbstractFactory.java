@@ -1,14 +1,10 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.user;
 
-import com.playup.service.email.IEmailSenderService;
-
 public abstract class UserProfileServiceAbstractFactory {
-
     public abstract IUserLoginService userLoginService();
-
-    public abstract IEmailSenderService emailSenderService();
 
     public abstract IOneTimePasswordService oneTimePasswordService();
 
