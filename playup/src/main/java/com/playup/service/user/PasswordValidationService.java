@@ -19,7 +19,6 @@ public class PasswordValidationService {
 
         Pattern p = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]");
         Matcher m = p.matcher(password);
-        // boolean b = m.matches();
         isSpecialCharacterPresent = m.find();
 
         for(int i=0;i < password.length();i++) {

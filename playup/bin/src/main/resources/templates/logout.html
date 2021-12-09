@@ -1,0 +1,44 @@
+<!--@Author Mugdha Agharkar-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>PlayUp Homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+.navbar {
+    color: #FFF0F5;
+    background-color: #483D8B;
+}
+body {
+    background-color: #F5FFFA;
+}
+h2 {
+    margin-top: 8px;
+}
+</style>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
+            <div>PlayUP</div>
+        </div>
+    </div>
+</nav>
+<center><h2>Log out Successful!</h2></center>
+<center><h2>Visit again!</h2></center>
+<center>
+    <div style="display: flex; margin: auto; justify-content: center">
+        <form action="#" th:action="@{/registration}" style="margin:20px">
+            <button style="width:80px; height:40px" >Sign up</button>
+        </form>
+        <form action="/login" style="margin: 20px">
+            <button style="width:80px; height:40px">Log In</button>
+        </form>
+    </div>
+</center>
+</body>
+</html>

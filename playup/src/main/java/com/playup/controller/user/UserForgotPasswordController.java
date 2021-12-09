@@ -2,6 +2,7 @@
 
 package com.playup.controller.user;
 
+import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.OneTimePassword;
 import com.playup.service.email.IEmailSenderService;
 import com.playup.service.user.IOneTimePasswordService;
@@ -39,19 +40,18 @@ public class UserForgotPasswordController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String otpSubject = "Email Verification - PlayUP";
-        String otpBody = "Your 6-digit OTP for Email Verification is - \n" + response + "\n" +
-                "It is valid for 15 minutes.";
+        String otpSubject = ApplicationConstants.EMAIL_VERIFICATION_SUBJECT;
+        String otpBody = ApplicationConstants.EMAIL_VERIFICATION_BODY + response + "\n" +
+                ApplicationConstants.EMAIL_VERIFICATION_VALIDITY;
         emailService.sendEmail(emailId, otpBody, otpSubject);
-        model.addAttribute("emailId", emailId);
-        model.addAttribute("oneTimePassword", new OneTimePassword());
+        model.addAttribute(ApplicationConstants.EMAIL_ID_ATTRIBUTE, emailId);
+        model.addAttribute(ApplicationConstants.OTP_ATTRIBUTE, new OneTimePassword());
         return "forgot_password_otp";
     }
 
     @GetMapping("/forgot_password_otp")
     public String getOtpLogin( Model model) {
-        System.out.println("Reaching here");
-         model.addAttribute("oneTimePassword", new OneTimePassword());
+         model.addAttribute(ApplicationConstants.OTP_ATTRIBUTE, new OneTimePassword());
         return "forgot_password_otp";
     }
 

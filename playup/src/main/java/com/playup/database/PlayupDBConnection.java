@@ -1,4 +1,6 @@
-// @author Vibhor Bhatnagar
+/**
+ * @author vibhorbhatnagar
+ */
 
 package com.playup.database;
 
@@ -32,10 +34,10 @@ public class PlayupDBConnection {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
-		}
+		} 
 	}
 
-	public ResultSet readData(String query) throws SQLException {
+	public ResultSet readData(String query){
 		synchronized (connect) {
 			try {
 				// Read the data from the table

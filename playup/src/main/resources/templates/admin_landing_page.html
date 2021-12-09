@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Landing Page</title>
+</head>
+<style>
+.navbar {
+	color: #FFF0F5;
+	background-color: #483D8B;
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: .5rem 1rem
+}
+
+body {
+	background-color: #F5FFFA;
+	margin: 0px;
+	font-family: -apple-system;
+}
+</style>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!--            <a class="navbar-brand" href="#">PlayUP</a>-->
+				<div>PlayUP</div>
+			</div>
+		</div>
+	</nav>
+	<div style="display: flex; flex-direction: column; align-items: center">
+		<h2>Welcome admin !</h2>
+		<p style="margin-top: 16px">
+			<input type="submit" value="Open Tournament Scheduler"
+				onclick="openScheduler()" />
+		</p>
+	</div>
+</body>
+</html>

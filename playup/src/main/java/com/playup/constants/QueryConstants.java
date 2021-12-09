@@ -15,5 +15,6 @@ public class QueryConstants {
     public final static String PAYMENT_QUERY_AMOUNT = "amount";
     public final static String PAYMENT_QUERY_TIME_STAMP = "timeStamp";
     public final static String PAYMENT_QUERY_EMAIL = "email";
-
+    public final static String INSERT_INTO_MATCHES_TABLE = "INSERT INTO Tournament (Tournament_id, matches_list) VALUES ('";
+    public final static String INSERT_INTO_TOURNAMENT_TABLE = "INSERT INTO Tournament_Details (userId, tournament_id, sport_name, team_number) VALUES ('";
 }

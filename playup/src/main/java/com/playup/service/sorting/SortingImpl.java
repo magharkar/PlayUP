@@ -1,7 +1,8 @@
 package com.playup.service.sorting;
 
 import com.playup.dao.sorting.SortingDao;
-import com.playup.model.Venue;
+import com.playup.model.search.SearchVenue;
+
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,10 +17,10 @@ import java.util.List;
 public class SortingImpl implements ISorting
 {
     @Override
-    public ArrayList<Venue> fetchVenues(String sortParam)
+    public ArrayList<SearchVenue> fetchVenues(String sortParam)
     {
         String sortingParameter = sortParam;
-        List<Venue> sortingList = new ArrayList<>();
+        List<SearchVenue> sortingList = new ArrayList<>();
         try{
             if(sortingParameter.matches("default"))
             {
@@ -41,6 +42,6 @@ public class SortingImpl implements ISorting
         {
             e.printStackTrace();
         }
-        return (ArrayList<Venue>) sortingList;
+        return (ArrayList<SearchVenue>) sortingList;
     }
 }
