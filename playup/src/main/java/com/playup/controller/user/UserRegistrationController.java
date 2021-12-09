@@ -39,24 +39,24 @@ public class UserRegistrationController {
         this.userRegistrationService = UserProfileServiceFactory.instance().userRegistrationService();
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping(ApplicationConstants.LOGOUT_URL)
     public String defectDetails() {
-        return "logout";
+        return ApplicationConstants.LOGOUT_HTML;
     }
 
-    @GetMapping("/registration")
+    @GetMapping(ApplicationConstants.REGISTRATION_URL)
     public String registrationForm(Model model) {
-        model.addAttribute("user", UserFactory.userObject(new UserObjectFactory()));
-        return "registration";
+        model.addAttribute(ApplicationConstants.USER_OBJECT, UserFactory.userObject(new UserObjectFactory()));
+        return ApplicationConstants.REGISTRATION_HTML;
     }
 
-    @GetMapping("/otp")
+    @GetMapping(ApplicationConstants.OTP_URL)
     public String getOtp(Model model) {
-        model.addAttribute("oneTimePassword", new OneTimePassword());
-        return "otp";
+        model.addAttribute(ApplicationConstants.OTP_OBJECT, new OneTimePassword());
+        return ApplicationConstants.OTP_HTML;
     }
 
-    @RequestMapping(value = "/otp", method = { RequestMethod.POST, RequestMethod.GET })
+    @RequestMapping(value = ApplicationConstants.OTP_URL, method = { RequestMethod.POST, RequestMethod.GET })
     public String verifyOtp(@ModelAttribute OneTimePassword oneTimePassword, @RequestParam String emailId,
                             @RequestParam String password, @RequestParam String userName,
                             @RequestParam String contactNumber, @RequestParam String city,
@@ -72,15 +72,15 @@ public class UserRegistrationController {
         response = oneTimePasswordService.verifyOTP(emailId, oneTimePassword.getOneTimePassword());
         boolean success = false;
         success = userRegistrationService.registerNewUser(user);
-        model.addAttribute("response", response);
-        if(response.equals("email_verified") && success) {
-            return "redirect:/venues";
+        model.addAttribute(ApplicationConstants.RESPONSE_TEXT, response);
+        if(response.equals(ApplicationConstants.EMAIL_VERIFIED) && success) {
+            return ApplicationConstants.REDIRECT_VENUE_HTML;
         }
 
-        return "otp";
+        return ApplicationConstants.OTP_HTML;
     }
 
-    @PostMapping("/registration")
+    @PostMapping(ApplicationConstants.REGISTRATION_URL)
     public String registerNewUser(@ModelAttribute User user, Model model) throws SQLException {
         boolean isPasswordValid = passwordValidationService.isPasswordValid(user.getPassword(), user.getConfirmPassword());
         boolean isRegisteredUser = userRegistrationService.isUserAlreadyRegistered(user);
@@ -88,30 +88,28 @@ public class UserRegistrationController {
         boolean isOtpValid = false;
         if(!isRegisteredUser) {
             if (!isPasswordValid) {
-                model.addAttribute("user", UserFactory.userObject(new UserObjectFactory()));
-                model.addAttribute("policy", passwordValidationService);
-                model.addAttribute("error", "Your new password does not satisfy password policy.");
-                return "registration";
+                model.addAttribute(ApplicationConstants.USER_OBJECT, UserFactory.userObject(new UserObjectFactory()));
+                model.addAttribute(ApplicationConstants.ERROR, ApplicationConstants.PASSWORD_POLICY_ERROR);
+                return ApplicationConstants.REGISTRATION_HTML;
 
             } else {
-                model.addAttribute("success", "Send OTP");
                 String response = oneTimePasswordService.sendOTP(user.getEmail());
                 String otpSubject = ApplicationConstants.EMAIL_VERIFICATION_SUBJECT;
                 String otpBody = ApplicationConstants.EMAIL_VERIFICATION_BODY + response + "\n" +
                         ApplicationConstants.EMAIL_VERIFICATION_VALIDITY;
                 emailService.sendEmail(user.getEmail(), otpBody, otpSubject);
-                model.addAttribute("emailId", user.getEmail());
-                model.addAttribute("userName", user.getUserName());
-                model.addAttribute("contactNumber", user.getContactNumber());
-                model.addAttribute("password", user.getPassword());
-                model.addAttribute("city", user.getCity());
-                model.addAttribute("oneTimePassword", new OneTimePassword());
-                model.addAttribute("sport", user.getSport());
-                return "otp";
+                model.addAttribute(ApplicationConstants.EMAIL_ID_ATTRIBUTE, user.getEmail());
+                model.addAttribute(ApplicationConstants.USERNAME_ATTRIBUTE, user.getUserName());
+                model.addAttribute(ApplicationConstants.CONTACT_ATTRIBUTE, user.getContactNumber());
+                model.addAttribute(ApplicationConstants.PASSWORD_ATTRIBUTE, user.getPassword());
+                model.addAttribute(ApplicationConstants.CITY, user.getCity());
+                model.addAttribute(ApplicationConstants.OTP_OBJECT, new OneTimePassword());
+                model.addAttribute(ApplicationConstants.SPORT, user.getSport());
+                return ApplicationConstants.OTP_HTML;
             }
         }
        else {
-            return "user_exists";
+            return ApplicationConstants.USER_EXISTS;
         }
     }
 }

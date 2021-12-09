@@ -16,19 +16,19 @@ function postVenueData() {
 				var cell3 = row.insertCell(2);
 				var cell4 = row.insertCell(3);
 				var cell5 = row.insertCell(4);
+				var cell6 = row.insertCell(5);
+				var cell7 = row.insertCell(6);
 				var cell8 = row.insertCell(7);
-				var cell11 = row.insertCell(10);
-				var cell12 = row.insertCell(11);
-				var cell14 = row.insertCell(13);
+				var cell9 = row.insertCell(8);
 
 				cell1.innerHTML = result[i].venueID;
 				cell2.innerHTML = result[i].venueName;
 				cell3.innerHTML = result[i].venueCity;
 				cell4.innerHTML = result[i].availableSlots;
 				cell5.innerHTML = result[i].totalSlots;
-				cell8.innerHTML = result[i].contactInfo;
-				cell11.innerHTML = result[i].slotPrice;
-				cell12.innerHTML = result[i].averageRating;
+				cell6.innerHTML = result[i].contactInfo;
+				cell7.innerHTML = result[i].slotPrice;
+				cell8.innerHTML = result[i].averageRating;
 				let btn = document.createElement("button");
 				    var venueid = result[i].venueID;
                     btn.innerHTML = "Book";
@@ -37,7 +37,7 @@ function postVenueData() {
                           window.location.href = "venue/"+index;
                         })
                       })(venueid)
-                    cell14.append(btn);
+                    cell9.append(btn);
 			}
 		}
 	});
