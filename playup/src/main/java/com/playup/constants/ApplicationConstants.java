@@ -3,8 +3,6 @@
  */
 package com.playup.constants;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 public class ApplicationConstants {
     public final static String ADMIN_MAIL_ID = "shiv.course@gmail.com";
     public final static String SUPPORT_EMAIL_BODY = "We are really sorry for the issue you faced. Our team will reach out to you regarding the issue.";
