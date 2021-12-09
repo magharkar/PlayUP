@@ -27,7 +27,13 @@ public class TournamentController {
 		mv.setViewName("tournament_scheduler");
 		return mv;
 	}
-
+	
+	@RequestMapping("/adminLandingPage")
+	public ModelAndView adminPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin_landing_page");
+		return mv;
+	}
 	@RequestMapping(value = "/tournamentScheduler/getMatchSchedule", method = RequestMethod.POST)
 	public @ResponseBody List<Object> tournamentScheduler(@RequestBody TournamentDataModel tournamentData) {
 		List<Object> objectList = new ArrayList<>();
