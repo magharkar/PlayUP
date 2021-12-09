@@ -16,6 +16,17 @@ import java.util.List;
  */
 public class ReviewDao {
 
+    public static final String SELECT_QUERY = "Select * from Venues;";
+    public static final String SELECT_QUERY_JOINS = "Select review_ratings.title,review_ratings.description,review_ratings.rating,Venues.venue_id,Venues.name from review_ratings INNER JOIN Venues on review_ratings.venue_id= Venues.venue_id";
+    public static final String VENUE_ID = "venue_id";
+    public static final String NAME = "name";
+    public static final String CITY = "city";
+    public static final String SLOT_PRICE = "slot_price";
+    public static final String AVERAGE_RATING = "avg_ratings";
+    public static final String TITLE = "title";
+    public static final String DESCRIPTION = "description";
+    public static final String RATING = "rating";
+
     private static ReviewDao instance = null;
     public static ReviewDao getInstance()
     {
@@ -29,12 +40,12 @@ public class ReviewDao {
     public static List<ReviewModel> getVenuesFromDB() throws SQLException
     {
         List<ReviewModel> venueList = new ArrayList<>();
-        ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select * from Venues;");
+        ResultSet resultSet = PlayupDBConnection.getInstance().readData(SELECT_QUERY);
         while (resultSet != null && resultSet.next())
         {
-            venueList.add(new ReviewModel(resultSet.getInt("venue_id"),resultSet.getString("name"),
-                    resultSet.getString("city"), resultSet.getString("slot_price"),
-                    resultSet.getString("avg_ratings")));
+            venueList.add(new ReviewModel(resultSet.getInt(VENUE_ID),resultSet.getString(NAME),
+                    resultSet.getString(CITY), resultSet.getString(SLOT_PRICE),
+                    resultSet.getString(AVERAGE_RATING)));
         }
         return venueList;
     }
@@ -42,11 +53,11 @@ public class ReviewDao {
     public static List<ViewReviewModel> getReviewsFromDB() throws SQLException
     {
         List<ViewReviewModel> reviewList = new ArrayList<>();
-        ResultSet resultSet = PlayupDBConnection.getInstance().readData("Select review_ratings.title,review_ratings.description,review_ratings.rating,Venues.venue_id,Venues.name from review_ratings INNER JOIN Venues on review_ratings.venue_id= Venues.venue_id");
+        ResultSet resultSet = PlayupDBConnection.getInstance().readData(SELECT_QUERY_JOINS);
         while (resultSet != null && resultSet.next())
         {
-            reviewList.add(new ViewReviewModel(resultSet.getInt("venue_id"),resultSet.getString("name"), resultSet.getString("title"),
-                    resultSet.getString("description"), resultSet.getString("rating")));
+            reviewList.add(new ViewReviewModel(resultSet.getInt(VENUE_ID),resultSet.getString(NAME), resultSet.getString(TITLE),
+                    resultSet.getString(DESCRIPTION), resultSet.getString(RATING)));
         }
         return reviewList;
     }

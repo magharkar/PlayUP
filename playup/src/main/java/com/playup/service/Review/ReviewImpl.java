@@ -10,8 +10,10 @@ import java.util.List;
 public class ReviewImpl {
 
     private static ReviewImpl instance = null;
-    public static ReviewImpl getInstance() {
-        if(instance == null) {
+    public static ReviewImpl getInstance()
+    {
+        if(instance == null)
+        {
             instance = new ReviewImpl();
         }
         return instance;
