@@ -30,7 +30,7 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - mvn -f $(pwd)/playup/pom.xml clean compile
   tags: 
-    - dalfcs_gitlab_docker_ci
+    - dalfcs_docker_kvm
 
 # For merge requests do not `deploy` but only run `verify`.
 # See https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
