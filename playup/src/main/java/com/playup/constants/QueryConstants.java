@@ -5,9 +5,9 @@ package com.playup.constants;
  */
 
 public class QueryConstants {
-    public final static String DB_URL = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_PRODUCTION";
-    public final static String DB_USERNAME = "CSCI5308_1_PRODUCTION_USER";
-    public final static String DB_PASSWORD = "Ahgheigoo3jaYohl";
+    public final static String DB_URL = "jdbc:mysql://db-5308.cs.dal.ca/CSCI5308_1_DEVINT";
+    public final static String DB_USERNAME = "CSCI5308_1_DEVINT_USER";
+    public final static String DB_PASSWORD = "piWai3foh6iechee";
     public final static String CHECK_SUPPORT_TICKET_NUMBER_QUERY = "SELECT * from Support where ticketNumber = %s;";
     public final static String INSERT_SUPPORT_REQUEST_QUERY = "INSERT INTO Support (ticketNumber, name, email, venue, description) VALUES (%s, '%s', '%s', '%s', '%s');";
     public final static String CHECK_TRANSACTION_ID_NUMBER_QUERY = "SELECT * from Payment where transactionId = %s;";
