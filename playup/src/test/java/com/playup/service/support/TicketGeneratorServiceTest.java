@@ -5,6 +5,8 @@ import com.playup.constants.ApplicationConstants;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.SQLException;
+
 /**
  * @author Shiv Gaurang Desai
  */
@@ -16,15 +18,15 @@ public class TicketGeneratorServiceTest {
     }
 
     @Test
-    void ticketNumberValidTest() {
-        SupportTicketGeneratorServiceImpl ticketGeneratorService = new SupportTicketGeneratorServiceImpl();
+    void ticketNumberValidTest() throws SQLException {
+        ISupportTicketGeneratorService ticketGeneratorService = new SupportTicketGeneratorServiceImpl();
         int number = ticketGeneratorService.generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER,ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER);
         assertTrue(number>=1000&&number<=10000);
     }
 
     @Test
-    void ticketNumberNotValidTest() {
-        SupportTicketGeneratorServiceImpl ticketGeneratorService = new SupportTicketGeneratorServiceImpl();
+    void ticketNumberNotValidTest() throws SQLException {
+        ISupportTicketGeneratorService ticketGeneratorService = new SupportTicketGeneratorServiceImpl();
         int number = ticketGeneratorService.generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER,ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER);
         assertFalse(number<1000||number>10000);
     }
