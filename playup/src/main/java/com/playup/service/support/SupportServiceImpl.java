@@ -34,7 +34,7 @@ public class SupportServiceImpl implements ISupportService {
             supportModel.setTicketNumber(supportTicketGeneratorService.generateTicketNumber(ApplicationConstants.MINIMUM_SUPPORT_TICKET_NUMBER, ApplicationConstants.MAXIMUM_SUPPORT_TICKET_NUMBER));
             isSupportRequestCreated = SupportDaoImpl.getInstance().generateSupportRequest(supportModel);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return isSupportRequestCreated;
     }

@@ -41,7 +41,7 @@ public class CipherServiceImpl implements ICipherService {
             return Base64.getEncoder().encodeToString(cipher.doFinal(messageToEncrypt.getBytes(ApplicationConstants.UTF_FORMAT)));
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -60,7 +60,7 @@ public class CipherServiceImpl implements ICipherService {
             return new String(cipher.doFinal(Base64.getDecoder().decode(messageToDecrypt)));
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
