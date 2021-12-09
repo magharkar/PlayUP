@@ -32,7 +32,6 @@ class KnockoutTournamentConcreteFactoryTest {
 	@Test
 	void createScheduleTest() throws SQLException {
 		TournamentDataModel tournamentDataModel = new TournamentDataModel();
-		tournamentDataModel.setTournamentName("TestTournament");
 		tournamentDataModel.setTournamentSport("Badminton");
 		tournamentDataModel.setTournamentType("Knockout Tournament");
 		tournamentDataModel.setPlayersPerTeam("2");

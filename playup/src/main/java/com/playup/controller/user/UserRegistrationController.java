@@ -1,8 +1,8 @@
+package com.playup.controller.user;
+
 /**
  * @author Mugdha Anil Agharkar
  */
-package com.playup.controller.user;
-
 import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.IUser;
 import com.playup.model.user.User;

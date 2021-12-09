@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.controller.booking;
 
 import com.playup.constants.ApplicationConstants;
@@ -16,6 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
+/**
+ * @author Mugdha Anil Agharkar
+ */
 @Controller
 public class VenueBookingController {
     @Autowired
@@ -46,7 +46,7 @@ public class VenueBookingController {
     }
 
     @RequestMapping(value = "/venue/{id}", method = {RequestMethod.GET})
-    public String getLogin(@PathVariable("id") String id, Model model) {
+    public String getVenue(@PathVariable("id") String id, Model model) {
         int venueId = Integer.parseInt(id);
 
         SearchVenue venue = venueBookingService.getVenueDetails(venueId);

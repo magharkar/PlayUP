@@ -1,6 +1,3 @@
-/**
- * @author Mugdha Anil Agharkar
- */
 package com.playup.service.user;
 
 import com.playup.dao.user.IUserDao;
@@ -12,6 +9,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * @author Mugdha Anil Agharkar
+ */
 public class UserRegistrationServiceImpl implements IUserRegistrationService {
     @Override
     public boolean registerNewUser(IUser user) {
@@ -31,7 +31,7 @@ public class UserRegistrationServiceImpl implements IUserRegistrationService {
             props.load(in);
             in.close();
             FileOutputStream out = new FileOutputStream("src/main/resources/application.properties");
-            props.setProperty("loggedInUser", user.getEmail() + "|" + user.getSport());
+            props.setProperty("loggedInUserSport", user.getSport());
             props.store(out, null);
             out.close();
 

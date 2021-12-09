@@ -31,7 +31,6 @@ body {
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <!--            <a class="navbar-brand" href="#">PlayUP</a>-->
       <div>PlayUP</div>
     </div>
   </div>
@@ -41,7 +40,7 @@ body {
 
 <h2>Venue</h2>
 <div class="container-class">
-  <div>
+  <div style = "width: 50%">
     <div th:if="${venueName}" class="row">
       <div class="col">
         <div>Venue Name:</div>
@@ -69,31 +68,33 @@ body {
       </div>
     </div>
 
-    <form th:action="@{/venue/{id}(id=${id})}" method="post" class="row">
-      <div th:if="${id}">
-        <input id="id" type="text" th:value="${id}" name="id" hidden>
-        <div>Select a slot:</div>
-      </div>
-      <div>
-        <select name="selectedSlot" onchange="postSelectedSlot()">
-          <option th:each="venueSlot : ${slots}"
-                  th:value="${venueSlot.getSlotId()}"
-                  th:text="${venueSlot.getSlotType() + '(' + venueSlot.getSport() + ')'}"
-                  th:disabled="${venueSlot.getBookingStatus() == 'unavailable'}">Options</option>
-        </select>
+    <form th:action="@{/venue/{id}(id=${id})}" method="post">
+      <div class="row">
+        <div th:if="${id}" class="col">
+          <input id="id" type="text" th:value="${id}" name="id" hidden>
+          <div>Select a slot:</div>
+        </div>
+        <div class="col">
+          <select name="selectedSlot" onchange="postSelectedSlot()">
+            <option th:each="venueSlot : ${slots}"
+                    th:value="${venueSlot.getSlotId()}"
+                    th:text="${venueSlot.getSlotType() + '(' + venueSlot.getSport() + ')'}"
+                    th:disabled="${venueSlot.getBookingStatus() == 'unavailable'}">Options</option>
+          </select>
+        </div>
       </div>
 
       <div th:if="${amount}">
         <input id="amount" type="text" th:value="${amount}" name="amount" hidden>
       </div>
       <p style="margin-top: 16px"><input type="submit" value="Book Now" /></p>
-      <a th:href="@{/venue/nearest_venue/{id}(id=${id})}">Did not get the desired slot? Here is a nearby venue with the same sport</a>
+      <a th:href="@{/venue/nearest_venue/{id}(id=${id})}">Here is a nearby venue with the same sport</a>
 
     </form>
   </div>
 
-
-  <h3>Slot Details</h3>
+<br><br><br>
+  <div>Slot Details</div>
   <div style="min-width: 40%">
     <div class="row">
       <div class="col">
@@ -150,22 +151,7 @@ body {
     </div>
 
   </div>
-
-
-<!--  <p></p>-->
-<!--  <a th:href="@{/forgot_password}">Forgot Password?</a><br /> <a-->
-<!--        th:href="@{/registration}">Don't have an account? Register-->
-<!--  here!</a>-->
-
-<!--  <div th:if="${success}">-->
-<!--    <h2 th:text="${success}"></h2>-->
-<!--  </div>-->
-
-<!--  <div th:if="${failure}">-->
-<!--    <h2 th:text="${failure}"></h2>-->
-<!--  </div>-->
 </div>
-
 
 </body>
 </html>
