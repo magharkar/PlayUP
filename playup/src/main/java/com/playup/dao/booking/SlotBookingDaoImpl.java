@@ -11,8 +11,6 @@ import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;
 import com.playup.model.booking.VenueSlotFactory;
 
-import javax.management.QueryEval;
-import javax.swing.plaf.SplitPaneUI;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
