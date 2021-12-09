@@ -1,0 +1,56 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Post Review</title>
+</head>
+<style>
+h1 {
+	text-align: center;
+}
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/js/reviewPage.js}"></script>
+<body>
+<h1>Post Review</h1>
+<br>
+<input type="submit" value="View Reviews" onclick="postViewReviewData()" />
+<br>
+<div id="error-box"></div><br><br><br><br>
+<div>
+    <form th:action="@{/review/postReviewPage/{venueID}(venueID=${venueID})}" method="post">
+        <div class="form-row">
+            <div class="col">
+                <p>Title</p>
+            </div>
+            <div class="col">
+                <input id="Title" name="title" type="text" required/>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <p>Description</p>
+            </div>
+            <div class="col">
+                <textarea name="description" id = "description">Enter Review...</textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <p>Rating</p>
+            </div>
+            <div class="col">
+                <input name="rating" id="rating" type="number" required/>
+            </div>
+        </div>
+
+        <p style="margin-top: 16px"><input type="submit" value="Submit" /></p>
+        <div th:if="${venueID}" class="form-row">
+            <input id="venueID" type="text" th:value="${venueID}" name="venueID" hidden>
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>

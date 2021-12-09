@@ -1,8 +1,8 @@
-package com.playup.tests.service.sorting;
+package com.playup.tests.service.Sorting;
 
 import com.playup.model.Venue;
-import com.playup.service.sorting.ISorting;
-import com.playup.service.sorting.SortingImpl;
+import com.playup.service.Sorting.ISorting;
+import com.playup.service.Sorting.SortingImpl;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -22,13 +22,12 @@ public class SortingImplTest
     ISorting sorting = new SortingImpl();
 
     /**
-     * Not Null test to check Calculator class exists.
+     * Not Null test to check class exists.
      */
     @Test
     public void NotNullTest() throws ClassNotFoundException
     {
-
-        Class<?> classFinder = Class.forName("com.playup.service.sorting.SortingImpl", false, getClass().getClassLoader());
+        Class<?> classFinder = Class.forName("com.playup.service.Sorting.SortingImpl", false, getClass().getClassLoader());
         assertNotNull(classFinder);
     }
 
@@ -38,7 +37,6 @@ public class SortingImplTest
     @Test
     public void fetchVenuesTestDefault()
     {
-
         ArrayList<Venue> venueList = new ArrayList<>();
         Venue venue1 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
@@ -62,7 +60,6 @@ public class SortingImplTest
     @Test
     public void fetchVenuesTestAlphabetical()
     {
-
         ArrayList<Venue> venueList = new ArrayList<>();
         Venue venue2 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
@@ -78,7 +75,6 @@ public class SortingImplTest
         venueList.add(venue4);
         ArrayList<Venue> expectedList = sorting.fetchVenues("alphabetical");
         assertEquals(venueList.size(), expectedList.size());
-
     }
 
     /**
@@ -87,7 +83,6 @@ public class SortingImplTest
     @Test
     public void fetchVenuesTestLowToHigh()
     {
-
         ArrayList<Venue> venueList = new ArrayList<>();
         Venue venue2 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
@@ -103,7 +98,6 @@ public class SortingImplTest
         venueList.add(venue4);
         ArrayList<Venue> expectedList = sorting.fetchVenues("lowtohigh");
         assertEquals(venueList.size(), expectedList.size());
-
     }
 
     /**
@@ -112,7 +106,6 @@ public class SortingImplTest
     @Test
     public void fetchVenuesTestHighToLow()
     {
-
         ArrayList<Venue> venueList = new ArrayList<>();
         Venue venue2 = new Venue("2000001", "DalPlex", "Halifax", "5", "10", "8:00:00", "20:00", "",
                 "44.6345Ą N", "63.5926Ą W", "$50", "4", "0");
@@ -128,6 +121,5 @@ public class SortingImplTest
         venueList.add(venue4);
         ArrayList<Venue> expectedList = sorting.fetchVenues("hightolow");
         assertEquals(venueList.size(), expectedList.size());
-
     }
 }
