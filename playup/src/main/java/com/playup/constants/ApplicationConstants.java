@@ -38,5 +38,10 @@ public class ApplicationConstants {
     public final static String CARD_ERROR_MESSAGE = "Card number is not valid";
     public final static String CVV_ERROR_MESSAGE = "CVV is not valid";
     public final static String EXPIRY_DATE_ERROR_MESSAGE = "Expiry date is not valid";
-
+    public final static String EMAIL_VERIFICATION_SUBJECT = "Email Verification - PlayUP";
+    public final static String EMAIL_VERIFICATION_BODY = "Your 6-digit OTP for Email Verification is - \n";
+    public final static String EMAIL_VERIFICATION_VALIDITY = "It is valid for 15 minutes.";
+    public final static String EMAIL_ID_ATTRIBUTE = "emailId";
+    public final static String OTP_ATTRIBUTE = "oneTimePassword";
+    public final static String APPLICATION_PROPERTIES_PATH = "src/main/resources/application.properties";
 }

@@ -62,7 +62,6 @@ public class CreditCardValidationServiceImpl implements ICreditCardValidationSer
             int tempTotal;
             if(i%2==0) {
                 tempTotal = cardArray[i]*2;
-
             }else {
                 tempTotal = cardArray[i];
             }

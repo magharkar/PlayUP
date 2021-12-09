@@ -2,11 +2,12 @@
 
 package com.playup.controller.user;
 
+import com.playup.constants.ApplicationConstants;
 import com.playup.model.user.IUser;
 import com.playup.model.user.User;
 import com.playup.model.user.UserFactory;
 import com.playup.model.user.UserObjectFactory;
-import com.playup.service.email.IEmailSender;
+import com.playup.service.email.IEmailSenderService;
 import com.playup.dao.user.IOneTimePasswordDao;
 import com.playup.model.user.*;
 import com.playup.service.user.IOneTimePasswordService;
@@ -29,11 +30,16 @@ public class UserRegistrationController {
     IOneTimePasswordDao oneTimePasswordDao;
 
     @Autowired
-    private IEmailSender emailService;
+    private IEmailSenderService emailService;
 
     public UserRegistrationController() {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();
         this.userRegistrationService = UserProfileServiceFactory.instance().userRegistrationService();
+    }
+
+    @RequestMapping("/logout")
+    public String defectDetails() {
+        return "logout";
     }
 
     @GetMapping("/registration")
@@ -74,7 +80,7 @@ public class UserRegistrationController {
         }
         model.addAttribute("response", response);
         if(response.equals("email_verified") && success) {
-            return "venues";
+            return "redirect:/venues";
         }
 
         return "otp";
@@ -99,9 +105,9 @@ public class UserRegistrationController {
             } else {
                 model.addAttribute("success", "Send OTP");
                 String response = oneTimePasswordService.sendOTP(user.getEmail());
-                String otpSubject = "Email Verification - PlayUP";
-                String otpBody = "Your 6-digit OTP for Email Verification is - \n" + response + "\n" +
-                        "It is valid for 15 minutes.";
+                String otpSubject = ApplicationConstants.EMAIL_VERIFICATION_SUBJECT;
+                String otpBody = ApplicationConstants.EMAIL_VERIFICATION_BODY + response + "\n" +
+                        ApplicationConstants.EMAIL_VERIFICATION_VALIDITY;
                 emailService.sendEmail(user.getEmail(), otpBody, otpSubject);
                 model.addAttribute("emailId", user.getEmail());
                 model.addAttribute("userName", user.getUserName());

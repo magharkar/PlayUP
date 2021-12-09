@@ -87,7 +87,6 @@ public class UserDaoImpl implements IUserDao {
         String query = "Update User SET password=" + "'" + password + "'" + "WHERE email="
                 + "'" + email + "'";
         String sqlQuery = String.format(query);
-        System.out.println(sqlQuery);
         boolean resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
         return resultSet;
     }

@@ -1,12 +1,14 @@
-package com.playup.tests;
+/**
+ * @author Shiv Gaurang Desai
+ */
+package com.playup.tests.email;
 
 import static org.junit.jupiter.api.Assertions.*;
 import com.playup.service.email.EmailValidationServiceImpl;
 import com.playup.service.email.IEmailValidationService;
 import org.junit.jupiter.api.Test;
 
-public class EmailValidationTest {
-
+public class EmailValidationServiceTest {
     @Test
     public void emailValidationServiceTestForNotNull() throws ClassNotFoundException {
         Class<?> classExists = Class.forName("com.playup.service.email.EmailValidationServiceImpl", false, getClass().getClassLoader());
