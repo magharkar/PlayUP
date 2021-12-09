@@ -8,46 +8,55 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Controller
-public class ReviewController {
+public class ReviewController
+{
+    public static final String VENUE_ID = "venueID";
+    public static final String POST_REVIEW = "postReview";
+    public static final String REDIRECT = "redirect:/review";
+    public static final String REVIEW = "/review";
+    public static final String VIEW_NAME = "reviewPage";
+    public static final String REVIEW_PAGE = "/review/reviewPage";
+    public static final String VIEW_REVIEW_PAGE = "/review/viewReviewPage";
+    public static final String POST_REVIEW_PAGE = "/review/postReviewPage/{venueID}";
 
-    @GetMapping("/review")
+
+    @GetMapping(REVIEW)
     public ModelAndView search()
     {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("reviewPage");
+        mv.setViewName(VIEW_NAME);
         return mv;
     }
 
-    @RequestMapping(value = "/review/reviewPage", method = RequestMethod.POST)
+    @RequestMapping(value = REVIEW_PAGE, method = RequestMethod.POST)
     public @ResponseBody
     ArrayList<ReviewModel> getVenueResults()
     {
         return ReviewImpl.getInstance().fetchVenues();
     }
 
-    @RequestMapping(value = "/review/viewReviewPage", method = RequestMethod.POST)
+    @RequestMapping(value = VIEW_REVIEW_PAGE, method = RequestMethod.POST)
     public @ResponseBody
     ArrayList<ViewReviewModel> getViewReviewResults()
     {
         return ReviewImpl.getInstance().viewReviews();
     }
 
-    @RequestMapping(value = "/review/postReviewPage/{venueID}", method = RequestMethod.GET)
+    @RequestMapping(value = POST_REVIEW_PAGE, method = RequestMethod.GET)
     public
-    String getPostReviewResults(@PathVariable("venueID") int venueID, Model model)
+    String getPostReviewResults(@PathVariable(VENUE_ID) int venueID, Model model)
     {
-        model.addAttribute("venueID",venueID);
-        return "postReview";
+        model.addAttribute(VENUE_ID,venueID);
+        return POST_REVIEW;
     }
 
-    @PostMapping("/review/postReviewPage/{venueID}")
-    public String postReview(@RequestParam (name = "venueID") int venueID, @RequestParam String title, @RequestParam String description, @RequestParam int rating) throws SQLException
+    @PostMapping(POST_REVIEW_PAGE)
+    public String postReview(@RequestParam (name = VENUE_ID) int venueID, @RequestParam String title, @RequestParam String description, @RequestParam int rating)
     {
         ReviewImpl.getInstance().postReviews(venueID,title,description,rating);
-        return "redirect:/review";
+        return REDIRECT;
     }
 }

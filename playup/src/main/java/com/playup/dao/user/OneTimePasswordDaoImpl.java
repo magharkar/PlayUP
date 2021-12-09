@@ -1,5 +1,6 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.dao.user;
 
 import com.playup.database.PlayupDBConnection;
@@ -25,7 +26,6 @@ public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
             String query = "Insert into user_otp_mapping (otp, email, date) values " +
                     "('" + otp + "'," + "'" + email + "'," + "'" + date + "' )";
             String sqlQuery = String.format(query);
-            System.out.println(sqlQuery);
             boolean resultSet = PlayupDBConnection.getInstance().updateData(sqlQuery);
             return resultSet;
         } catch (SQLException e) {
@@ -41,8 +41,6 @@ public class OneTimePasswordDaoImpl implements IOneTimePasswordDao {
             String query = "Select * from user_otp_mapping where email=" + "'" + email + "'";
             String sqlQuery = String.format(query);
             ResultSet resultSet = PlayupDBConnection.getInstance().readData(sqlQuery);
-            System.out.println(sqlQuery);
-
 
             while (resultSet.next()) {
                 OneTimePassword oneTimePassword = new OneTimePassword();

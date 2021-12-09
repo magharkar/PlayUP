@@ -1,5 +1,6 @@
-// Author: Mugdha Anil Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.controller.user;
 
 import com.playup.constants.ApplicationConstants;
@@ -11,13 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.SQLException;
-import java.text.ParseException;
 
 @Controller
 public class UserForgotPasswordController {
-
     @Autowired
     private IEmailSenderService emailService;
 
@@ -27,12 +25,12 @@ public class UserForgotPasswordController {
         this.oneTimePasswordService = UserProfileServiceFactory.instance().oneTimePasswordService();
     }
 
-    @GetMapping("/forgot_password")
+    @GetMapping(ApplicationConstants.FORGOT_PASSWORD_URL)
     public String getLogin(Model model) {
-        return "forgot_password";
+        return ApplicationConstants.FORGOT_PASSWORD_HTML;
     }
 
-    @PostMapping("/forgot_password")
+    @PostMapping(ApplicationConstants.FORGOT_PASSWORD_URL)
     public String redirectToOtp(@RequestParam String emailId, Model model) {
         String response = null;
         try {
@@ -46,29 +44,24 @@ public class UserForgotPasswordController {
         emailService.sendEmail(emailId, otpBody, otpSubject);
         model.addAttribute(ApplicationConstants.EMAIL_ID_ATTRIBUTE, emailId);
         model.addAttribute(ApplicationConstants.OTP_ATTRIBUTE, new OneTimePassword());
-        return "forgot_password_otp";
+        return ApplicationConstants.FORGOT_PASSWORD_OTP_HTML;
     }
 
-    @GetMapping("/forgot_password_otp")
+    @GetMapping(ApplicationConstants.FORGOT_PASSWORD_OTP_URL)
     public String getOtpLogin( Model model) {
          model.addAttribute(ApplicationConstants.OTP_ATTRIBUTE, new OneTimePassword());
-        return "forgot_password_otp";
+        return ApplicationConstants.FORGOT_PASSWORD_OTP_HTML;
     }
 
-    @RequestMapping(value = "/forgot_password_otp", method = { RequestMethod.POST, RequestMethod.GET })
+    @RequestMapping(value = ApplicationConstants.FORGOT_PASSWORD_OTP_URL, method = { RequestMethod.POST, RequestMethod.GET })
     public String setNewPassword(@RequestParam String emailId, @ModelAttribute OneTimePassword oneTimePassword,
                                  @RequestParam String password, Model model) {
         String response = null;
-        try {
-            response = oneTimePasswordService.verifyOTPForPasswordReset(emailId, oneTimePassword.getOneTimePassword(), password);
-        } catch (SQLException | ParseException e) {
-            e.printStackTrace();
+        response = oneTimePasswordService.verifyOTPForPasswordReset(emailId, oneTimePassword.getOneTimePassword(), password);
+        model.addAttribute(ApplicationConstants.RESPONSE_TEXT, response);
+        if(response.equals(ApplicationConstants.PASSWORD_UPDATE_SUCCESSFUL)) {
+            return ApplicationConstants.REDIRECT_VENUE_HTML;
         }
-        System.out.println(response);
-        model.addAttribute("response", response);
-        if(response.equals("password_update_successful")) {
-            return "redirect:/venues";
-        }
-        return "forgot_password_otp";
+        return ApplicationConstants.FORGOT_PASSWORD_OTP_HTML;
     }
 }

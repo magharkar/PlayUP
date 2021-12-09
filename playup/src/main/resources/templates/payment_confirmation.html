@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Payment Confirmation</title>
@@ -35,6 +35,7 @@
 </nav>
 <div class="container-class">
 <h1>Payment was complete. Booking is confirmed</h1>
+    <a th:href="@{/venues}">Go back to Venues</a>
 </div>
 </body>
 </html>

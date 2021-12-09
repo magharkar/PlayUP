@@ -1,3 +1,6 @@
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.model.booking;
 
 public class VenueSlot {
@@ -8,9 +11,7 @@ public class VenueSlot {
     private String bookingStatus;
     private String sport;
 
-    public VenueSlot() {
-
-    }
+    public VenueSlot() {}
 
     public VenueSlot(int venueId, int slotId, String slotTiming, String slotType, String bookingStatus, String sport) {
         this.venueId = venueId;
@@ -31,6 +32,7 @@ public class VenueSlot {
     public int getVenueId() {
         return venueId;
     }
+
     public void setVenueId(int venueId) {
         this.venueId = venueId;
     }
@@ -38,6 +40,7 @@ public class VenueSlot {
     public int getSlotId() {
         return slotId;
     }
+
     public void setSlotId(int slotId) {
         this.slotId = slotId;
     }
@@ -45,6 +48,7 @@ public class VenueSlot {
     public String getSlotTiming() {
         return slotTiming;
     }
+
     public void setSlotTiming(String slotTiming) {
         this.slotTiming = slotTiming;
     }
@@ -52,6 +56,7 @@ public class VenueSlot {
     public String getSlotType() {
         return slotType;
     }
+
     public void setSlotType(String slotType) {
         this.slotType = slotType;
     }
@@ -59,6 +64,7 @@ public class VenueSlot {
     public String getBookingStatus() {
         return bookingStatus;
     }
+
     public void setBookingStatus(String bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
@@ -66,6 +72,7 @@ public class VenueSlot {
     public String getSport() {
         return sport;
     }
+
     public void setSport(String sport) {
         this.sport = sport;
     }

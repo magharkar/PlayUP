@@ -1,5 +1,6 @@
-//@Author Mugdha Agharkar
-
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.service.user;
 
 import com.playup.dao.user.IOneTimePasswordDao;
@@ -10,9 +11,6 @@ import com.playup.model.user.OneTimePassword;
 import com.playup.service.email.IEmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,63 +42,43 @@ public class OneTimePasswordServiceImpl implements IOneTimePasswordService {
         oneTimePassword.setOneTimePassword(otpValue);
         oneTimePassword.setOneTimePasswordDate(new Date());
         oneTimePassword.setEmailId(email);
-
-        try {
-            oneTimePasswordDao.setOneTimePassword(oneTimePassword);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        oneTimePasswordDao.setOneTimePassword(oneTimePassword);
         return otpValue;
     }
 
     @Override
     public String verifyOTPForPasswordReset(String email, String oneTimePassword, String password) {
-        try {
-            userDao = UserProfileFactoryDao.instance().userDao();
-            oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
-            ArrayList<OneTimePassword> otpList = null;
-            try {
-                otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            System.out.println(otpList.size());
-            OneTimePassword latestOtp = otpList.get(otpList.size() - 1);
-            Date latestStamp = latestOtp.getOneTimePasswordDate();
+        userDao = UserProfileFactoryDao.instance().userDao();
+        oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
+        ArrayList<OneTimePassword> otpList = null;
+        otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
+        OneTimePassword latestOtp = otpList.get(otpList.size() - 1);
+        Date latestStamp = latestOtp.getOneTimePasswordDate();
 
-            Calendar current = Calendar.getInstance();
-            current.setTime(latestStamp);
-            current.add(Calendar.MINUTE, 15);
-            latestStamp = current.getTime();
+        Calendar current = Calendar.getInstance();
+        current.setTime(latestStamp);
+        current.add(Calendar.MINUTE, 15);
+        latestStamp = current.getTime();
 
-            if (latestStamp.compareTo(new Date()) < 0) {
-                return "otp_expired";
+        if (latestStamp.compareTo(new Date()) < 0) {
+            return "otp_expired";
+        } else {
+            if (oneTimePassword.equals(latestOtp.getOneTimePassword().toString())) {
+                IUser user = userDao.getUserByUserEmail(email);
+                user.setPassword(password);
+                userDao.updatePasswordAfterReset(user);
+                return "password_update_successful";
             } else {
-                if (oneTimePassword.equals(latestOtp.getOneTimePassword().toString())) {
-                    IUser user = userDao.getUserByUserEmail(email);
-                    user.setPassword(password);
-                    userDao.updatePasswordAfterReset(user);
-                    return "password_update_successful";
-                } else {
-                    return "otp_invalid";
-                }
+                return "otp_invalid";
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return null;
     }
 
     @Override
     public String verifyOTP(String email, String oneTimePassword) {
         oneTimePasswordDao = UserProfileFactoryDao.instance().oneTimePasswordDao();
         ArrayList<OneTimePassword> otpList = null;
-        try {
-            otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
-        } catch (SQLException | ParseException e) {
-            e.printStackTrace();
-        }
+        otpList = oneTimePasswordDao.getOneTimePasswordByEmail(email);
         OneTimePassword latestOtp = otpList.get(otpList.size() - 1);
         Date latestStamp = latestOtp.getOneTimePasswordDate();
 

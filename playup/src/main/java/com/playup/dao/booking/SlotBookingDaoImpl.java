@@ -1,17 +1,17 @@
+/**
+ * @author Mugdha Anil Agharkar
+ */
 package com.playup.dao.booking;
 
 import com.playup.database.PlayupDBConnection;
 import com.playup.model.search.SearchVenue;
 import com.playup.model.booking.VenueSlot;
 import com.playup.model.booking.VenueSlotFactory;
-import com.playup.model.search.SearchVenue;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SlotBookingDaoImpl implements ISlotBookingDao {
-
     private static SlotBookingDaoImpl bookingDaoInstance;
 
     public SlotBookingDaoImpl(){}
@@ -49,7 +49,6 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
 
     @Override
     public ArrayList<VenueSlot> getSlotsByVenueId(int venueId) {
-
         String query = "Select * from venue_slot_mapping where venue_id=" + venueId;
         String sqlQuery = String.format(query);
         ResultSet resultSet = null;
@@ -79,7 +78,6 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
         String query = "Update venue_slot_mapping SET booking_status= 'unavailable' WHERE venue_id="
                 + "'" + venueId + "'" + " AND slot_id=" + "'" + slotId + "'";
         String sqlQuery = String.format(query);
-        System.out.println(sqlQuery);
         try {
             success = PlayupDBConnection.getInstance().updateData(sqlQuery);
         } catch (SQLException e) {
@@ -96,7 +94,6 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
         String query = "Update Venues SET available_slots=" + "'" + updatedSlotCount + "'" + "WHERE venue_id="
                 + "'" + venueId + "'";
         String sqlQuery = String.format(query);
-        System.out.println(sqlQuery);
         try {
             success = PlayupDBConnection.getInstance().updateData(sqlQuery);
         } catch (SQLException e) {
@@ -104,5 +101,4 @@ public class SlotBookingDaoImpl implements ISlotBookingDao {
         }
         return success;
     }
-
 }

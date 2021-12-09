@@ -44,4 +44,37 @@ public class ApplicationConstants {
     public final static String EMAIL_ID_ATTRIBUTE = "emailId";
     public final static String OTP_ATTRIBUTE = "oneTimePassword";
     public final static String APPLICATION_PROPERTIES_PATH = "src/main/resources/application.properties";
+    public final static String FORGOT_PASSWORD_URL = "/forgot_password";
+    public final static String FORGOT_PASSWORD_HTML = "forgot_password";
+    public final static String FORGOT_PASSWORD_OTP_URL = "/forgot_password_otp";
+    public final static String FORGOT_PASSWORD_OTP_HTML = "forgot_password_otp";
+    public final static String RESPONSE_TEXT = "response";
+    public final static String PASSWORD_UPDATE_SUCCESSFUL = "password_update_successful";
+    public final static String REDIRECT_VENUE_HTML = "redirect:/venues";
+    public final static String LOGIN_URL = "/login";
+    public final static String LOGIN_HTML = "login";
+    public final static String USER_OBJECT = "user";
+    public final static String ADMIN_ROLE = "admin";
+    public final static String ADMIN_LANDING_HTML = "admin_landing_page";
+    public final static String FAILED_RESULT = "failure";
+    public final static String UNSUCCESSFUL_LOGIN = "Login unsuccessful";
+    public final static String LOGOUT_URL = "/logout";
+    public final static String LOGOUT_HTML = "logout";
+    public final static String REGISTRATION_URL = "/registration";
+    public final static String REGISTRATION_HTML = "registration";
+    public final static String OTP_URL = "/otp";
+    public final static String OTP_HTML = "otp";
+    public final static String OTP_OBJECT = "oneTimePassword";
+    public final static String EMAIL_VERIFIED = "email_verified";
+    public final static String PASSWORD_POLICY_ERROR = "Your new password does not satisfy password policy.";
+    public final static String USER_EXISTS = "user_exists";
+    public final static String ERROR = "error";
+    public final static String EMAILID_ATTRIBUTE = "emailId";
+    public final static String USERNAME_ATTRIBUTE = "userName";
+    public final static String CONTACT_ATTRIBUTE = "contactNumber";
+    public final static String PASSWORD_ATTRIBUTE = "password";
+    public final static String CITY = "city";
+    public final static String SPORT = "sport";
+
+
 }
