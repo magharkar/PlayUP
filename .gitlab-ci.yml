@@ -24,7 +24,22 @@
 
 # This template uses jdk8 for verifying and deploying images
 image: maven:latest
-        
+
+# For merge requests do not `deploy` but only run `verify`.
+# See https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+unit-test-job: # This job runs in the test stage.
+  stage: test
+  script:
+    - mvn -f $(pwd)/playup/pom.xml clean verify
+  artifacts: 
+    when: always      
+    reports:        
+        junit:          
+            - ./playup/target/surefire-reports/TEST-*.xml
+            - ./playup/target/failsafe-reports/TEST-*.xml
+  tags: 
+    - ugrad
+   
 deploy:
   stage: deploy
   image: ruby:latest
